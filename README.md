@@ -1,2 +1,3 @@
-# social-network
-My social network for Portfolio
+# Social Network
+
+My Social Network Only on JS
