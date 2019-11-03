@@ -1,0 +1,28 @@
+.nav{
+    grid-area: n;
+    background-color: #f3f3f3;
+    position: fixed;
+    top: 70px;
+    width: 225px;
+    height: 100%;
+}
+.item {
+    padding: 15px 0px 15px 36px;
+}
+.item a{
+    font-size: 14px;
+    color: #434f74;
+    text-decoration: none;
+    line-height: 17px;
+}
+.item a.active .navbarIcon{
+    color: #fa2276;
+}
+.navbarIcon{
+    color: #bdc3d3;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.navbarIcon:hover{
+    color: #fa2276;
+}

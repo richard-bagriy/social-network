@@ -1,0 +1,8 @@
+.formControl.error input {
+    box-shadow: 0 0 0 .2rem rgba(220,53,69,.5);
+}
+.formControl.error .errorMessage {
+    font-size: 12px;
+    color: rgba(112, 50, 56, 0.5);
+    margin-top: 5px;
+}

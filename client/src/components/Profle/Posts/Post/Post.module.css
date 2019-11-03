@@ -1,0 +1,33 @@
+.postWrapper{
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.postTop{
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-column-gap: 15px;
+    margin-bottom: 15px;
+}
+.postUserName{
+    font-size: 16px;
+    font-weight: 500;
+    color: #434f74;
+    margin-bottom: 15px;
+}
+.postTime{
+    font-size: 12px;
+    font-weight: 400;
+    color: #bdc3d3;
+}
+.postText{
+    font-size: 14px;
+    line-height: 24px;
+    color: #959fbb;
+    font-weight: 400;
+}

@@ -1,0 +1,16 @@
+.dialogsWrapper{
+    display: grid;
+    grid-template-columns: 550px 10fr;
+    padding: 20px;
+}
+.messagesWrapper {
+    border: 1px solid #e5e5e5;
+    background: #fff;
+}
+.messagesInner{
+    padding: 20px;
+}
+.messagesHeader{
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+}

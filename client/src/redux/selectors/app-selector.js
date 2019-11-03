@@ -1,0 +1,1 @@
+export const getInitApp = (state) => state.app.init

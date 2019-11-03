@@ -1,0 +1,112 @@
+.wrapper{
+    background-image: url('../../../assets/images/auth-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(320px, 1110px);
+    align-content: center;
+    justify-content: center;
+}
+.inner{
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.loginHeader{
+    display: grid;
+    grid-template-columns: 75px 100px;
+    grid-template-rows: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+.loginHeader a{
+    color: #959fbb;
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.loginHeader img {
+    width: 75;
+}
+.loginBody{
+    padding: 80px 0px 100px;
+    text-align: center;
+}
+.loginH1{
+    font-size: 30px;
+    color: #434f74;
+    margin-bottom: 23px;
+    font-weight: 500;
+}
+.loginText{
+    font-size: 14px;
+    color: #959fbb;
+    font-weight: 400;
+}
+.loginFormWrapper{
+    display: grid;
+    grid-template-columns: minmax(320px, 360px);
+    justify-content: center;
+}
+.loginForm{
+    margin-top: 50px;
+}
+.inputContainer{
+    position: relative;
+    margin-bottom: 30px;
+}
+.inputField{
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    background: transparent;
+    padding: 15px;
+    border-left: 0px;
+    color: #959fbb;
+    font-weight: 400;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+.inputField:hover{
+    border-bottom: 1px solid #434f74;
+}
+.loginIcon{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    color: #bdc3d3;
+}
+.loginIcon:hover{
+    color: #434f74;
+}
+
+.btn{
+    cursor: pointer;
+    background: #fa2276;
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 3px;
+    font-size: 14px;
+    text-transform: capitalize;
+    display: inline-block;
+    border: 1px solid transparent;
+    font-weight: 400;
+    transition: background-color .15s ease-in-out;
+    text-align: center;
+}
+.btn:hover{
+    background-color: #434f74;
+}
+.gender{
+    text-align: left;
+    color:#434f74;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 26px;
+    font-weight: 500;
+}

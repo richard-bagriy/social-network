@@ -1,0 +1,24 @@
+.app-wrapper{
+    display: grid;
+    margin: 0 auto;
+
+    grid-template-areas: 
+    "h h"
+    "n c";
+    grid-template-rows: 70px 1fr;
+    grid-template-columns: 225px 10fr;
+    height: 100%;
+}
+.app-wrapper-content {
+    grid-area: c;
+    background-color: #f9f9f9;
+}
+.location-market{
+    font-size: 14px;
+    color: #fa2276;
+    margin-right: 8px;
+}
+
+.height-100{
+    height: 100%;
+}
