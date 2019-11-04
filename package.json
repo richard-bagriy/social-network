@@ -1,0 +1,22 @@
+{
+  "name": "social-network",
+  "version": "1.0.0",
+  "description": "My social network for portfolio",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Richard-Bagriy/social-network.git"
+  },
+  "author": "Richard Bagriy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Richard-Bagriy/social-network/issues"
+  },
+  "homepage": "https://github.com/Richard-Bagriy/social-network#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
