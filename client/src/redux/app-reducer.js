@@ -4,7 +4,7 @@ import { Promise } from 'q';
 const SET_INITIAL = "SET_INITIAL"
 
 let initialState = {
-    init: false
+    init: true
 }
 
 

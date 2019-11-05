@@ -9,7 +9,7 @@ const maxLength16 = maxLength(16);
 const Form = (props) => {
 
     return (
-        <form className={style.loginForm} >
+        <form className={style.loginForm} onSubmit={props.handleSubmit}>
             <div className={style.inputContainer}>
                 <Field className={style.inputField} name="name" type="name" placeholder="Name" component={Input} validate={[required]}/>
             </div>

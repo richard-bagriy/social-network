@@ -3,8 +3,13 @@ import style from './index.module.css';
 import {Link} from 'react-router-dom';
 import logo from '../../../logo.svg';
 import Form from './form';
+import {authAPI} from '../../../api/api';
 
 const Register = () => {
+
+    const onSubmit = (data) => {
+        authAPI.registration(data)
+    }
 
     return (
         <div className={style.wrapper}>
@@ -17,7 +22,7 @@ const Register = () => {
                     <h1 className={style.loginH1}>Sign Up</h1>
                     <div className={style.loginText}>Hello there! Sign in and start managing your item.</div>
                     <div className={style.loginFormWrapper}>
-                        <Form/>
+                        <Form onSubmit={onSubmit} />
                     </div>
                 </div>
             </div>

@@ -1,18 +1,24 @@
 const express = require('express')
 const app = express()
-const config = require('dotenv').config()
 const bodyParser = require('body-parser')
-const port = process.env.PORT || 3001
+const mongoose = require('mongoose')
 
-// parse application/x-www-form-urlencoded
+// config from .env
+require('dotenv').config()
+
+// parse body request
 app.use(bodyParser.urlencoded({ extended: false }))
-
-// parse application/json
 app.use(bodyParser.json())
 
+// connect to db 
+
+mongoose.connect(process.env.DB_HOST)
+    .then(() => console.log("MongoDB successfully connected"))
+    .catch(error => console.log(error))
+
+//routes
 const auth = require('./routes/auth.js');
 app.use('/api/auth', auth)
 
-app.get('*', (req, res) => res.send('404'))
-
+const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`The server started on ${port}`))
