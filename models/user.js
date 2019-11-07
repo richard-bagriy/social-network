@@ -23,13 +23,9 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    followers : {
-        type: Number,
-        default: 0
-    },
-    following : {
-        type: Number,
-        default: 0
+    image: {
+        type: String,
+        default: null
     }
 })
 

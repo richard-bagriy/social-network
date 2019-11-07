@@ -35,9 +35,7 @@ export const authLogin = (data) => (dispatch) => {
 
 export const checkAuth = () => (dispatch) => {
     return authAPI.check().then(data => {
-        if (data.resultCode === 0) {
-            dispatch(setAuth(data.data, true))
-        }
+        // console.log(data);
     })
 }
 

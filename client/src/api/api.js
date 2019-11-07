@@ -1,8 +1,8 @@
 import * as axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000/api/',
-    withCredentials: true,
+    baseURL: 'http://localhost:1237/api/',
+    // withCredentials: true,
 })
 
 export const profileAPI = {
@@ -41,7 +41,7 @@ export const authAPI = {
     },
 
     check() {
-        return instance.get('/auth').then(response => response.data)
+        return instance.get('/auth');
     },
 
     logout() {

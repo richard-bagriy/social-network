@@ -1,5 +1,4 @@
 import {checkAuth} from './auth-reducer';
-import { Promise } from 'q';
 
 const SET_INITIAL = "SET_INITIAL"
 
@@ -26,6 +25,7 @@ export const setInit = () => ({type: SET_INITIAL});
 
 
 export const initializeApp = () => (dispatch) => {
+    
     Promise.all([
         dispatch(checkAuth())
     ]).then(() => {

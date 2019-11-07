@@ -1,45 +1,38 @@
-const router = require('express').Router()
-const User = require('../models/user')
-const bcrypt = require("bcryptjs")
-const validateRegistration = require('../validation/register')
-const validateLogin = require('../validation/login')
+const router = require('express').Router();
+const User = require('../models/user');
+const bcrypt = require("bcryptjs");
 
 router.get('/', (req, res) => {
-    res.json('Check Auth-wtf')
+    res.json('Check Auth-wtf');
 })
 
-router.post('/registration', (reg, res) => {
-    return res.send().json({test: 'Hello World'});
+//very simply registration with check on email ()
+router.post('/registration', async (req, res) => {
+    const {name, email, password} = req.body;
     
-    const {errors, isValid} =  validateRegistration(req.body)
+    const userExist = await User.find({email});
     
-    if (!isValid) {
-        return res.status(400).json(errors);
+    //check user
+    if (userExist.length > 0) {
+        return res.json({ message: 'User already exist with this email'})
     }
 
-    User.findOne({email: req.body.mail}).then(user => {
-        if (user) {
-            return res.status(400).json({email: 'Email already exists'});
-        } else {
-            const newUser = User({
-                name: req.body.name,
-                email: req.body.password
-            });
+    const newUser = new User({ 
+        name,
+        email,
+        password,
+        gender: 1
+    });
 
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if (err) throw err;
+    //generate a hash for password
+    bcrypt.hash(password, 10, (err, hash) => {
+        if (err) return res.json({message: err});
 
-                    newUser.password = hash;
-                    newUser.save()
-                      .then(user => res.json(user))
-                      .catch(err => console.log(err));
-                })
-            });
-        }
-    })
+        newUser.password = hash;
+        newUser.save();
+    });
+    
+    return res.json({ message: 'User registration was success'})
 })
-
-
 
 module.exports = router;
