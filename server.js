@@ -7,24 +7,22 @@ const cors = require('cors');
 // register config from .env
 require('dotenv').config();
 
-//allow cors
-app.use(cors());
-
-// parse body request
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-
 // connect to db and fix some warning (in second argument when connect)
 mongoose.connect(process.env.DB_HOST, { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
-}).then(() => console.log("MongoDB successfully connected")).catch(error => console.log(error))
+}).then(() => console.log("Connect to db was success")).catch(error => console.log(error))
 
+//cors middelware
+app.use(cors());
 
-//routes
-const auth = require('./routes/auth.js');
-app.use('/api/auth', auth)
+// middelwares
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-const port = process.env.PORT || 1237
+//routes middelware
+app.use('/api/auth', require('./routes/auth'))
+
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`The server started on ${port}`))
