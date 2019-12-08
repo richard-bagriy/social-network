@@ -1,28 +1,30 @@
 import React from 'react';
-import style from './index.module.css';
+import style from '../Auth.module.css';
+import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import logo from '../../../logo.svg';
 import Form from './form';
-import {authAPI} from '../../../api/api';
+import { authRegistration } from '../../../redux/auth-reducer';
+import { getRegMessage } from '../../../redux/selectors/auth-selector';
 
-const Register = () => {
+const Register = ({ authRegistration, regMessage }) => {
 
     const onSubmit = (data) => {
-        authAPI.registration(data)
+        return authRegistration(data);
     }
-
+    
     return (
-        <div className={style.wrapper}>
-            <div className={style.inner}>
-                <div className={style.loginHeader}>
-                    <img src={logo} alt="Logo" />
-                    <Link to="/login">Sign in</Link>
+        <div className={style.authWrapper}>
+                <div className={style.authInner}>
+                    <div className={style.authHeader}>
+                    <img src={logo} alt="Logo" className={style.authHeader__img} />
+                    <Link to="/login" className={style.authHeader__link}>Sign in</Link>
                 </div>
-                <div className={style.loginBody}>
-                    <h1 className={style.loginH1}>Sign Up</h1>
-                    <div className={style.loginText}>Hello there! Sign in and start managing your item.</div>
-                    <div className={style.loginFormWrapper}>
-                        <Form onSubmit={onSubmit} />
+                <div className={style.authBody}>
+                    <h1 className={style.authBody__header}>Sign Up</h1>
+                    <div className={style.authBody__text}>Hello there! Sign in and start managing your item.</div>
+                    <div className={style.authForm}>
+                        <Form onSubmit={onSubmit} message={regMessage}/>
                     </div>
                 </div>
             </div>
@@ -30,4 +32,6 @@ const Register = () => {
     )
 }
 
-export default Register
+const mapStateToProps = (state) => ({ regMessage: getRegMessage(state) });
+
+export default connect(mapStateToProps, { authRegistration })(Register)

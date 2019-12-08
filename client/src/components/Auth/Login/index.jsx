@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './index.module.css';
+import style from '../Auth.module.css';
 import Form from './form';
 import logo from '../../../logo.svg';
 import {authLogin, checkAuth} from '../../../redux/auth-reducer';
@@ -11,26 +11,31 @@ class Login extends React.Component {
 
     constructor(props) {
         super(props);
-        this.onSubmit = this.onSubmit.bind(this);
+
+        this.state = { showPassword: false };
     }
 
-    onSubmit(data) {
-        this.props.authLogin(data);
+    togglePassword = () => {
+        this.setState({showPassword: !this.state.showPassword});
+    }
+
+    onSubmit = (data) => {
+        return this.props.authLogin(data);
     }
 
     render() {
         return (
-            <div className={style.wrapper}>
-                <div className={style.inner}>
-                    <div className={style.loginHeader}>
-                        <img src={logo} alt="Logo" />
-                        <Link to="/registration">Sign Up now</Link>
+            <div className={style.authWrapper}>
+                <div className={style.authInner}>
+                    <div className={style.authHeader}>
+                        <img src={logo} alt="Logo"  className={style.authHeader__img}/>
+                        <Link to="/registration" className={style.authHeader__link}>Sign Up now</Link>
                     </div>
-                    <div className={style.loginBody}>
-                        <h1 className={style.loginH1}>Sign In</h1>
-                        <div className={style.loginText}>Hello there! Sign in and start managing your item.</div>
-                        <div className={style.loginFormWrapper}>
-                            <Form onSubmit={this.onSubmit} />
+                    <div className={style.authBody}>
+                        <h1 className={style.authBody__header}>Sign In</h1>
+                        <div className={style.authBody__text}>Hello there! Sign in and start managing your item.</div>
+                        <div className={style.authForm}>
+                            <Form onSubmit={this.onSubmit} showPassword={this.state.showPassword} togglePassword={this.togglePassword} />
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
-.wrapper{
-    background-image: url('../../../assets/images/auth-background.jpg');
+.authWrapper{
+    background-image: url('../../assets/images/auth-background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -10,57 +10,65 @@
     align-content: center;
     justify-content: center;
 }
-.inner{
+
+.authInner{
     background: #fff;
     padding: 30px;
     border-radius: 5px;
     box-sizing: border-box;
 }
-.loginHeader{
+
+.authHeader{
     display: grid;
     grid-template-columns: 75px 100px;
     grid-template-rows: 50px;
     justify-content: space-between;
     align-items: center;
 }
-.loginHeader a{
+
+.authHeader__link {
     color: #959fbb;
     font-weight: 400;
     font-size: 14px;
     cursor: pointer;
     text-decoration: none;
 }
-.loginHeader img {
+
+.authHeader__img {
     width: 75;
 }
-.loginBody{
+
+.authBody{
     padding: 80px 0px 100px;
     text-align: center;
 }
-.loginH1{
+
+.authBody__header{
     font-size: 30px;
     color: #434f74;
     margin-bottom: 23px;
     font-weight: 500;
 }
-.loginText{
+
+.authBody__text{
     font-size: 14px;
     color: #959fbb;
     font-weight: 400;
 }
-.loginFormWrapper{
+
+.authForm{
     display: grid;
     grid-template-columns: minmax(320px, 360px);
     justify-content: center;
-}
-.loginForm{
     margin-top: 50px;
 }
-.inputContainer{
+
+.fieldContainer{
     position: relative;
     margin-bottom: 30px;
 }
-.inputField{
+
+.fieldContainer__input {
     border: none;
     border-bottom: 1px solid #e5e5e5;
     width: 100%;
@@ -72,18 +80,25 @@
     font-size: 12px;
     box-sizing: border-box;
 }
-.inputField:hover{
+
+.fieldContainer__input:hover{
     border-bottom: 1px solid #434f74;
 }
-.loginIcon{
+
+.fieldContainer__icon{
     position: absolute;
     top: 15px;
     right: 10px;
     color: #bdc3d3;
 }
-.loginIcon:hover{
+
+.fieldContainer__icon:hover{
     color: #434f74;
 }
+
+/*
+** Need move button for global !!
+**/
 
 .btn{
     cursor: pointer;

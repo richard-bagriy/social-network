@@ -1,29 +1,31 @@
 import React from 'react';
 import style from './Forms.module.css';
 
-
-export const Textarea = ({input, meta: { touched, error }, ...props}) => {
-
+const FormControl = ({input, meta: { touched, error }, ...props}) => {
     const haveError = touched && error;
-    
+
     return (
         <div className={` ${haveError ? style.error : ''} ${style.formControl}`}>
-            <textarea {...input} {...props}  />
-            {(haveError) ? <div className={style.errorMessage}>{error}</div> : ''}
+            { props.children }
+            { (haveError) ? ( <div className={style.errorMessage}>{ error }</div> ) : '' }
         </div>
     )
-
 }
 
-export const Input = ({input, meta: { touched, error }, ...props}) => {
+export const Textarea = ({ input, ...props }) => {
+    return <FormControl {...props} > <textarea {...input} {...props}  /> </FormControl>
+}
 
-    const haveError = touched && error;
-    
+export const Input = ({ input, ...props }) => {
+    return <FormControl {...props} > <input {...input} {...props}  /> </FormControl>
+}
+
+export const Radio = ({ input, label, ...props }) => {
     return (
-        <div className={` ${haveError ? style.error : ''} ${style.formControl}`}>
+        <label className={style.radioBlock}>
             <input {...input} {...props}  />
-            {(haveError) ? <div className={style.errorMessage}>{error}</div> : ''}
-        </div>
+            <span/>
+            { label }
+        </label>
     )
-
 }

@@ -6,34 +6,40 @@ const jwt = require('jsonwebtoken');
 module.exports = {
 
     check: async (req, res) => {
-        res.send('All work Wtf')
+        try {
+            const token    = req.header('auth-token');
+            const verified = await jwt.verify(token, process.env.TOKEN_SECRET);
+            const {image, name, email, gender, id} = await User.findById(verified.id);
+            res.json({ image, name, email, gender, id, auth: true });
+        } catch (err) {
+            res.json({ auth: false });
+        }
     },
 
     signUp: async (req, res) => {
         const {email, password} = req.body;
-
+        
         //validate data from request
         const { error } = signUpValidate(req.body);
         if (error) {
-            return res.status(400).json({ error: error.details[0].message });
+            return res.json({ error: error.details[0].message });
         }
 
         //check email
         const user = await User.findOne({email});
         if (!user) {
-            return res.status(400).json({ error: 'Email is wrong' });
+            return res.json({ error: 'Email is wrong' });
         }
-
+        
         //check pass
         const validPassword = await bcrypt.compare(password, user.password)
         if (!validPassword) {
-            return  res.status(400).json({ error: 'Password wrong' });
+            return  res.json({ error: 'Password wrong' });
         }
 
         //create and assign token
         const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET);
-
-        res.header('auth-token', token).send(token);
+        res.json({token});
     },
 
     signIn: async (req, res) => {
@@ -42,13 +48,13 @@ module.exports = {
         //Validate Data from request
         const { error } = signInValidate(req.body);
         if (error) {
-            return res.status(400).json({ error: error.details[0].message });
+            return res.json({ error: error.details[0].message });
         }
-
+        
         //check email
         const emailExist = await User.findOne({email});
         if (emailExist) {
-            return res.status(400).json({ error: 'This email is already used'})
+            return res.json({ error: 'This email is already used'})
         }
 
         // create hashed password
@@ -63,10 +69,10 @@ module.exports = {
         });
 
         try {
-            const savedUser = await user.save();
-            res.status(200).json(savedUser);
+            await user.save();
+            res.status(200).json({message: 'User susseccful created, now you can login ^_^'});
         } catch (err) {
-            res.status(400).json(savedUser);
+            res.json(err);
         }
     }
 }

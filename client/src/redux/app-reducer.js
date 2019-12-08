@@ -3,7 +3,7 @@ import {checkAuth} from './auth-reducer';
 const SET_INITIAL = "SET_INITIAL"
 
 let initialState = {
-    init: true
+    init: false
 }
 
 

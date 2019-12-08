@@ -6,3 +6,10 @@
     color: rgba(112, 50, 56, 0.5);
     margin-top: 5px;
 }
+
+.radioBlock{
+    display: flex;
+    margin-right: 10px;
+    align-items: center;
+    cursor: pointer;
+}

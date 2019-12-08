@@ -34,8 +34,8 @@ class HeaderMenu extends React.Component {
                 </button>
 
                 <div className={`${style.menu} ${this.state.open ? style.open : ''} `}>
-                    <div className={style.menuItem}>
-                        <span onClick={this.props.logout}>Logout</span>
+                    <div className={style.menuItem} onClick={this.props.logout}>
+                        <span>Logout</span>
                     </div>
                 </div>
             </div>

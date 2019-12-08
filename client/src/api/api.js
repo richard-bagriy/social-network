@@ -1,8 +1,12 @@
 import * as axios from 'axios';
 
+let token = localStorage.getItem('token');
+
 const instance = axios.create({
-    baseURL: 'http://localhost:1237/api/',
-    // withCredentials: true,
+    baseURL: 'http://localhost:5000/api/',
+    headers: {
+        'auth-token': token
+    }
 })
 
 export const profileAPI = {
@@ -32,19 +36,17 @@ export const usersAPI = {
 }
 
 export const authAPI = {
+
     login(data) {
         return instance.post('/auth/login', data).then(response => response.data);
     },
 
     registration(data) {
-        return instance.post('/auth/registration', data);
+        return instance.post('/auth/registration', data).then(response => response.data);
     },
 
     check() {
-        return instance.get('/auth');
+        return instance.post('/auth');
     },
 
-    logout() {
-        return instance.delete('/auth/login').then(response => response.data.resultCode);
-    }
 }
