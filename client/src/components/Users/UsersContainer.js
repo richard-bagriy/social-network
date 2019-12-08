@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {follow, unfollow, getUsers} from '../../redux/users-reducer';
+import { connect } from 'react-redux';
+import { follow, unfollow, getUsers } from '../../store/UsersPage/effects';
 import Users from './Users';
 import { getUsersPage, getUsersLimit, getUsersLoadingUser, getUsersFollowing, getUsersSelector } from '../../redux/selectors/users-selector';
 

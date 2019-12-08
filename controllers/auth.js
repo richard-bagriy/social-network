@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
-const { signInValidate, signUpValidate } = require('../validation');
+const { signInValidate, signUpValidate } = require('../utils/validation');
 const jwt = require('jsonwebtoken');
 
 module.exports = {

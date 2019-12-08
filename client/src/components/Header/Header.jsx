@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import AuthRedirect from '../../hoc/withAuthRedirect';
 import HeaderMenu from './HeaderMenu/HeaderMenu';
-import { getAuth } from '../../redux/selectors/auth-selector';
+import { getAuth } from '../../store/Auth/selectors';
 
 const Header = ({isAuth}) => {
     

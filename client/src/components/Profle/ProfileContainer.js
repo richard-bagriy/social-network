@@ -1,12 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {getProfile} from '../../redux/profile-reducer';
+import { connect } from 'react-redux';
+import { getProfile } from '../../store/ProfilePage/effects';
 import Profile from './Profile';
 import { withRouter } from "react-router";
-import {compose} from 'redux';
+import { compose } from 'redux';
 import Preloader from '../common/Preloader';
-import { getAuth, getAuthUserId } from '../../redux/selectors/auth-selector';
-import { getProfileLoadingUser, getProfileInfo } from '../../redux/selectors/profile-selector';
+import { getAuth, getAuthUserId } from '../../store/Auth/selectors';
+import { getProfileLoadingUser, getProfileInfo } from '../../store/ProfilePage/selectors';
 
 class ProfileContainer extends React.PureComponent {
 
@@ -45,6 +45,6 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getProfile}),
+    connect(mapStateToProps, { getProfile }),
     withRouter
 )(ProfileContainer)

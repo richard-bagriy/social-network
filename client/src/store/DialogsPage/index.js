@@ -1,6 +1,6 @@
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE' ;
+import { ADD_NEW_MESSAGE } from './types';
 
-let initialState = {
+const initialState = {
     
     dialogs: [
         {name: 'Artem', id: 1},
@@ -19,6 +19,7 @@ let initialState = {
     
 };
 
+
 export default (state = initialState, action) => {
 
     switch(action.type) {
@@ -35,6 +36,3 @@ export default (state = initialState, action) => {
             
     }
 }
-
-
-export const addNewMessage = (message) => ({type:ADD_NEW_MESSAGE, message});

@@ -2,10 +2,10 @@ import React from 'react';
 import style from '../Auth.module.css';
 import Form from './form';
 import logo from '../../../logo.svg';
-import {authLogin, checkAuth} from '../../../redux/auth-reducer';
+import { authLogin, checkAuth } from '../../../store/Auth/effects';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
-import { getAuth } from '../../../redux/selectors/auth-selector';
+import { Link } from 'react-router-dom';
+import { getAuth } from '../../../store/Auth/selectors';
 
 class Login extends React.Component {
 

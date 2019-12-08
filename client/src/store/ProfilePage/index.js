@@ -1,10 +1,6 @@
-import {profileAPI} from '../api/api';
+import { ADD_POST, SET_PROFILE_DATA, TOGGLE_LOADING_USER } from './types';
 
-const ADD_POST = 'ADD-POST';
-const SET_PROFILE_DATA = 'SET_PROFILE_DATA';
-const TOGGLE_LOADING_USER = 'TOGGLE_LOADING_USER';
-
-let initialState = {
+const initialState = {
     
     posts: [
         {message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat placerat dignissim. Cras sit amet posuere metus, eu pharetra urna. Praesent tortor purus, gravida id massa non, hendrerit accumsan metus. ', count: 10, id: 1},
@@ -14,6 +10,7 @@ let initialState = {
     ],
     profile: null,
     isLoadingUser: false
+    
 };
 
 export default (state = initialState, action) => {
@@ -41,18 +38,4 @@ export default (state = initialState, action) => {
             return state;
             
     }
-}
-
-export const addPost = (message) => ({type: ADD_POST, message});
-export const setProfileData = (data) => ({type: SET_PROFILE_DATA, data});
-export const toggleLoadingUser = (loading) => ({type: TOGGLE_LOADING_USER, loading})
-
-export const getProfile = (id) => (dispatch) => {
-
-    dispatch(toggleLoadingUser(true));
-
-    profileAPI.getProfile(id).then(data => {
-        dispatch(setProfileData(data));
-        dispatch(toggleLoadingUser(false));
-    })
 }

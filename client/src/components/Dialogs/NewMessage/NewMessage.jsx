@@ -1,8 +1,8 @@
 import React from 'react';
 import Form from './NewMessageForm';
 import s from './NewMessage.module.css';
-import {connect} from 'react-redux';
-import {addNewMessage} from '../../../redux/dialog-reducer';
+import { connect } from 'react-redux';
+import { addNewMessage } from '../../../store/DialogsPage/actions';
 
 const NewMessage = (props) => {
 

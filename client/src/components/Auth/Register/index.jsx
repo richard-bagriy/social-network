@@ -1,11 +1,11 @@
 import React from 'react';
 import style from '../Auth.module.css';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../../../logo.svg';
 import Form from './form';
-import { authRegistration } from '../../../redux/auth-reducer';
-import { getRegMessage } from '../../../redux/selectors/auth-selector';
+import { authRegistration } from '../../../store/Auth/effects';
+import { getRegMessage } from '../../../store/Auth/selectors';
 
 const Register = ({ authRegistration, regMessage }) => {
 
