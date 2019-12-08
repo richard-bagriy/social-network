@@ -3,19 +3,14 @@ import { SubmissionError, reset } from 'redux-form';
 import { setAuth, setRegMessage } from './actions';
 
 export const authLogin = (data) =>  async (dispatch) => {
-
-    try {
-        const { error, token } = await authAPI.login(data);
+    
+    const { error, token } = await authAPI.login(data);
         
-        if (error) throw new SubmissionError({ _error : error });
+    if (error) throw new SubmissionError({ _error : error });
         
-        await localStorage.setItem('token', token);
+    await localStorage.setItem('token', token);
 
-        dispatch(checkAuth());
-    } catch (err) {
-        console.log(err);
-    }
-
+    dispatch(checkAuth());
 }
 
 export const authRegistration = (data) => async (dispatch) => {
