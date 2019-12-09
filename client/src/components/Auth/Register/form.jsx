@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form'
 import {Input} from '../../common/Forms/Forms';
 import Gender from './Gender';
 import Message from '../../common/Message';
-import {required, maxLength} from '../../../utils/Validators/Validators';
+import {required, maxLength} from '../../../utils/Validators';
 
 const maxLength16 = maxLength(16);
 

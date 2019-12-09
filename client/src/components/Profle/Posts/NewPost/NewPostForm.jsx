@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { required, maxLength } from '../../../../utils/Validators/Validators';
+import { required, maxLength } from '../../../../utils/Validators';
 import { Input } from '../../../common/Forms/Forms';
 import style from './style.module.css';
 
