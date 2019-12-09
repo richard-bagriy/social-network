@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { addPost } from '../../../../store/ProfilePage/actions';
-import NewPost from './NewPost';
+import { addPost } from '../store/ProfilePage/actions';
+import NewPost from '../components/Profle/Posts/NewPost/NewPost';
 
 const mapStateToProps = (state) =>{
     

@@ -1,6 +1,6 @@
-import {connect} from 'react-redux';
-import Dialogs from './Dialogs';
-import { getDialogs, getDialogsMessage } from '../../store/DialogsPage/selectors';
+import { connect } from 'react-redux';
+import Dialogs from '../components/Dialogs/Dialogs';
+import { getDialogs, getDialogsMessage } from '../store/DialogsPage/selectors';
 
 const mapStateToProps = (state) => {
     return {

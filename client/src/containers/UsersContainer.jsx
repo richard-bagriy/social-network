@@ -1,8 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, unfollow, getUsers } from '../../store/UsersPage/effects';
-import Users from './Users';
-import { getUsersPage, getUsersLimit, getUsersLoadingUser, getUsersFollowing, getUsersSelector } from '../../redux/selectors/users-selector';
+import { follow, unfollow, getUsers } from '../store/UsersPage/effects';
+import Users from '../components/Users/Users';
+import { 
+    getUsersPage, 
+    getUsersLimit, 
+    getUsersLoadingUser, 
+    getUsersFollowing, 
+    getUsersSelector 
+} from '../store/UsersPage/selectors';
 
 
 class UsersContainer extends React.PureComponent {

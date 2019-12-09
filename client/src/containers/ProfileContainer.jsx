@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getProfile } from '../../store/ProfilePage/effects';
-import Profile from './Profile';
+import { getProfile } from '../store/ProfilePage/effects';
+import Profile from '../components/Profle/Profile';
 import { withRouter } from "react-router";
 import { compose } from 'redux';
-import Preloader from '../common/Preloader';
-import { getAuth, getAuthUserId } from '../../store/Auth/selectors';
-import { getProfileLoadingUser, getProfileInfo } from '../../store/ProfilePage/selectors';
+import Preloader from '../components/common/Preloader';
+import { getAuth, getAuthUserId } from '../store/Auth/selectors';
+import { getProfileLoadingUser, getProfileInfo } from '../store/ProfilePage/selectors';
 
 class ProfileContainer extends React.PureComponent {
 
