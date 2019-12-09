@@ -1,18 +1,18 @@
 import React from 'react';
-import s from './Header.module.css';
-import logo from '../../logo.svg';
-import { NavLink } from 'react-router-dom'
-import {connect} from 'react-redux';
 import {compose} from 'redux';
+import {connect} from 'react-redux';
+import { NavLink } from 'react-router-dom'
 import AuthRedirect from '../../hoc/withAuthRedirect';
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 import { getAuth } from '../../store/Auth/selectors';
+import style from './style.module.css';
+import logo from '../../assets/svg/logo.svg';
 
-const Header = ({isAuth}) => {
+const Header = ({ isAuth }) => {
     
     return (
-        <header className={s.header}>
-            <div className={s.logoLeft}>
+        <header className={style.header}>
+            <div className={style.logoLeft}>
                 <NavLink to="/">
                     <img src={logo} alt={logo}/>
                 </NavLink>

@@ -1,8 +1,8 @@
 import React from 'react';
-import style from './NewPost.module.css';
 import { Field, reduxForm } from 'redux-form'
-import {required, maxLength} from '../../../../utils/Validators/Validators';
-import {Input} from '../../../common/Forms/Forms';
+import { required, maxLength } from '../../../../utils/Validators/Validators';
+import { Input } from '../../../common/Forms/Forms';
+import style from './style.module.css';
 
 const maxLength50 = maxLength(50);
 

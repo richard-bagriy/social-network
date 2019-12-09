@@ -1,8 +1,8 @@
 import React from 'react';
-import style from './Filter.module.css';
-import {Field, reduxForm} from 'redux-form';
-import {maxLength} from '../../../utils/Validators/Validators';
+import { Field, reduxForm } from 'redux-form';
+import { maxLength } from '../../../utils/Validators/Validators';
 import { Input } from '../../common/Forms/Forms';
+import style from './style.module.css';
 
 const maxLength16 = maxLength(16);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../Auth.module.css';
 import Form from './form';
-import logo from '../../../logo.svg';
+import logo from '../../../assets/svg/logo.svg';
 import { authLogin, checkAuth } from '../../../store/Auth/effects';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';

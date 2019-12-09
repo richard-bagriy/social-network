@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './index.module.css';
+import style from './style.module.css';
 
 export default ({ message, type }) => {
 

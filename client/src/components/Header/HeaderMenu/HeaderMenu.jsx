@@ -1,8 +1,8 @@
 import React from 'react';
-import style from './HeaderMenu.module.css';
 import { connect } from 'react-redux';
 import { logout } from '../../../store/Auth/effects';
 import { getAuthUserName } from '../../../store/Auth/selectors';
+import style from './style.module.css';
 
 class HeaderMenu extends React.Component {
 

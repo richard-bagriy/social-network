@@ -8,7 +8,7 @@ export const authLogin = (data) =>  async (dispatch) => {
         
     if (error) throw new SubmissionError({ _error : error });
         
-    await localStorage.setItem('token', token);
+    localStorage.setItem('token', token);
 
     dispatch(checkAuth());
 }

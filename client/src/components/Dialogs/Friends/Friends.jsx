@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Friends.module.css';
+import style from './style.module.css';
 import image from '../../../assets/images/user.png';
 
 const frineds = [

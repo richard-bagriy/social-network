@@ -1,7 +1,7 @@
 import React from 'react'
-import s from './Profile.module.css'
 import PostsContainer from '../../containers/PostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import style from './style.module.css';
 
 const Profile = React.memo(props => {
 
@@ -10,7 +10,7 @@ const Profile = React.memo(props => {
     }
 
     return (
-        <div className={s.wrapper}>
+        <div className={style.wrapper}>
             <ProfileInfo profile={props.profile} />
             <PostsContainer />
         </div>

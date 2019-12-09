@@ -1,9 +1,9 @@
 import React from 'react';
-import style from './Users.module.css';
-import img from '../../assets/images/user.png';
+import { NavLink } from 'react-router-dom';
 import Filter from './Filter/Filter';
 import Preloader from '../common/Preloader';
-import {NavLink} from 'react-router-dom';
+import style from './style.module.css';
+import img from '../../assets/images/user.png';
 
 const Users = (props) => {
 

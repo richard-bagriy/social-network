@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './Post.module.css'
+import style from './style.module.css'
 import img from '../../../../assets/images/user.png';
 
 const Post = (props) => {

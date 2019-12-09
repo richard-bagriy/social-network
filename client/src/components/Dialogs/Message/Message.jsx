@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './Message.module.css';
+import style from './style.module.css';
 
 const Message = (props) => {
     return (
-        <div className={`${s.message} ${props.state.friend ? s.messageFriend : s.messageMy}`} > 
+        <div className={`${style.message} ${props.state.friend ? style.messageFriend : style.messageMy}`} > 
             {props.state.message} 
         </div>
     )

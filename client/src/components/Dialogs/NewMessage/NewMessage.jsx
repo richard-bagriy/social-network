@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from './NewMessageForm';
-import s from './NewMessage.module.css';
 import { connect } from 'react-redux';
+import Form from './NewMessageForm';
 import { addNewMessage } from '../../../store/DialogsPage/actions';
+import style from './style.module.css';
 
 const NewMessage = (props) => {
 
@@ -11,7 +11,7 @@ const NewMessage = (props) => {
     }
 
     return (
-        <div className={s.block}>
+        <div className={style.block}>
             <Form onSubmit={addNewMessage} />
         </div>
     )

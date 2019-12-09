@@ -1,37 +1,28 @@
 import React from 'react';
-import s from './Navbar.module.css'
 import {NavLink} from 'react-router-dom';
+import style from './style.module.css'
 
 const Navbar = () => {
     return (
-        <nav className={s.nav}>
-            <div className={s.item}>
-                <NavLink to="/profile" activeClassName={s.active}>
-                    <i className={`fas fa-user ${s.navbarIcon}`}></i>
+        <nav className={style.nav}>
+            <div className={style.item}>
+                <NavLink to="/profile" activeClassName={style.active}>
+                    <i className={`fas fa-user ${style.navbarIcon}`}></i>
                     Profile
                 </NavLink>
             </div>
-            <div className={s.item}>
-                <NavLink to="/dialogs" activeClassName={s.active}>
-                    <i className={`far fa-envelope ${s.navbarIcon}`}></i>
+            <div className={style.item}>
+                <NavLink to="/dialogs" activeClassName={style.active}>
+                    <i className={`far fa-envelope ${style.navbarIcon}`}></i>
                     Messages
                 </NavLink>
             </div>
-            <div className={s.item}>
-                <NavLink to="/users" activeClassName={s.active}>
-                    <i className={`fas fa-users ${s.navbarIcon}`}></i>
+            <div className={style.item}>
+                <NavLink to="/users" activeClassName={style.active}>
+                    <i className={`fas fa-users ${style.navbarIcon}`}></i>
                     Find Users
                 </NavLink>
             </div>
-            {/* <div className={s.item}>
-                <NavLink to="/news" activeClassName={s.active}>News</NavLink>
-            </div> */}
-            {/* <div className={s.item}>
-                <NavLink to="/music" activeClassName={s.active}>Music</NavLink>
-            </div>
-            <div className={s.item}>
-                <NavLink to="/setting" activeClassName={s.active}>Setting</NavLink>
-            </div> */}
         </nav>
     )
 }

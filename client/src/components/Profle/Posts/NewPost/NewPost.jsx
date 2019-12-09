@@ -1,7 +1,7 @@
 import React from 'react';
-import style from './NewPost.module.css';
-import img from '../../../../assets/images/user.png';
 import Form from './NewPostForm';
+import style from './style.module.css';
+import img from '../../../../assets/images/user.png';
 
 const NewPost = (props) => {
     
