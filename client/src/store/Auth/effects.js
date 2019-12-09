@@ -28,6 +28,7 @@ export const authRegistration = (data) => async (dispatch) => {
 }
 
 export const checkAuth = () => (dispatch) => {
+    
     return authAPI.check().then(data => {
         dispatch(setAuth(data.data))
     })
@@ -35,7 +36,7 @@ export const checkAuth = () => (dispatch) => {
 
 export const logout = () => (dispatch) => {
 
-    localStorage.removeItem('token');
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
 
     dispatch(setAuth({
         userId: null,

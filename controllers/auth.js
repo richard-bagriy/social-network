@@ -7,9 +7,9 @@ module.exports = {
 
     check: async (req, res) => {
         try {
-            const token    = req.header('auth-token');
+            const token    = req.cookies.token;
             const verified = await jwt.verify(token, process.env.TOKEN_SECRET);
-            const {image, name, email, gender, id} = await User.findById(verified.id);
+            const { image, name, email, gender, id } = await User.findById(verified.id);
             res.json({ image, name, email, gender, id, auth: true });
         } catch (err) {
             res.json({ auth: false });
@@ -34,12 +34,13 @@ module.exports = {
         //check pass
         const validPassword = await bcrypt.compare(password, user.password)
         if (!validPassword) {
-            return  res.json({ error: 'Password wrong' });
+            return res.json({ error: 'Password wrong' });
         }
 
         //create and assign token
         const token = jwt.sign({ id: user.id }, process.env.TOKEN_SECRET);
-        res.json({token});
+
+        res.cookie('token', token).json();
     },
 
     signIn: async (req, res) => {

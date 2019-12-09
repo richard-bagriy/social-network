@@ -1,12 +1,8 @@
 import * as axios from 'axios';
 
-let token = localStorage.getItem('token');
-
 const instance = axios.create({
     baseURL: 'http://localhost:5000/api/',
-    headers: {
-        'auth-token': token
-    }
+    withCredentials: true
 })
 
 export const profileAPI = {
@@ -46,7 +42,8 @@ export const authAPI = {
     },
 
     check() {
-        return instance.post('/auth');
+        instance.defaults.headers['auth-token'] = localStorage.getItem('token');
+        return instance.get(`/auth?t=${new Date().getTime()}`);
     },
 
 }

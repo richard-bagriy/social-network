@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 // register config from .env
 require('dotenv').config();
@@ -19,13 +20,19 @@ mongoose.connect(process.env.DB_HOST, {
 });
 
 //cors middelware
-app.use(cors());
+app.use(cors({
+    origin: process.env.ORIGIN,
+    credentials: true
+}));
+
+// Cookie middleware
+app.use(cookieParser());
 
 // middelwares
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-//routes middelware
+//routes 
 app.use('/api/auth', require('./routes/auth'))
 
 app.listen(process.env.APP_PORT, () => console.log(`The server started on ${process.env.APP_PORT}`))
