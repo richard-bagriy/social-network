@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './style.module.css';
-import image from '../../../assets/images/user.png';
 
 const frineds = [
     {name: 'Rock Willam', message: 'Lore Ipsum'},
@@ -23,7 +22,7 @@ const Friends = (props) => {
                     return (
                         <div className={style.friendWrapper}>
                             <div className={style.friendInner}>
-                                <img src={image} alt={f.name}  className={style.image} />
+                                <img src='' alt='' className={style.image} />
                                 <div className={style.friendInfo}>
                                     <div className={style.friendName}>
                                         {f.name}

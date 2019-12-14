@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import Filter from './Filter/Filter';
 import Preloader from '../common/Preloader';
 import style from './style.module.css';
-import img from '../../assets/images/user.png';
 
 const Users = ({ 
     followingInProgress, 
@@ -33,8 +32,8 @@ const Users = ({
                 return (
                     <div className={style.userBlock} key={u._id}>
                         <div className={style.userImage}>
-                            <NavLink to={`/profile/${u.id}`}>
-                                <img className={style.userImage} src={ u.image ? u.image : img}  alt="test" />
+                            <NavLink to={`/profile/${u._id}`}>
+                                <img className={style.userImage} src={require(`../../assets/images/${u.image}`)}  alt="test" />
                             </NavLink>
                         </div>
                         <div className={style.userName}>

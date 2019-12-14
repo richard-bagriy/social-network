@@ -1,15 +1,12 @@
 import React from 'react';
 import style from './style.module.css';
-import defaultImage from '../../../assets/images/user.png';
 
 const ProfileInfo = (props) => {
 
-    const imageLink = props.profile.photos.small ? props.profile.photos.small : defaultImage;
-    
     return (
         <div className={style.wrapper}>
             <div className={style.center}>
-                <img className={style.profile__image} src={imageLink} alt={props.profile.fullName}/>
+                <img className={style.profile__image} src={props.profile.image} alt={props.profile.fullName}/>
             </div>
             <div className={style.profileInfo}>
                 <div className={`${style.profileName} ${style.center}`}>{props.profile.fullName}</div>

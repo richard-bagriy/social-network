@@ -62,11 +62,14 @@ module.exports = {
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password, salt)
 
+        const image = (gender === 'male') ? 'user-image-male.png' : 'user-image-female.png';
+
         const user = new User({ 
             name,
             email,
             password: hashPassword,
-            gender
+            gender,
+            image
         });
 
         try {
