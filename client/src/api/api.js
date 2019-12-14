@@ -2,23 +2,25 @@ import * as axios from 'axios';
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000/api/',
-    withCredentials: true
+    headers: { 
+        'Cache-Control': 'no-cache'
+    },
+    withCredentials: true,
 })
 
 export const profileAPI = {
+
     getProfile(id) {
-        return instance.get(`profile/${id}`)
-            .then(response => response.data);
+        return instance.get(`profile/${id}`).then(response => response.data);
     }
+
 }
 
 export const usersAPI = {
-    getUsers(limit = 12, page = 1){
+
+    getUsers(limit = 1, page = 1) {
         return instance.get('/users', {
-            params: {
-                count: limit,
-                page: page,
-            },
+            params: { limit, page },
         }).then(response => response.data);
     },
 
@@ -42,8 +44,7 @@ export const authAPI = {
     },
 
     check() {
-        instance.defaults.headers['auth-token'] = localStorage.getItem('token');
-        return instance.get(`/auth?t=${new Date().getTime()}`);
+        return instance.get('/auth');
     },
 
 }

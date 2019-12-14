@@ -5,10 +5,17 @@ import Preloader from '../common/Preloader';
 import style from './style.module.css';
 import img from '../../assets/images/user.png';
 
-const Users = (props) => {
+const Users = ({ 
+    followingInProgress, 
+    follow, 
+    unfollow, 
+    isLoadingUsers,
+    changeFilterText,
+    Users
+}) => {
 
-    const changeUsers = ({filterText}) => {
-        props.changeFilterText(filterText);
+    const changeUsers = ({ filterText }) => {
+        changeFilterText(filterText);
     }
 
     return (
@@ -22,12 +29,12 @@ const Users = (props) => {
         <Filter onSubmit={changeUsers}/>
 
         <div className={style.userInner} id="users-wrapper">
-            {props.filterUsers.map(u => {
+            { Users.map(u => {
                 return (
-                    <div className={style.userBlock} key={u.id}>
+                    <div className={style.userBlock} key={u._id}>
                         <div className={style.userImage}>
                             <NavLink to={`/profile/${u.id}`}>
-                                <img className={style.userImage} src={ u.photos.small ? u.photos.small : img}  alt="test" />
+                                <img className={style.userImage} src={ u.image ? u.image : img}  alt="test" />
                             </NavLink>
                         </div>
                         <div className={style.userName}>
@@ -53,12 +60,12 @@ const Users = (props) => {
                         </div>
                         { u.followed 
                             ? <button 
-                                disabled={props.followingInProgress.some(id => id === u.id)}
+                                disabled={followingInProgress.some(id => id === u.id)}
                                 className={`${style.followBtn}`} 
-                                onClick={() => props.unfollow(u.id)}>Unfollow</button> 
-                            : <button disabled={props.followingInProgress.some(id => id === u.id)}
+                                onClick={() => unfollow(u.id)}>Unfollow</button> 
+                            : <button disabled={followingInProgress.some(id => id === u.id)}
                                 className={`${style.unffolowBtn}`} 
-                                onClick={() => props.follow(u.id)}>Follow</button>
+                                onClick={() => follow(u.id)}>Follow</button>
                         }
                     </div>
                     
@@ -66,7 +73,7 @@ const Users = (props) => {
             })}
         </div>
 
-        { props.isLoadingUsers && <Preloader/> }
+        { isLoadingUsers && <Preloader/> }
         
         </div>
     )

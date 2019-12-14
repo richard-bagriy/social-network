@@ -6,10 +6,10 @@ import style from './style.module.css';
 
 const maxLength16 = maxLength(16);
 
-const Filter = (props) => {
+const Filter = ({ handleSubmit }) => {
 
     return (
-        <form className={style.filterWrapper} onSubmit={props.handleSubmit}>
+        <form className={style.filterWrapper} onSubmit={handleSubmit}>
 
             <Field 
                 type="text" 
@@ -23,4 +23,4 @@ const Filter = (props) => {
     )
 }
 
-export default reduxForm({form: 'filter-users'})(Filter)
+export default reduxForm({ form: 'filter-users' })(Filter)

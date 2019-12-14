@@ -5,18 +5,27 @@ import {
     setUsers,
     toggleFollowingOnUser,
     followAC,
-    unfollowAC
+    unfollowAC,
+    setHaveUsers
 } from './actions';
 
 export const getUsers = (limit, page) => (dispatch) =>{
-    
+
     dispatch(toggleLoadingUsers(true));
     dispatch(setPage(page + 1));
 
-    usersAPI.getUsers(limit, page).then(data => {
-        dispatch(setUsers(data.items));
-        dispatch(toggleLoadingUsers(false));
+    usersAPI.getUsers(limit, page).then(users => {
+
+        if (users.length) {
+            dispatch(setUsers(users));
+            dispatch(toggleLoadingUsers(false));
+        } else {
+            dispatch(setHaveUsers(false))
+            dispatch(toggleLoadingUsers(false));
+        }
+
     });
+
 }
 
 export const follow = (id) => (dispatch) => {

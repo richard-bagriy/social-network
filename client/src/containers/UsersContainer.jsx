@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { follow, unfollow, getUsers } from '../store/UsersPage/effects';
 import Users from '../components/Users/Users';
@@ -7,11 +7,12 @@ import {
     getUsersLimit, 
     getUsersLoadingUser, 
     getUsersFollowing, 
-    getUsersSelector 
+    getUsersSelector,
+    getHaveUsers
 } from '../store/UsersPage/selectors';
 
 
-class UsersContainer extends React.PureComponent {
+class UsersContainer extends PureComponent {
 
     state = {
         filterText : '',
@@ -19,40 +20,36 @@ class UsersContainer extends React.PureComponent {
 
     componentDidMount() {
         this.props.getUsers(this.props.limit, this.props.page);
-        this._autoLoadUsers();
+        window.addEventListener('scroll', this._autoLoadUsers);
     }
 
-    _autoLoadUsers() {
-        document.addEventListener('scroll', () => {
-            let endOfPage = document.documentElement.scrollHeight - (window.pageYOffset + window.innerHeight);
-
-            if (document.querySelector('#users-wrapper') && endOfPage <= 200 && !this.state.filterText) {
-                !this.props.isLoadingUsers && this.props.getUsers(this.props.limit, this.props.page);
-            }
-        })
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this._autoLoadUsers);
     }
 
-    changeFilterText(filterText) {
-        this.setState({filterText})
+    _autoLoadUsers = () => {
+
+        let endOfPage = document.documentElement.scrollHeight - (window.pageYOffset + window.innerHeight);
+
+        if (endOfPage <= 200 && !this.state.filterText && this.props.haveUsers) {
+            !this.props.isLoadingUsers && this.props.getUsers(this.props.limit, this.props.page);
+        }
+    }
+
+    changeFilterText = (filterText) => {
+        this.setState({ filterText })
     }
 
     getUsers() {
-        let filterText = this.state.filterText.toLowerCase();
-        
-        if (filterText) {
-            return [...this.props.users].filter(u => u.name.toLowerCase().includes(filterText));
-        }
-
-        return this.props.users;
+        let filterText = this.state.filterText ? this.state.filterText.toLowerCase() : '';
+        return [...this.props.users].filter(u => u.name.toLowerCase().includes(filterText));
     }
     
     render() {
-        const users = this.getUsers();
-
         return (
             <Users
-                changeFilterText={this.changeFilterText.bind(this)}
-                filterUsers={users}
+                changeFilterText={this.changeFilterText}
+                Users={this.getUsers()}
                 {...this.props}
             />
         )
@@ -66,8 +63,9 @@ const mapStateToProps = (state) => {
         page: getUsersPage(state),
         limit: getUsersLimit(state),
         isLoadingUsers: getUsersLoadingUser(state),
-        followingInProgress: getUsersFollowing(state)
+        followingInProgress: getUsersFollowing(state),
+        haveUsers: getHaveUsers(state)
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, getUsers})(UsersContainer)
+export default connect(mapStateToProps, { follow, unfollow, getUsers })(UsersContainer)

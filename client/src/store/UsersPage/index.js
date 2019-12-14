@@ -4,13 +4,15 @@ import {
     SET_USERS, 
     SET_PAGE, 
     TOGGLE_LOADING_USERS, 
-    TOGGLE_FOLLOWING_ON_USER 
+    TOGGLE_FOLLOWING_ON_USER,
+    SET_HAVE_USERS
 } from './types';
 
 const initialState = {
     users: [],
     page: 1,
-    limit: 12,
+    limit: 8,
+    haveUsers: true,
     isLoadingUsers: false,
     followingInProgress: []
 };
@@ -56,11 +58,17 @@ export default (state = initialState, action) => {
                 isLoadingUsers: action.loading
             }
         case TOGGLE_FOLLOWING_ON_USER:
-        return {
-            ...state,
-            followingInProgress: action.inProgress 
-                ? [...state.followingInProgress, action.id]
-                : state.followingInProgress.filter(id => id !== action.id)
+            return {
+                ...state,
+                followingInProgress: action.inProgress 
+                    ? [...state.followingInProgress, action.id]
+                    : state.followingInProgress.filter(id => id !== action.id)
+            }
+        case SET_HAVE_USERS: {
+            return {
+                ...state,
+                haveUsers: action.haveUsers
+            }
         }
         default: return state;
     }

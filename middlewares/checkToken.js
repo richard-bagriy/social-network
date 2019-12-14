@@ -1,7 +1,6 @@
 module.exports = (req, res, next) => {
     const token = req.cookies.token;
     
-    console.log(token);
     if (token) {
         next();
     } else {
