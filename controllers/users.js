@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Subscriber = require('../models/subsribers');
 
 module.exports = {
 
@@ -20,6 +21,36 @@ module.exports = {
             console.log(err);
         }
 
+    },
+
+    subscribe: async (req, res) => {
+        const { userId, subscriberId } = req.body;
+
+        const subscriber = new Subscriber({ 
+            userId, 
+            subscriberId,
+        });
+
+        try {
+            await subscriber.save();
+            res.json({ message : 'Subscribe was successful' });
+        } catch(err) {
+            console.log(err)
+        }
+    },
+
+    unsubscribe: async (req, res) => {
+        const { userId, unsubscribeId } = req.body;
+
+        try {
+            await Subscriber.deleteOne({
+                userId,
+                subscriberId: unsubscribeId
+            });
+            res.json({ message: 'Unsubsribe was successful' });
+        } catch (err) {
+            console.log(err);
+        }
     }
 
 }
