@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { follow, unfollow, getUsers } from '../store/UsersPage/effects';
+import { subscribe, unsubscribe, getUsers } from '../store/UsersPage/effects';
 import Users from '../components/Users/Users';
 import { 
     getUsersPage, 
@@ -68,4 +68,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { follow, unfollow, getUsers })(UsersContainer)
+export default connect(mapStateToProps, { subscribe, unsubscribe, getUsers })(UsersContainer)

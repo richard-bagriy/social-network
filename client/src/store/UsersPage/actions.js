@@ -1,6 +1,6 @@
 import { 
-    FOLLOW, 
-    UNFOLLOW, 
+    SUBSCRIBE, 
+    UNSUBSCRIBE, 
     SET_USERS, 
     SET_PAGE, 
     TOGGLE_LOADING_USERS, 
@@ -8,8 +8,8 @@ import {
     SET_HAVE_USERS
 } from './types';
 
-export const followAC = (userId) => ({ type: FOLLOW, userId: userId });
-export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId: userId });
+export const subscribeAC = (userId) => ({ type: SUBSCRIBE, userId });
+export const unsubscribeAC = (userId) => ({ type: UNSUBSCRIBE, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users: users });
 export const setPage = (page) => ({ type: SET_PAGE, page })
 export const toggleLoadingUsers = (loading) => ({ type: TOGGLE_LOADING_USERS, loading });

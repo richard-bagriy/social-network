@@ -1,6 +1,6 @@
 import { 
-    FOLLOW, 
-    UNFOLLOW, 
+    SUBSCRIBE, 
+    UNSUBSCRIBE, 
     SET_USERS, 
     SET_PAGE, 
     TOGGLE_LOADING_USERS, 
@@ -20,23 +20,31 @@ const initialState = {
 export default (state = initialState, action) => {
 
     switch(action.type) {
-        case FOLLOW:
+        case SUBSCRIBE:
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: true}
+                    if (u._id === action.userId) {
+                        return {
+                            ...u, 
+                            subscribed: true, 
+                            subscribers: u.subscribers + 1 
+                        }
                     } else {
                         return u;
                     }
                 })
             }
-        case UNFOLLOW:
+        case UNSUBSCRIBE:
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: false}
+                    if (u._id === action.userId) {
+                        return {
+                            ...u, 
+                            subscribed: false,
+                            subscribers: u.subscribers - 1 
+                        }
                     } else {
                         return u;
                     }

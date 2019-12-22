@@ -19,17 +19,21 @@ export const profileAPI = {
 export const usersAPI = {
 
     getUsers(limit = 1, page = 1) {
-        return instance.get('/users', {
+        return instance.get('users', {
             params: { limit, page },
         }).then(response => response.data);
     },
 
-    follow(id) {
-        return instance.post(`follow/${id}`, {}).then(response => response.data.resultCode);
+    subsribe(userId) {
+        return instance.post('users/subscribe', { subscriberId: userId });
     },
 
-    unfollow(id) {
-        return instance.delete(`follow/${id}`).then(response => response.data.resultCode);
+    unsubscribe(userId) {
+        return instance.delete('users/subscribe', { 
+            data : {
+                subscriberId: userId 
+            } 
+        });
     }
 }
 

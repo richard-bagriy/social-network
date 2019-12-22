@@ -6,8 +6,8 @@ import style from './style.module.css';
 
 const Users = ({ 
     followingInProgress, 
-    follow, 
-    unfollow, 
+    subscribe, 
+    unsubscribe, 
     isLoadingUsers,
     changeFilterText,
     Users
@@ -44,27 +44,27 @@ const Users = ({
                         </div>
                         <div className={style.userInfo}>
                             <div>
-                                <div className={style.userInfoCount}>15</div>
-                                <div className={style.userInfoText}>Lisitngs</div>
+                                <div className={style.userInfoCount}>0</div>
+                                <div className={style.userInfoText}>Events</div>
                                 
                             </div>
                             <div>
-                                <div className={style.userInfoCount}>150</div>
+                                <div className={style.userInfoCount}>{ u.subscribers }</div>
                                 <div className={style.userInfoText}>Followers</div>
                             </div>
                             <div>
-                                <div className={style.userInfoCount}>265</div>
+                                <div className={style.userInfoCount}>{ u.subscriptions }</div>
                                 <div className={style.userInfoText}>Following</div>
                             </div>
                         </div>
-                        { u.followed 
+                        { u.subscribed
                             ? <button 
-                                disabled={followingInProgress.some(id => id === u.id)}
+                                disabled={followingInProgress.some(id => id === u._id)}
                                 className={`${style.followBtn}`} 
-                                onClick={() => unfollow(u.id)}>Unfollow</button> 
-                            : <button disabled={followingInProgress.some(id => id === u.id)}
+                                onClick={() => unsubscribe(u._id)}>Unfollow </button> 
+                            : <button disabled={followingInProgress.some(id => id === u._id)}
                                 className={`${style.unffolowBtn}`} 
-                                onClick={() => follow(u.id)}>Follow</button>
+                                onClick={() => subscribe(u._id)}>Follow</button>
                         }
                     </div>
                     

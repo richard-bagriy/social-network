@@ -4,8 +4,8 @@ import {
     setPage, 
     setUsers,
     toggleFollowingOnUser,
-    followAC,
-    unfollowAC,
+    subscribeAC,
+    unsubscribeAC,
     setHaveUsers
 } from './actions';
 
@@ -28,25 +28,30 @@ export const getUsers = (limit, page) => (dispatch) =>{
 
 }
 
-export const follow = (id) => (dispatch) => {
-
-    dispatch(toggleFollowingOnUser(true, id));
-
-    usersAPI.follow(id).then(code => {
-        if (code === 0) {
-            dispatch(followAC(id));
-            dispatch(toggleFollowingOnUser(false, id));
-        }
-    })
+export const subscribe = (userId) => (dispatch) => {
+    toggleSubscribe(userId, true, dispatch)
 }
 
-export const unfollow = (id) => (dispatch) => {
-    dispatch(toggleFollowingOnUser(true, id));
+export const unsubscribe = (userId) => (dispatch) => {
+    toggleSubscribe(userId, false, dispatch)
+}
 
-    usersAPI.unfollow(id).then(code => {
-        if (code === 0) {
-            dispatch(unfollowAC(id));
-            dispatch(toggleFollowingOnUser(false, id));
+const toggleSubscribe = async (userId, subscribe, dispatch) => {
+    
+    try {
+        dispatch(toggleFollowingOnUser(true, userId));
+
+        if (subscribe) {
+            await usersAPI.subsribe(userId);
+            dispatch(subscribeAC(userId));
+        } else {
+            await usersAPI.unsubscribe(userId);
+            dispatch(unsubscribeAC(userId));
         }
-    })
+        
+        dispatch(toggleFollowingOnUser(false, userId));
+    } catch (err) {
+        console.log(err);
+    }
+    
 }
