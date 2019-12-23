@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Filter from './Filter/Filter';
 import Preloader from '../common/Preloader';
+import Filter from './Filter/Filter';
+import ExtraInfo from './ExtraInfo';
+import UserInfo from './UserInfo';
 import style from './style.module.css';
 
 const Users = ({ 
@@ -10,7 +11,7 @@ const Users = ({
     unsubscribe, 
     isLoadingUsers,
     changeFilterText,
-    Users
+    users
 }) => {
 
     const changeUsers = ({ filterText }) => {
@@ -28,42 +29,19 @@ const Users = ({
         <Filter onSubmit={changeUsers}/>
 
         <div className={style.userInner} id="users-wrapper">
-            { Users.map(u => {
+            { users.map(u => {
                 return (
                     <div className={style.userBlock} key={u._id}>
-                        <div className={style.userImage}>
-                            <NavLink to={`/profile/${u._id}`}>
-                                <img className={style.userImage} src={require(`../../assets/images/${u.image}`)}  alt="test" />
-                            </NavLink>
-                        </div>
-                        <div className={style.userName}>
-                            {u.name}
-                        </div>
-                        <div className={style.userCountry}>
-                            <i className="fas fa-map-marker-alt location-market"></i>Ukraine
-                        </div>
-                        <div className={style.userInfo}>
-                            <div>
-                                <div className={style.userInfoCount}>0</div>
-                                <div className={style.userInfoText}>Events</div>
-                                
-                            </div>
-                            <div>
-                                <div className={style.userInfoCount}>{ u.subscribers }</div>
-                                <div className={style.userInfoText}>Followers</div>
-                            </div>
-                            <div>
-                                <div className={style.userInfoCount}>{ u.subscriptions }</div>
-                                <div className={style.userInfoText}>Following</div>
-                            </div>
-                        </div>
+                        <UserInfo id={u._id} name={u.name} image={u.image} country="Ukraine" />
+                        <ExtraInfo events="0" subscribers={u.subscribers} subscriptions={u.subscriptions} />
                         { u.subscribed
                             ? <button 
                                 disabled={followingInProgress.some(id => id === u._id)}
-                                className={`${style.followBtn}`} 
+                                className={style.followBtn} 
                                 onClick={() => unsubscribe(u._id)}>Unfollow </button> 
-                            : <button disabled={followingInProgress.some(id => id === u._id)}
-                                className={`${style.unffolowBtn}`} 
+                            : <button 
+                                disabled={followingInProgress.some(id => id === u._id)}
+                                className={style.unffolowBtn} 
                                 onClick={() => subscribe(u._id)}>Follow</button>
                         }
                     </div>

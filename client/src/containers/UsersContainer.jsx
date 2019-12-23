@@ -41,7 +41,7 @@ class UsersContainer extends PureComponent {
     }
 
     getUsers() {
-        let filterText = this.state.filterText ? this.state.filterText.toLowerCase() : '';
+        let filterText = this.state.filterText ? this.state.filterText.toLowerCase().trim() : '';
         return [...this.props.users].filter(u => u.name.toLowerCase().includes(filterText));
     }
     
@@ -49,8 +49,8 @@ class UsersContainer extends PureComponent {
         return (
             <Users
                 changeFilterText={this.changeFilterText}
-                Users={this.getUsers()}
                 {...this.props}
+                users={this.getUsers()}
             />
         )
     }
