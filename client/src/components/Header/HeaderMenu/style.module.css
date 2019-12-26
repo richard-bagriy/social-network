@@ -42,6 +42,9 @@
     cursor: pointer;
     text-align: center;
     box-sizing: border-box;
+    display: block;
+    color: #454545;
+    text-decoration: none;
 }
 .menu .menuItem:hover{
     color: #434f74;

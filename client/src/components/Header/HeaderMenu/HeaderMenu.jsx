@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { logout } from '../../../store/Auth/effects';
 import { getAuthUserName } from '../../../store/Auth/selectors';
 import style from './style.module.css';
@@ -10,18 +11,11 @@ class HeaderMenu extends React.Component {
         open: false
     }
 
-    constructor(props) {
-        super(props);
-
-        this.toggleMenu = this.toggleMenu.bind(this);
-        this.logout = this.logout.bind(this);
-    }
-
-    toggleMenu() {
+    toggleMenu = () => {
         this.setState({open: !this.state.open})
     }
 
-    logout() {
+    logout = () => {
         this.props.logout();
     }
 
@@ -34,6 +28,9 @@ class HeaderMenu extends React.Component {
                 </button>
 
                 <div className={`${style.menu} ${this.state.open ? style.open : ''} `}>
+                    <NavLink to="/profile" className={style.menuItem}>
+                        <span>My profile</span>
+                    </NavLink>
                     <div className={style.menuItem} onClick={this.props.logout}>
                         <span>Logout</span>
                     </div>
