@@ -1,16 +1,25 @@
 import React from 'react'
 import Post from './Post/Post';
 import style from './style.module.css';
-import NewPostContainer from '../../../containers/NewPostContainer';
+import NewPost from './NewPost/NewPost';
 
-const Posts = (props) => {
-    
+const Posts = ({ posts, addPost, profileImage }) => {
+
+    const handleSubmit = ({ message }) => {
+        addPost(message);
+    }
+
+    const image = require('../../../assets/images/' + profileImage);
+
     return (
         <div>
-            <NewPostContainer />
-            <div className={style.postsWrapper}>
-                { props.posts.map( p => <Post message={p.message} count={p.count} key={p.id} /> ) }
-            </div>
+            <NewPost profileImage={image} onSubmit={handleSubmit} />
+            { posts.length 
+                ? <div className={style.postsWrapper}>
+                        { posts.map( p => <Post message={p.message} count={p.count} key={p.id} /> ) }
+                </div>
+                : (<div>You don't have a posts</div>)
+            }
         </div>
     )
 }

@@ -21,14 +21,15 @@ class ProfileContainer extends React.PureComponent {
     }
 
     render() {
+        const { isLoadingUser , profile } = this.props;
 
-        if (this.props.isLoadingUser){
+        if (isLoadingUser){
             return <Preloader />
         }
         
         return (
             <div>
-                <Profile profile={this.props.profile} />
+                <Profile profile={profile} />
             </div>
         )
     }

@@ -1,20 +1,34 @@
 import React from 'react';
-import Form from './NewPostForm';
+import { Field, reduxForm } from 'redux-form'
+import { required, maxLength } from '../../../../utils/Validators';
+import { Input } from '../../../common/Forms/Forms';
 import style from './style.module.css';
 
-const NewPost = (props) => {
-    
-    const addPost = ({message}) => {
-        props.addPost(message);
-    }
- 
+const maxLength50 = maxLength(50);
+
+const NewPost = ({
+    handleSubmit,
+    profileImage,
+    text
+}) => {
+
     return (
         <div className={style.wrapper}>
-            <Form onSubmit={addPost} profileImage=""/>
+            <form onSubmit={handleSubmit} className={style.inner}>
+                <img className={style.profileImage} src={profileImage} alt="New Post"/>
+                <Field 
+                    component={Input} 
+                    className={style.input} 
+                    value={text} 
+                    name="message" 
+                    placeholder="Write your activity"
+                    validate={[required,maxLength50]} 
+                />
+                <button className={style.btn}>Add post</button>
+            </form>
         </div>
     )
 
 }
 
-export default NewPost;
-
+export default reduxForm({ form: 'add-post' })(NewPost)
