@@ -1,9 +1,10 @@
 import React from 'react';
 import style from './style.module.css';
+import { generateImagePath } from '../../../utils/helper';
 
 const ProfileInfo = ({ profile }) => {
 
-    const userImage = require(`../../../assets/images/${profile.image}`);
+    const userImage = generateImagePath(profile.image);
     
     return (
         <div className={style.wrapper}>

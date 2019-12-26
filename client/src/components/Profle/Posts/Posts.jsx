@@ -2,6 +2,7 @@ import React from 'react'
 import Post from './Post/Post';
 import style from './style.module.css';
 import NewPost from './NewPost/NewPost';
+import { generateImagePath } from '../../../utils/helper';
 
 const Posts = ({ posts, addPost, profileImage }) => {
 
@@ -9,7 +10,7 @@ const Posts = ({ posts, addPost, profileImage }) => {
         addPost(message);
     }
 
-    const image = require('../../../assets/images/' + profileImage);
+    const image = generateImagePath(profileImage);
 
     return (
         <div>
