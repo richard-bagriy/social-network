@@ -1,8 +1,7 @@
 import React from 'react';
 import Preloader from '../common/Preloader';
 import Filter from './Filter/Filter';
-import ExtraInfo from './ExtraInfo';
-import UserInfo from './UserInfo';
+import User from '../common/User';
 import style from './style.module.css';
 
 const Users = ({ 
@@ -29,25 +28,21 @@ const Users = ({
         <Filter onSubmit={changeUsers}/>
 
         <div className={style.userInner} id="users-wrapper">
-            { users.map(u => {
-                return (
-                    <div className={style.userBlock} key={u._id}>
-                        <UserInfo id={u._id} name={u.name} image={u.image} country="Ukraine" />
-                        <ExtraInfo events="0" subscribers={u.subscribers} subscriptions={u.subscriptions} />
-                        { u.subscribed
-                            ? <button 
-                                disabled={followingInProgress.some(id => id === u._id)}
-                                className={style.followBtn} 
-                                onClick={() => unsubscribe(u._id)}>Unfollow </button> 
-                            : <button 
-                                disabled={followingInProgress.some(id => id === u._id)}
-                                className={style.unffolowBtn} 
-                                onClick={() => subscribe(u._id)}>Follow</button>
-                        }
-                    </div>
-                    
+            { users.map(
+                u => 
+                    <User
+                        key={ u._id }
+                        id={ u._id }
+                        name={ u.name }
+                        image={ u.image }
+                        country="Ukraine"
+                        events="0"
+                        subscribers={ u.subscribers }
+                        subscriptions={ u.subscriptions }
+                        subscribed={ u.subscribed }
+                    />
                 )
-            })}
+            }
         </div>
 
         { isLoadingUsers && <Preloader/> }

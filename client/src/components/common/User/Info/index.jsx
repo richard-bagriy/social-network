@@ -1,7 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { generateImagePath } from '../../../../utils/helper';
 import style from './style.module.css';
-import { generateImagePath } from '../../../utils/helper';
 
 export default ({
     image,
@@ -14,15 +14,15 @@ export default ({
 
     return (
         <>
-            <div className={style.image}>
+            <div className={ style.image }>
                 <NavLink to={`/profile/${id}`}>
-                    <img className={style.image} src={userImage}  alt="test" />
+                    <img className={ style.image } src={ userImage }  alt={ name } />
                 </NavLink>
             </div>
-            <div className={style.name}>
+            <div className={ style.name }>
                 { name }
             </div>
-            <div className={style.country}>
+            <div className={ style.country }>
                 <i className="fas fa-map-marker-alt location-market"></i>
                 { country }
             </div>

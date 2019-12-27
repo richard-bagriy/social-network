@@ -16,7 +16,6 @@ export default () => {
             <Header />
             <Navbar />
             <div className="app-wrapper-content">
-                <Route path='/' exact component={AuthRedirect(DialogsContainer)} />
                 <Route path='/profile/:id?' component={AuthRedirect(ProfileContainer)} />
                 <Route path='/dialogs' component={AuthRedirect(DialogsContainer)} />
                 <Route path='/users' component={AuthRedirect(UsersContainer)} />
