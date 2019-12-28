@@ -4,23 +4,9 @@
     grid-template-columns: calc(100% - 90px) 90px;
     margin-bottom: 50px;
 }
-.search{
-    border: 1px solid #e5e5e5;
-    font-size: 14px;
-    color: #959fbb;
-    border-radius: 3px;
-    padding: 10px;
-    width: 100%;
-}
-.btn{
-    color: #fff;
-    background: #fa2276;
-    border: 0;
-    cursor: pointer;
-    font-size: 14px;
-    border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
-}
-.btn:hover{
-    background: #343f74;
+.btnFilter{
+    padding: 12px !important;
+    border-radius: 0 !important;
+    border-bottom-right-radius: 3px !important;
+    border-top-right-radius: 3px !important;
 }

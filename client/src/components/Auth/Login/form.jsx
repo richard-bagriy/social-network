@@ -29,7 +29,7 @@ const Form = ({ handleSubmit, showPassword, togglePassword, error }) => {
 
             {error && <Message message={error} type="error" />}
 
-            <button className={style.btn}>Sign In</button>
+            <button className="btn btn-pink">Sign In</button>
         </form>
     )
 

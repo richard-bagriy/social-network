@@ -5,9 +5,6 @@ import User from '../common/User';
 import style from './style.module.css';
 
 const Users = ({ 
-    followingInProgress, 
-    subscribe, 
-    unsubscribe, 
     isLoadingUsers,
     changeFilterText,
     users

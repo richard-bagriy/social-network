@@ -11,7 +11,7 @@ const NewMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={style.inner}>
             <Field component={Input} type="text" className={style.input} value={props.text} name="message" validate={[maxLength20, required]} />
-            <button className={style.button}>Send</button>
+            <button className="btn btn-pink">Send</button>
         </form>
     )
 

@@ -22,3 +22,73 @@
 .height-100{
     height: 100%;
 }
+
+.w-100{
+    width: 100%;
+}
+
+.d-block{
+    display: block;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.p-12 {
+    padding: 12px !important;
+}
+
+.user-small-image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.input{
+    padding: 10px 15px;
+    background: transparent;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 400;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+.bg-white {
+    background: #fff !important;
+}
+.color-grey {
+    color: #959fbb;
+}
+
+.border{
+    border: 1px solid #e5e5e5;
+}
+
+.btn{
+    cursor: pointer;
+    padding: 12px 32px;
+    border-radius: 3px;
+    font-size: 14px;
+    text-transform: capitalize;
+    display: inline-block;
+    border: 1px solid transparent;
+    transition: background-color .35s ease-in-out;
+    font-weight: 400;
+    text-align: center;
+}
+.btn-pink {
+    background: #fa2276;
+    color: #fff;
+}
+.btn-purple {
+    background-color: #434f74;
+    color: #fff;
+}
+.btn-pink:hover{
+    background-color: #434f74;
+}
+.btn-purple:hover{
+    background: #fa2276;
+}

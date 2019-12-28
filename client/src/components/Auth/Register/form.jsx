@@ -18,7 +18,7 @@ const Form = props => {
             { message && <Message message={message} type="success" /> }
 
             <div className={style.fieldContainer} >
-                <Field className={style.fieldContainer__input} name="name" type="text" placeholder="Name" component={Input} validate={[required]}/>,
+                <Field className={style.fieldContainer__input} name="name" type="text" placeholder="Name" component={Input} validate={[required]}/>
             </div>
 
             <div className={style.fieldContainer} >
@@ -35,7 +35,7 @@ const Form = props => {
             
             { error && <Message message={error} type="error" /> }
 
-            <button className={style.btn}>Sign In</button>
+            <button className="btn btn-pink">Sign In</button>
         </form>
     )
 

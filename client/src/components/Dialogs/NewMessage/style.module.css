@@ -19,16 +19,3 @@
     width: 100%;
     box-sizing: border-box;
 }
-.button{
-    background-color: #fa2276;
-    height: 45px;
-    text-align: center;
-    color: #fff;
-    font-weight: 600;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.button:hover{
-    background: #434f74;
-}

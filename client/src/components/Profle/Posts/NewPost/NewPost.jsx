@@ -15,16 +15,16 @@ const NewPost = ({
     return (
         <div className={style.wrapper}>
             <form onSubmit={handleSubmit} className={style.inner}>
-                <img className={style.profileImage} src={profileImage} alt="New Post"/>
+                <img className="user-small-image" src={ profileImage } alt={ profileImage } />
                 <Field 
                     component={Input} 
-                    className={style.input} 
+                    className="input border w-100" 
                     value={text} 
                     name="message" 
                     placeholder="Write your activity"
                     validate={[required,maxLength50]} 
                 />
-                <button className={style.btn}>Add post</button>
+                <button className="btn btn-pink p-12">Add post</button>
             </form>
         </div>
     )

@@ -95,25 +95,3 @@
 .fieldContainer__icon:hover{
     color: #434f74;
 }
-
-/*
-** Need move button for global !!
-**/
-
-.btn{
-    cursor: pointer;
-    background: #fa2276;
-    color: #fff;
-    padding: 12px 32px;
-    border-radius: 3px;
-    font-size: 14px;
-    text-transform: capitalize;
-    display: inline-block;
-    border: 1px solid transparent;
-    font-weight: 400;
-    transition: background-color .15s ease-in-out;
-    text-align: center;
-}
-.btn:hover{
-    background-color: #434f74;
-}
