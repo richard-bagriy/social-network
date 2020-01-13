@@ -39,6 +39,26 @@
     padding: 12px !important;
 }
 
+.p-20 {
+    padding: 20px;
+}
+
+.p-0{
+    padding: 0 !important;
+}
+
+.m-0{
+    margin: 0 !important;
+}
+
+.m-top-0{
+    margin-top: 0 !important;
+}
+
+.m-bot-0{
+    margin-block-start: 0 !important;
+}
+
 .user-small-image{
     width: 40px;
     height: 40px;
@@ -66,6 +86,24 @@
     border: 1px solid #e5e5e5;
 }
 
+.border-bottom-none {
+    border-bottom: 0;
+}
+
+.border-bottom {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.font-bold{
+    font-weight: 900;
+}
+
 .btn{
     cursor: pointer;
     padding: 12px 32px;
@@ -91,4 +129,16 @@
 }
 .btn-purple:hover{
     background: #fa2276;
+}
+
+/* React-Tabs */
+.react-tabs__tab{
+    border: none;
+    padding: 20px;
+    font-size: 14px;
+    color: #959fbb;
+}
+.react-tabs__tab--selected{
+    border-bottom: 2px solid #fa2276;
+    color: #434f74;
 }

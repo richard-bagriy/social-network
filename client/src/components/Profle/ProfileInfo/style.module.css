@@ -4,7 +4,6 @@
     overflow: hidden;
     max-height: 330px;
     position: relative;
-    margin-bottom: 30px;
 }
 .wrapper::before{
     content: '';

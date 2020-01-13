@@ -1,7 +1,7 @@
 import React from 'react'
 import Post from './Post/Post';
-import style from './style.module.css';
 import NewPost from './NewPost/NewPost';
+
 import { generateImagePath } from '../../../utils/helper';
 
 const Posts = ({ posts, addPost, profileImage }) => {
@@ -16,10 +16,9 @@ const Posts = ({ posts, addPost, profileImage }) => {
         <div>
             <NewPost profileImage={image} onSubmit={handleSubmit} />
             { posts.length 
-                ? <div className={style.postsWrapper}>
-                        { posts.map( p => <Post message={p.message} count={p.count} key={p.id} /> ) }
-                </div>
-                : (<div>You don't have a posts</div>)
+                ? posts.map( p => <Post message={p.message} count={p.count} key={p.id} /> )
+                : ( <div className="p-20 border color-grey text-center font-bold bg-white">You don't have any posts</div> )
+                
             }
         </div>
     )
