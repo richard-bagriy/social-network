@@ -58,6 +58,9 @@
 .m-bot-0{
     margin-block-start: 0 !important;
 }
+.m-auto{
+    margin: auto;
+}
 
 .user-small-image{
     width: 40px;
@@ -80,6 +83,9 @@
 }
 .color-grey {
     color: #959fbb;
+}
+.color-white{
+    color: #fff;
 }
 
 .border{

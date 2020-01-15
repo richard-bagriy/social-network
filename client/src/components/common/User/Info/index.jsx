@@ -2,31 +2,35 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { generateImagePath } from '../../../../utils/helper';
 import style from './style.module.css';
+import classNames from 'classnames';
 
 export default ({
     image,
     name,
     country,
-    id
+    id,
+    ...rest
 }) => {
-
     const userImage = generateImagePath(image);
+    const { 
+        imageClass   = null,
+        nameClass    = null,
+        countryClass = null
+    } = rest;
 
-    return (
-        <>
-            <div className={ style.image }>
-                <NavLink to={`/profile/${id}`}>
-                    <img className={ style.image } src={ userImage }  alt={ name } />
-                </NavLink>
-            </div>
-            <div className={ style.name }>
-                { name }
-            </div>
-            <div className={ style.country }>
-                <i className="fas fa-map-marker-alt location-market"></i>
-                { country }
-            </div>
-        </>
-    )
+    return <>
+        <div className="text-center">
+            <NavLink to={`/profile/${id}`}>
+                <img className={ classNames(style.image, imageClass) } src={ userImage }  alt={ name } />
+            </NavLink>
+        </div>
+        <div className={ classNames(style.name, nameClass) }>
+            { name }
+        </div>
+        <div className={ classNames(style.country, countryClass) }>
+            <i className="fas fa-map-marker-alt location-market"></i>
+            { country }
+        </div>
+    </>
     
 }

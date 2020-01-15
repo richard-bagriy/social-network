@@ -1,13 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 import style from './style.module.css';
 
 export default ({ 
     events, 
     subscribers, 
-    subscriptions 
+    subscriptions,
+    color = null
 }) => {
     return (
-        <div className={ style.wrapper }>
+        <div className={ classNames(style.wrapper, color) }>
             <div>
                 <div className={ style.сount }>{ events }</div>
                 <div className={ style.text }>Events</div>

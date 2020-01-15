@@ -5,7 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import style from './style.module.css';
 import 'react-tabs/style/react-tabs.css';
 
-const Profile = React.memo(({profile}) => {
+const Profile = React.memo(({ profile, id }) => {
 
     if (!profile) {
         return <></>;
@@ -13,12 +13,15 @@ const Profile = React.memo(({profile}) => {
 
     return (
         <div className={style.wrapper}>
-            <ProfileInfo profile={profile} />
+
+            <ProfileInfo profile={profile} id={id} />
 
             <Tabs>
+                
                 <TabList className="border border-bottom p-0 m-top-0 bg-white">
                     <Tab>Activity</Tab>
                     <Tab>Profile Detail</Tab>
+                    <Tab>Events</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -27,6 +30,10 @@ const Profile = React.memo(({profile}) => {
 
                 <TabPanel>
                     <h1>Test</h1>
+                </TabPanel>
+
+                <TabPanel>
+                    <h1>Events</h1>
                 </TabPanel>
 
             </Tabs>

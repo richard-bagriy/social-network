@@ -10,8 +10,9 @@ module.exports = {
             const {
                 image,
                 name,
-                gender
-            } = await User.findById({ _id: id }).select('image name gender');
+                gender,
+                about
+            } = await User.findById({ _id: id }).select('image name gender about');
 
             const subscriptions = await Subscriber.countDocuments({ userId: id });
             const subscribers   = await Subscriber.countDocuments({ subscriberId: id });
@@ -21,7 +22,8 @@ module.exports = {
                 name,
                 gender,
                 subscriptions,
-                subscribers
+                subscribers,
+                about
             };
             
             res.json(user);
