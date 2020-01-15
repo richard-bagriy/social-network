@@ -3,20 +3,21 @@ import style from './style.module.css';
 
 export default ({ message, type }) => {
 
-    let messageType;
+    let className;
 
     switch(type) {
         case 'error' :
-            messageType = style.error;
+            className = style.error + style.message;
             break;
         case 'warning' : 
-            messageType = style.warning;
+            className = style.warning + style.message;
             break;
         case 'success' :
-            messageType = style.success;
+            className = style.success + style.message;
             break;
-        default : messageType = style.warning;
+        default : 
+            className = 'p-20 border bg-white text-center color-grey font-bold';
     }
     
-    return <div className={` ${messageType} ${style.message} `}>{ message }</div>
+    return <div className={ className }>{ message }</div>
 }

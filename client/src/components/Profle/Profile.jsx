@@ -1,9 +1,10 @@
 import React from 'react'
 import PostsContainer from '../../containers/PostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import Message from '../common/Message';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import style from './style.module.css';
 import 'react-tabs/style/react-tabs.css';
+import style from './style.module.css';
 
 const Profile = React.memo(({ profile, id }) => {
 
@@ -33,7 +34,7 @@ const Profile = React.memo(({ profile, id }) => {
                 </TabPanel>
 
                 <TabPanel>
-                    <h1>Events</h1>
+                    <Message message="You don't have any events" />
                 </TabPanel>
 
             </Tabs>
