@@ -4,12 +4,10 @@ import UserExtra from '../../common/User/Extra';
 import style from './style.module.css';
 
 const ProfileInfo = ({ 
-    profile: {
-        image,
-        name,
-        subscriptions,
-        subscribers,
-    },
+    image,
+    name,
+    subscriptions,
+    subscribers,
     id
 }) => {
     return (

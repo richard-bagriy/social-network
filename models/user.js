@@ -39,8 +39,18 @@ const UserSchema = new Schema({
     about: {
         type: String,
         default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a interdum neque. Nullam mi sem, tristique vel volutpat ac, consectetur sit amet massa. Curabitur at ipsum leo. Morbi porttitor lorem velit, at lacinia magna pretium at. Duis id mattis nisl. In sit amet eros sed lorem hendrerit ornare quis in mauris. Sed nec purus euismod, pharetra nibh a, aliquet lorem.. Suspendisse pretium ullamcorper neque et aliquam."
+    },
+
+    phone: {
+        type: String,
+        default: null
+    },
+
+    address: {
+        type: String,
+        default: null,
     }
-    
+
 })
 
 module.exports = mongoose.model("users", UserSchema);

@@ -23,10 +23,10 @@ class ProfileContainer extends React.PureComponent {
     render() {
         const { isLoadingUser , profile, userId } = this.props;
 
-        if (isLoadingUser){
+        if (isLoadingUser || !profile) {
             return <Preloader />
         }
-        
+
         return <Profile profile={profile} id={userId} />
     }
 }

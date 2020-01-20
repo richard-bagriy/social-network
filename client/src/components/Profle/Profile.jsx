@@ -1,25 +1,40 @@
 import React from 'react'
 import PostsContainer from '../../containers/PostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import ProfileDetail from './ProfileDetail';
 import Message from '../common/Message';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import style from './style.module.css';
 
-const Profile = React.memo(({ profile, id }) => {
-
-    if (!profile) {
-        return <></>;
-    }
-
+const Profile = ({ 
+    profile: {
+        image,
+        name,
+        subscriptions,
+        subscribers,
+        about,
+        email,
+        address = null,
+        phone = null
+    },
+    id
+}) => {
+    
     return (
         <div className={style.wrapper}>
 
-            <ProfileInfo profile={profile} id={id} />
+            <ProfileInfo
+                image={image}
+                name={name}
+                subscriptions={subscriptions}
+                subscribers={subscribers}
+                id={id} 
+            />
 
             <Tabs>
                 
-                <TabList className="border border-bottom p-0 m-top-0 bg-white">
+                <TabList className="border border-bottom p-0 m-top-0 bg-white m-bot-20">
                     <Tab>Activity</Tab>
                     <Tab>Profile Detail</Tab>
                     <Tab>Events</Tab>
@@ -30,7 +45,13 @@ const Profile = React.memo(({ profile, id }) => {
                 </TabPanel>
 
                 <TabPanel>
-                    <h1>Test</h1>
+                    <ProfileDetail 
+                        about={about}
+                        email={email}
+                        phone={phone}
+                        address={address}
+                        country="Ukraine"
+                    />
                 </TabPanel>
 
                 <TabPanel>
@@ -41,6 +62,6 @@ const Profile = React.memo(({ profile, id }) => {
             
         </div>
     )
-})
+}
 
-export default Profile;
+export default React.memo(Profile);

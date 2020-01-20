@@ -11,8 +11,11 @@ module.exports = {
                 image,
                 name,
                 gender,
-                about
-            } = await User.findById({ _id: id }).select('image name gender about');
+                about,
+                email,
+                phone,
+                address
+            } = await User.findById({ _id: id }).select('image name gender about email phone address');
 
             const subscriptions = await Subscriber.countDocuments({ userId: id });
             const subscribers   = await Subscriber.countDocuments({ subscriberId: id });
@@ -23,7 +26,10 @@ module.exports = {
                 gender,
                 subscriptions,
                 subscribers,
-                about
+                about,
+                email,
+                phone,
+                address
             };
             
             res.json(user);

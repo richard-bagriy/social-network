@@ -1,0 +1,23 @@
+.wrapper{
+    column-count: 2;
+    column-gap: 30px;
+}
+
+.wrapper > div{
+    margin-bottom: 30px;
+    break-inside: avoid;
+}
+
+.header{
+    padding-bottom: 20px;
+    font-weight: 400;
+    color: #434f74;
+}
+
+.icon{
+    margin-right: 8px;
+}
+.iconSocial:hover{
+    color: #434f74;
+    cursor: pointer;
+}
