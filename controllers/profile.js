@@ -7,31 +7,26 @@ module.exports = {
         const { id } = req.params;
         
         try {
-            const {
-                image,
-                name,
-                gender,
-                about,
-                email,
-                phone,
-                address
-            } = await User.findById({ _id: id }).select('image name gender about email phone address');
 
-            const subscriptions = await Subscriber.countDocuments({ userId: id });
-            const subscribers   = await Subscriber.countDocuments({ subscriberId: id });
+            const [data, subscriptions, subscribers] = await Promise.all([
+                User.findById( { _id: id },
+                    {
+                        __v: false,
+                        password: false,
+                        date: false,
+                        _id: false
+                    },
+                ),
+                Subscriber.countDocuments({ userId: id }),
+                Subscriber.countDocuments({ subscriberId: id })
+            ])
 
             const user = {
-                image,
-                name,
-                gender,
+                ...data._doc,
                 subscriptions,
-                subscribers,
-                about,
-                email,
-                phone,
-                address
-            };
-            
+                subscribers
+            }
+
             res.json(user);
             
         } catch (err) {
