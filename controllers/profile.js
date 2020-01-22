@@ -44,12 +44,13 @@ module.exports = {
 
                     const { userId } = user;
                     
-                    const [userData, subscribers, subscriptions, subscribed] = await Promise.all([
+                    const [userData, subscribers, subscriptions] = await Promise.all([
                         User.findById( { _id: userId }, { __v: 0, password: 0, date: 0} ),
                         Subscribers.countDocuments({ subscriberId: userId }),
                         Subscribers.countDocuments({ userId }),
-                        Subscribers.findOne({ 'subscriberId': userId , 'userId': id }) ? true : false
                     ]);
+
+                    const subscribed = await Subscribers.findOne({ 'subscriberId': userId , 'userId': id }) ? true : false;
 
                     return {
                         ...userData.toObject(),
