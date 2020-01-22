@@ -3,6 +3,7 @@ import PostsContainer from '../../containers/PostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileDetail from './ProfileDetail';
 import Message from '../common/Message';
+import ProfileSubscribersContainer from '../../containers/ProfileSubsribersContainer';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import style from './style.module.css';
@@ -38,6 +39,7 @@ const Profile = ({
                     <Tab>Activity</Tab>
                     <Tab>Profile Detail</Tab>
                     <Tab>Events</Tab>
+                    <Tab>Subscribers</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -56,6 +58,10 @@ const Profile = ({
 
                 <TabPanel>
                     <Message message="You don't have any events" />
+                </TabPanel>
+
+                <TabPanel>
+                    <ProfileSubscribersContainer/>
                 </TabPanel>
 
             </Tabs>

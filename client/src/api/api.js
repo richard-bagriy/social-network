@@ -12,6 +12,10 @@ export const profileAPI = {
 
     getProfile(id) {
         return instance.get(`profile/${id}`).then(response => response.data);
+    },
+
+    getSubscribers(id) {
+        return instance.get(`profile/subscribers/${id}`).then(response => response.data);
     }
 
 }

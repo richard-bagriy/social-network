@@ -1,23 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getProfile } from '../store/ProfilePage/effects';
-import Profile from '../components/Profle/Profile';
-import { withRouter } from "react-router";
 import { compose } from 'redux';
+import Profile from '../components/Profle/Profile';
 import Preloader from '../components/common/Preloader';
-import { getAuth, getAuthUserId } from '../store/Auth/selectors';
+import withUserID from '../hoc/withUserID';
+import { getAuth } from '../store/Auth/selectors';
+import { getProfile } from '../store/ProfilePage/effects';
 import { getProfileLoadingUser, getProfileInfo } from '../store/ProfilePage/selectors';
 
 class ProfileContainer extends React.PureComponent {
 
     componentDidMount() {
-        let id = this.props.match.params.id;
-
-        if (!id) {
-            id = this.props.userId;
-        }
-        
-        this.props.getProfile(id);
+        this.props.getProfile(this.props.userId);
     }
 
     render() {
@@ -36,12 +30,11 @@ const mapStateToProps = (state) => {
     return {
         profile: getProfileInfo(state),
         isAuth: getAuth(state),
-        userId: getAuthUserId(state),
         isLoadingUser: getProfileLoadingUser(state)
     }
 }
 
 export default compose(
     connect(mapStateToProps, { getProfile }),
-    withRouter
+    withUserID
 )(ProfileContainer)
