@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { subscribe, unsubscribe } from '../../../../store/UsersPage/effects';
-import { getUsersFollowing } from '../../../../store/UsersPage/selectors';
+import { subscribe, unsubscribe } from '../../../../../store/UsersPage/effects';
+import { getUsersFollowing } from '../../../../../store/UsersPage/selectors';
 
 const Button = ({
     subscribed, 

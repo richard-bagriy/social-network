@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { generateImagePath } from '../../../../utils/helper';
+import { generateImagePath } from '../../../../../utils/helper';
 import style from './style.module.css';
 import classNames from 'classnames';
 

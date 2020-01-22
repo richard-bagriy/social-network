@@ -1,6 +1,6 @@
 import React from 'react';
-import UserInfo from '../../common/User/Info';
-import UserExtra from '../../common/User/Extra';
+import UserInfo from '../../common/Users/User/Info';
+import UserExtra from '../../common/Users/User/Extra';
 import style from './style.module.css';
 
 const ProfileInfo = ({ 

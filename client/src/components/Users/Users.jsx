@@ -1,10 +1,10 @@
 import React from 'react';
 import Preloader from '../common/Preloader';
 import Filter from './Filter/Filter';
-import User from '../common/User';
+import Users from '../common/Users';
 import style from './style.module.css';
 
-const Users = ({ 
+export default ({ 
     isLoadingUsers,
     changeFilterText,
     users
@@ -24,23 +24,7 @@ const Users = ({
 
         <Filter onSubmit={changeUsers}/>
 
-        <div className={style.userInner} id="users-wrapper">
-            { users.map(
-                u => 
-                    <User
-                        key={ u._id }
-                        id={ u._id }
-                        name={ u.name }
-                        image={ u.image }
-                        country="Ukraine"
-                        events="0"
-                        subscribers={ u.subscribers }
-                        subscriptions={ u.subscriptions }
-                        subscribed={ u.subscribed }
-                    />
-                )
-            }
-        </div>
+        <Users users={users} />
 
         { isLoadingUsers && <Preloader/> }
         
@@ -48,5 +32,3 @@ const Users = ({
     )
 
 }
-
-export default Users

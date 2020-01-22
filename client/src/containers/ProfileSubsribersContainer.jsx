@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { getSubscribers, getLoadingSubscribers } from '../store/ProfilePage/selectors'
 import Preloader from '../components/common/Preloader'
 import Message from '../components/common/Message'
-import ProfileSubscribers from '../components/Profle/ProfileSubscribers'
+import Users from '../components/common/Users'
 import { getSubscribers as getUserSubscribers } from '../store/ProfilePage/effects'
 import withUserID from '../hoc/withUserID';
 
@@ -25,7 +25,7 @@ class ProfileSubscribersContainer extends Component {
             return <Message message="You don't have subscribers yet :(" />
         }
         
-        return <ProfileSubscribers users={subscribers} />
+        return <Users users={subscribers} />
     }
 
 }
