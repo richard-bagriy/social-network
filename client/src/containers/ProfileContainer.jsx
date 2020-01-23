@@ -8,16 +8,22 @@ import { getAuth } from '../store/Auth/selectors';
 import { getProfile } from '../store/ProfilePage/effects';
 import { getProfileLoadingUser, getProfileInfo } from '../store/ProfilePage/selectors';
 
-class ProfileContainer extends React.PureComponent {
+class ProfileContainer extends React.Component {
 
     componentDidMount() {
         this.props.getProfile(this.props.userId);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.userId !== this.props.userId) {
+            this.props.getProfile(this.props.userId);
+        }
+    }
+
     render() {
         const { isLoadingUser , profile, userId } = this.props;
-
-        if (isLoadingUser || !profile) {
+        
+        if (isLoadingUser || profile === null) {
             return <Preloader />
         }
 

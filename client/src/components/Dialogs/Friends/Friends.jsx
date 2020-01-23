@@ -18,9 +18,9 @@ const Friends = (props) => {
                 <div className={style.filter}>
                     <input type="text" className={style.filterInput} placeholder="Enter a keyword"/>
                 </div>
-                { frineds.map(f => {
+                { frineds.map((f, i) => {
                     return (
-                        <div className={style.friendWrapper}>
+                        <div className={style.friendWrapper} key={i}>
                             <div className={style.friendInner}>
                                 <img src='' alt='' className={style.image} />
                                 <div className={style.friendInfo}>
