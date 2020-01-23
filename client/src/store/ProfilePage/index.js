@@ -2,17 +2,14 @@ import {
     ADD_POST, 
     SET_PROFILE_DATA, 
     TOGGLE_LOADING_USER, 
-    SET_SUBSCRIBERS,
-    TOGGLE_LOADING_SUBSCRIBERS
 } from './types';
 
 const initialState = {
     
     posts: [],
     profile: null,
-    isLoadingUser: false,
-    subscribers: [],
-    isLoadingSubscribers: false,
+    isLoadingUser: false
+    
 };
 
 export default (state = initialState, action) => {
@@ -35,16 +32,6 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isLoadingUser: action.loading
-            }
-        case SET_SUBSCRIBERS:
-            return {
-                ...state,
-                subscribers: action.subscribers
-            }
-        case TOGGLE_LOADING_SUBSCRIBERS: 
-            return {
-                ...state,
-                isLoadingSubscribers: action.loading
             }
         default:
             return state;

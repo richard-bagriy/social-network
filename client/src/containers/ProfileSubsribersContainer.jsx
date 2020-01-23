@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { getSubscribers, getLoadingSubscribers } from '../store/ProfilePage/selectors'
+import { getSubscribers as getSubscribersSelector, getUsersLoadingUser } from '../store/UsersPage/selectors'
 import Preloader from '../components/common/Preloader'
 import Message from '../components/common/Message'
 import Users from '../components/common/Users'
-import { getSubscribers as getUserSubscribers } from '../store/ProfilePage/effects'
+import { getSubscribers } from '../store/UsersPage/effects'
 import withUserID from '../hoc/withUserID';
 
 class ProfileSubscribersContainer extends Component {
 
     componentDidMount() {
-        this.props.getUserSubscribers(this.props.userId);
+        this.props.getSubscribers(this.props.userId);
     }
 
     render() {
@@ -31,11 +31,11 @@ class ProfileSubscribersContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    subscribers: getSubscribers(state),
-    isLoading: getLoadingSubscribers(state)
+    subscribers: getSubscribersSelector(state),
+    isLoading: getUsersLoadingUser(state)
 })
 
 export default compose(
-    connect(mapStateToProps, { getUserSubscribers }),
+    connect(mapStateToProps, { getSubscribers }),
     withUserID
 )(ProfileSubscribersContainer)

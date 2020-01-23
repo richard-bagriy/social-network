@@ -5,11 +5,13 @@ import {
     SET_PAGE, 
     TOGGLE_LOADING_USERS, 
     TOGGLE_FOLLOWING_ON_USER,
-    SET_HAVE_USERS
+    SET_HAVE_USERS,
+    SET_SUBSCRIBERS
 } from './types';
 
 const initialState = {
     users: [],
+    subscribers: [],
     page: 1,
     limit: 8,
     haveUsers: true,
@@ -17,38 +19,37 @@ const initialState = {
     followingInProgress: []
 };
 
+const toggleSubscribe = (users, userId, action) => {
+    const quantity = action ? 1 : -1;
+
+    return users.map(u => {
+        if (u._id === userId) {
+
+            return {
+                ...u, 
+                subscribed: action, 
+                subscribers: u.subscribers + quantity
+            }
+        } else {
+            return u;
+        }
+    })
+}
+
 export default (state = initialState, action) => {
 
     switch(action.type) {
         case SUBSCRIBE:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u._id === action.userId) {
-                        return {
-                            ...u, 
-                            subscribed: true, 
-                            subscribers: u.subscribers + 1 
-                        }
-                    } else {
-                        return u;
-                    }
-                })
+                users: toggleSubscribe(state.users, action.userId, true),
+                subscribers: toggleSubscribe(state.subscribers, action.userId, true)
             }
         case UNSUBSCRIBE:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u._id === action.userId) {
-                        return {
-                            ...u, 
-                            subscribed: false,
-                            subscribers: u.subscribers - 1 
-                        }
-                    } else {
-                        return u;
-                    }
-                })
+                users: toggleSubscribe(state.users, action.userId, false),
+                subscribers: toggleSubscribe(state.subscribers, action.userId, false)
             }
         case SET_USERS:
             return {
@@ -76,6 +77,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 haveUsers: action.haveUsers
+            }
+        }
+        case SET_SUBSCRIBERS: {
+            return {
+                ...state,
+                subscribers: action.subscribers
             }
         }
         default: return state;

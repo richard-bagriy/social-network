@@ -1,4 +1,4 @@
-import { usersAPI } from '../../api/api';
+import { usersAPI, profileAPI } from '../../api/api';
 import { 
     toggleLoadingUsers, 
     setPage, 
@@ -6,7 +6,8 @@ import {
     toggleFollowingOnUser,
     subscribeAC,
     unsubscribeAC,
-    setHaveUsers
+    setHaveUsers,
+    setSubscribers
 } from './actions';
 
 export const getUsers = (limit, page) => (dispatch) =>{
@@ -52,6 +53,21 @@ const toggleSubscribe = async (userId, subscribe, dispatch) => {
         dispatch(toggleFollowingOnUser(false, userId));
     } catch (err) {
         console.log(err);
+    }
+    
+}
+
+export const getSubscribers = id => async dispatch => {
+
+    try {
+        dispatch(toggleLoadingUsers(true));
+        
+        const subscribers = await profileAPI.getSubscribers(id);
+        dispatch(setSubscribers(subscribers));
+
+        dispatch(toggleLoadingUsers(false));
+    } catch (err) {
+        console.log(err)
     }
     
 }
