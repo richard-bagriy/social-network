@@ -11,22 +11,21 @@ import {
     setSubscriptions
 } from './actions';
 
-export const getUsers = (limit, page) => (dispatch) =>{
+export const getUsers = (limit, page) => async dispatch =>{
 
     dispatch(toggleLoadingUsers(true));
-    dispatch(setPage(page + 1));
+    
+    const users =  await usersAPI.getUsers(limit, page);
 
-    usersAPI.getUsers(limit, page).then(users => {
+    if (users.length) {
+        dispatch(setPage(page + 1));
+        dispatch(setUsers(users));
+    } else {
+        dispatch(setHaveUsers(false))
+        dispatch(setPage(page));
+    }
 
-        if (users.length) {
-            dispatch(setUsers(users));
-            dispatch(toggleLoadingUsers(false));
-        } else {
-            dispatch(setHaveUsers(false))
-            dispatch(toggleLoadingUsers(false));
-        }
-
-    });
+    dispatch(toggleLoadingUsers(false));
 
 }
 
