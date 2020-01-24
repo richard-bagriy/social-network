@@ -6,12 +6,14 @@ import {
     TOGGLE_LOADING_USERS, 
     TOGGLE_FOLLOWING_ON_USER,
     SET_HAVE_USERS,
-    SET_SUBSCRIBERS
+    SET_SUBSCRIBERS,
+    SET_SUBSCRIPTIONS
 } from './types';
 
 const initialState = {
     users: [],
     subscribers: [],
+    subscriptions: [],
     page: 1,
     limit: 8,
     haveUsers: true,
@@ -30,6 +32,7 @@ const toggleSubscribe = (users, userId, action) => {
                 subscribed: action, 
                 subscribers: u.subscribers + quantity
             }
+
         } else {
             return u;
         }
@@ -49,7 +52,8 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 users: toggleSubscribe(state.users, action.userId, false),
-                subscribers: toggleSubscribe(state.subscribers, action.userId, false)
+                subscribers: toggleSubscribe(state.subscribers, action.userId, false),
+                subscriptions: state.subscriptions.filter( user => user._id !== action.userId)
             }
         case SET_USERS:
             return {
@@ -83,6 +87,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 subscribers: action.subscribers
+            }
+        }
+        case SET_SUBSCRIPTIONS: {
+            return {
+                ...state,
+                subscriptions: action.subscriptions
             }
         }
         default: return state;

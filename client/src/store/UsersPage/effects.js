@@ -7,7 +7,8 @@ import {
     subscribeAC,
     unsubscribeAC,
     setHaveUsers,
-    setSubscribers
+    setSubscribers,
+    setSubscriptions
 } from './actions';
 
 export const getUsers = (limit, page) => (dispatch) =>{
@@ -27,14 +28,6 @@ export const getUsers = (limit, page) => (dispatch) =>{
 
     });
 
-}
-
-export const subscribe = (userId) => (dispatch) => {
-    toggleSubscribe(userId, true, dispatch)
-}
-
-export const unsubscribe = (userId) => (dispatch) => {
-    toggleSubscribe(userId, false, dispatch)
 }
 
 const toggleSubscribe = async (userId, subscribe, dispatch) => {
@@ -57,17 +50,39 @@ const toggleSubscribe = async (userId, subscribe, dispatch) => {
     
 }
 
-export const getSubscribers = id => async dispatch => {
+export const subscribe = (userId) => (dispatch) => {
+    toggleSubscribe(userId, true, dispatch)
+}
+
+export const unsubscribe = (userId) => (dispatch) => {
+    toggleSubscribe(userId, false, dispatch)
+}
+
+const getUserSubscribersOrSubscriptions = async (userId, subscribers, dispatch) => {
 
     try {
         dispatch(toggleLoadingUsers(true));
-        
-        const subscribers = await profileAPI.getSubscribers(id);
-        dispatch(setSubscribers(subscribers));
+
+        if (subscribers) {
+            const subscribers = await profileAPI.getSubscribers(userId);
+            dispatch(setSubscribers(subscribers));
+        } else {
+            const subscriptions = await profileAPI.getSubscriptions(userId);
+            dispatch(setSubscriptions(subscriptions))
+        }
 
         dispatch(toggleLoadingUsers(false));
+
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
+}
+
+export const getSubscribers = id => dispatch => {
+    getUserSubscribersOrSubscriptions(id, true, dispatch);
     
+}
+
+export const getSubscriptions = id => dispatch => {
+    getUserSubscribersOrSubscriptions(id, false, dispatch);
 }

@@ -16,6 +16,10 @@ export const profileAPI = {
 
     getSubscribers(id) {
         return instance.get(`profile/subscribers/${id}`).then(response => response.data);
+    },
+
+    getSubscriptions(id) {
+        return instance.get(`profile/subscriptions/${id}`).then(response => response.data);
     }
 
 }

@@ -7,6 +7,7 @@ import ProfileSubscribersContainer from '../../containers/ProfileSubsribersConta
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import style from './style.module.css';
+import ProfileSubscriptionsContainer from '../../containers/ProfileSubscriptionsContainer';
 
 const Profile = ({ 
     profile: {
@@ -40,6 +41,7 @@ const Profile = ({
                     <Tab>Profile Detail</Tab>
                     <Tab>Events</Tab>
                     <Tab>Subscribers</Tab>
+                    <Tab>Subscriptions</Tab>
                 </TabList>
 
                 <TabPanel>
@@ -62,6 +64,10 @@ const Profile = ({
 
                 <TabPanel>
                     <ProfileSubscribersContainer/>
+                </TabPanel>
+
+                <TabPanel>
+                    <ProfileSubscriptionsContainer />
                 </TabPanel>
 
             </Tabs>
