@@ -37,8 +37,22 @@ module.exports = {
 
             const [data, subscribers, subscriptions] = await getUserData(id);
 
+            const posts = await Promise.all(
+                data.posts.map( async post => {
+                    const { name, image } = await User.findById({ _id: post.userId }, 'name image');
+                    
+                    return {
+                        ...post.toObject(),
+                        image,
+                        name
+                    }
+
+                })
+            );
+
             const user = {
                 ...data.toObject(),
+                posts,
                 subscriptions,
                 subscribers
             }
@@ -88,6 +102,28 @@ module.exports = {
             res.json(subscriptions);
             
         } catch(err) {
+            console.log(err);
+        }
+    },
+
+    newPost: async (req, res) => {
+        const { userId, id ,message } = req.body;
+        const post = { userId , message };
+            
+        try {
+            /* Save the post */
+            const user = await User.findById({ _id: id }, { __v: 0, password: 0, date: 0 });
+            user.posts.push(post);
+            await user.save();
+
+            /* Get post with additional user Info */
+            const { name, image } = await User.findById({ _id: userId }, 'name image');
+            res.json({ 
+                ...user.posts[user.posts.length - 1].toObject(),
+                name, 
+                image 
+            })
+        } catch (err) {
             console.log(err);
         }
     }

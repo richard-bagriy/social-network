@@ -6,27 +6,25 @@ import {
 
 const initialState = {
     
-    posts: [],
     profile: null,
-    isLoadingUser: false
+    isLoadingUser: false,
+    posts: []
     
 };
 
 export default (state = initialState, action) => {
 
     switch(action.type) {
-        
         case ADD_POST:
-            const post = {id: 5, message: action.message, count: 0};
-
             return {
                 ...state,
-                posts: [...state.posts, post],
+                posts: [...state.posts, action.post],
             }
         case SET_PROFILE_DATA:
             return {
                 ...state,
-                profile: action.data
+                profile: action.data,
+                posts: action.data.posts
             }
         case TOGGLE_LOADING_USER:
             return {

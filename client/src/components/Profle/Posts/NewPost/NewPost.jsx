@@ -7,29 +7,36 @@ import style from './style.module.css';
 
 const maxLength50 = maxLength(50);
 
-const NewPost = ({
-    handleSubmit,
-    profileImage,
-    text
-}) => {
+class NewPost extends React.Component {
 
-    return (
-        <div className={classNames(style.wrapper, 'bg-white')}>
-            <form onSubmit={handleSubmit} className={style.inner}>
-                <img className="user-small-image" src={ profileImage } alt={ profileImage } />
-                <Field 
-                    component={Input} 
-                    className="input border w-100" 
-                    value={text} 
-                    name="message" 
-                    placeholder="Write your activity"
-                    validate={[required,maxLength50]} 
-                />
-                <button className="btn btn-pink p-12">Add post</button>
-            </form>
-        </div>
-    )
+    componentDidMount() {
+        this.props.initialize({ id: this.props.id });    
+    }
 
+    render() {
+        const { handleSubmit, profileImage, text } = this.props;
+
+        return (
+            <div className={classNames(style.wrapper, 'bg-white')}>
+                <form onSubmit={handleSubmit} className={style.inner}>
+                    <img className="user-small-image" src={ profileImage } alt={ profileImage } />
+                    <Field 
+                        component={Input} 
+                        className="input border w-100" 
+                        value={text} 
+                        name="message" 
+                        placeholder="Write your activity"
+                        validate={[required,maxLength50]} 
+                    />
+                    <Field 
+                        component="input"
+                        type="hidden"
+                        name="id"
+                    />
+                    <button className="btn btn-pink p-12">Add post</button>
+                </form>
+            </div>
+        )
+    }
 }
-
 export default reduxForm({ form: 'add-post' })(NewPost)

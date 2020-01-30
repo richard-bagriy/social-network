@@ -1,6 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const postShema = new Schema({
+    userId: {
+        type: String,
+        required: true
+    },
+    message: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+        required: true
+    }
+});
+
 const UserSchema = new Schema({
 
     name: {
@@ -49,7 +65,9 @@ const UserSchema = new Schema({
     address: {
         type: String,
         default: null,
-    }
+    },
+
+    posts: [postShema]
 
 })
 

@@ -1,21 +1,26 @@
 import React from 'react'
+import { generateImagePath } from '../../../../utils/helper'
 import style from './style.module.css'
 
-const Post = (props) => {
-    const date = new Date();
+const Post = ({
+    message,
+    date,
+    name,
+    image
+ }) => {
+
+    const userImage = generateImagePath(image)
 
     return (
-        <div className="border p-20 bg-white">
-            <div className={style.postWrapper}>
-                <div className={style.postTop}>
-                    <img src="" className={style.image} alt="test" />
-                    <div>
-                        <div className={style.postUserName}>Rock Smith</div>
-                        <div className={style.postTime}>{ date.toLocaleTimeString() }</div>
-                    </div>
+        <div className={style.postWrapper}>
+            <div className={style.postTop}>
+                <img src={ userImage } className={style.image} alt="test" />
+                <div>
+                    <div className={style.postUserName}>{ name }</div>
+                    <div className={style.postTime}>{ date }</div>
                 </div>
-                <div className={style.postText}>{props.message}</div>
             </div>
+            <div className={style.postText}>{ message }</div>
         </div>
     )
 }

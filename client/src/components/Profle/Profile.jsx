@@ -1,13 +1,13 @@
 import React from 'react'
-import PostsContainer from '../../containers/PostsContainer';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileDetail from './ProfileDetail';
 import Message from '../common/Message';
+import Posts from './Posts/Posts';
 import ProfileSubscribersContainer from '../../containers/ProfileSubsribersContainer';
+import ProfileSubscriptionsContainer from '../../containers/ProfileSubscriptionsContainer';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import style from './style.module.css';
-import ProfileSubscriptionsContainer from '../../containers/ProfileSubscriptionsContainer';
 
 const Profile = ({ 
     profile: {
@@ -18,11 +18,13 @@ const Profile = ({
         about,
         email,
         address = null,
-        phone = null
+        phone = null,
     },
-    id
+    id,
+    addPost,
+    userImage,
+    posts
 }) => {
-    
     return (
         <div className={style.wrapper}>
 
@@ -45,7 +47,7 @@ const Profile = ({
                 </TabList>
 
                 <TabPanel>
-                    <PostsContainer />
+                    <Posts posts={posts} addPost={addPost} id={id} profileImage={userImage} />
                 </TabPanel>
 
                 <TabPanel>

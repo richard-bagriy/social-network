@@ -1,5 +1,5 @@
 import { profileAPI } from '../../api/api';
-import { toggleLoadingUser, setProfileData } from './actions';
+import { toggleLoadingUser, setProfileData, addPost as addPostAC } from './actions';
 
 export const getProfile = (id) => (dispatch) => {
 
@@ -9,5 +9,12 @@ export const getProfile = (id) => (dispatch) => {
         dispatch(setProfileData(data));
         dispatch(toggleLoadingUser(false));
     })
+
+}
+
+export const addPost = (message, id) => async dispatch => {
+
+    const post = await profileAPI.addPost(message, id);
+    dispatch(addPostAC(post))
 
 }

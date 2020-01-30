@@ -20,6 +20,10 @@ export const profileAPI = {
 
     getSubscriptions(id) {
         return instance.get(`profile/subscriptions/${id}`).then(response => response.data);
+    },
+
+    addPost(message, id) {
+        return instance.post('profile/post', { message, id } ).then(response => response.data);
     }
 
 }
