@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileDetail from './ProfileDetail';
 import Message from '../common/Message';
 import Posts from './Posts/Posts';
-import ProfileSubscribersContainer from '../../containers/ProfileSubsribersContainer';
-import ProfileSubscriptionsContainer from '../../containers/ProfileSubscriptionsContainer';
+import Preloader from '../common/Preloader';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import style from './style.module.css';
+
+const ProfileSubscribersContainer = lazy( () => import('../../containers/ProfileSubsribersContainer') );
+const ProfileSubscriptionsContainer  = lazy( () => import ('../../containers/ProfileSubscriptionsContainer') );
 
 const Profile = ({ 
     profile: {
@@ -65,11 +67,15 @@ const Profile = ({
                 </TabPanel>
 
                 <TabPanel>
-                    <ProfileSubscribersContainer/>
+                    <Suspense fallback={Preloader}>
+                        <ProfileSubscribersContainer/>
+                    </Suspense>
                 </TabPanel>
 
                 <TabPanel>
-                    <ProfileSubscriptionsContainer />
+                    <Suspense fallback={Preloader}>
+                        <ProfileSubscriptionsContainer />
+                    </Suspense>
                 </TabPanel>
 
             </Tabs>
