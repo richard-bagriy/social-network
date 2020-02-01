@@ -1,7 +1,8 @@
 import { 
     ADD_POST, 
     SET_PROFILE_DATA, 
-    TOGGLE_LOADING_USER, 
+    TOGGLE_LOADING_USER,
+    DELETE_POST
 } from './types';
 
 const initialState = {
@@ -30,6 +31,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 isLoadingUser: action.loading
+            }
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(p => p._id !== action.postId)
             }
         default:
             return state;

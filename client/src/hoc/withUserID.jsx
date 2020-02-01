@@ -7,17 +7,16 @@ import { getAuthUserId } from '../store/Auth/selectors';
 export default Component => {
     
     class WithUserId extends React.Component {
-
+        
         render() {
             const { id } = this.props.match.params;
-            const userId = id ? id : this.props.id;
-            
+            const userId = id ? id : this.props.authId;
             return <Component userId={userId} {...this.props} />
         }
 
     }
 
-    const mapStateToProps = (state) => ({ id: getAuthUserId(state) })
+    const mapStateToProps = state => ({ authId: getAuthUserId(state) })
 
     return compose(
         connect(mapStateToProps),

@@ -10,7 +10,7 @@ const maxLength50 = maxLength(50);
 class NewPost extends React.Component {
 
     componentDidMount() {
-        this.props.initialize({ id: this.props.id });    
+        this.props.initialize({ id: this.props.id });
     }
 
     render() {

@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileDetail from './ProfileDetail';
 import Message from '../common/Message';
-import Posts from './Posts/Posts';
+import PostsContinaer from '../../containers/PostsContainer';
 import Preloader from '../common/Preloader';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -23,9 +23,6 @@ const Profile = ({
         phone = null,
     },
     id,
-    addPost,
-    userImage,
-    posts
 }) => {
     return (
         <div className={style.wrapper}>
@@ -49,7 +46,7 @@ const Profile = ({
                 </TabList>
 
                 <TabPanel>
-                    <Posts posts={posts} addPost={addPost} id={id} profileImage={userImage} />
+                    <PostsContinaer />
                 </TabPanel>
 
                 <TabPanel>

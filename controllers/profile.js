@@ -126,6 +126,22 @@ module.exports = {
         } catch (err) {
             console.log(err);
         }
+    },
+
+    deletePost: async (req, res) => {
+        const { postUserId, postId } = req.body;
+        console.log(postUserId , postId); 
+        try {
+            const user = await User.updateOne({ _id: postUserId }, {
+                $pull: { 
+                    posts: { _id: postId }
+                }
+            })
+            console.log(user);
+            res.json({ message: 'Post successfully deleted ^^' });
+        } catch (err) {
+            console.log(err)
+        }
     }
 
 }

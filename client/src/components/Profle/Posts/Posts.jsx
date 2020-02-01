@@ -5,8 +5,8 @@ import Message from '../../common/Message';
 
 import { generateImagePath } from '../../../utils/helper';
 
-const Posts = ({ posts, addPost, profileImage, id }) => {
-
+const Posts = ({ posts, addPost, profileImage, userId, authId }) => {
+    
     const handleSubmit = ({ message, id }) => {
         addPost(message, id);
     }
@@ -15,11 +15,16 @@ const Posts = ({ posts, addPost, profileImage, id }) => {
 
     return (
         <div>
-            <NewPost profileImage={image} onSubmit={handleSubmit} id={id} />
+            <NewPost profileImage={image} onSubmit={handleSubmit} id={userId} />
+
             { posts.length 
                 ? <div className="border p-20 bg-white">
                     { posts.map( p => 
                         <Post
+                            id={p._id}
+                            profileId={userId}
+                            userId={p.userId}
+                            authId={authId}
                             message={p.message} 
                             date={p.date} 
                             key={p._id}
@@ -30,6 +35,7 @@ const Posts = ({ posts, addPost, profileImage, id }) => {
                 </div>
                 : <Message message="You don't have any posts" />
             }
+
         </div>
     )
 }

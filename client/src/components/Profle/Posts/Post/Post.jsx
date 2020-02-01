@@ -1,12 +1,17 @@
 import React from 'react'
 import { generateImagePath } from '../../../../utils/helper'
+import DeletePost from './DeletePost'
 import style from './style.module.css'
 
 const Post = ({
+    id,
     message,
     date,
     name,
-    image
+    image,
+    userId,
+    authId,
+    profileId,
  }) => {
 
     const userImage = generateImagePath(image)
@@ -21,6 +26,7 @@ const Post = ({
                 </div>
             </div>
             <div className={style.postText}>{ message }</div>
+            { userId === authId && <DeletePost userId={profileId} postId={id} /> }
         </div>
     )
 }

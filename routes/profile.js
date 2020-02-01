@@ -6,5 +6,6 @@ router.get('/:id', checkToken, controller.getProfile)
 router.get('/subscribers/:id', checkToken, controller.getSubscribers)
 router.get('/subscriptions/:id', checkToken, controller.getSubscriptions)
 router.post('/post', checkToken, controller.newPost)
+router.delete('/post', checkToken, controller.deletePost)
 
 module.exports = router;

@@ -5,9 +5,8 @@ import Profile from '../components/Profle/Profile';
 import Preloader from '../components/common/Preloader';
 import withUserID from '../hoc/withUserID';
 import { getAuth } from '../store/Auth/selectors';
-import { getProfile, addPost } from '../store/ProfilePage/effects';
-import { getProfileLoadingUser, getProfileInfo, getProfilePosts } from '../store/ProfilePage/selectors';
-import { getUserImage } from '../store/Auth/selectors';
+import { getProfile } from '../store/ProfilePage/effects';
+import { getProfileLoadingUser, getProfileInfo } from '../store/ProfilePage/selectors';
 
 class ProfileContainer extends React.Component {
 
@@ -26,16 +25,13 @@ class ProfileContainer extends React.Component {
             isLoadingUser,
             profile,
             userId,
-            addPost,
-            userImage,
-            posts
         } = this.props;
         
         if (isLoadingUser || profile === null) {
             return <Preloader />
         }
 
-        return <Profile profile={profile} id={userId} userImage={userImage} addPost={addPost} posts={posts} />
+        return <Profile profile={profile} id={userId}  />
     }
 }
 
@@ -45,12 +41,11 @@ const mapStateToProps = (state) => {
         profile: getProfileInfo(state),
         isAuth: getAuth(state),
         isLoadingUser: getProfileLoadingUser(state),
-        userImage: getUserImage(state),
-        posts: getProfilePosts(state)
+        
     }
 }
 
 export default compose(
-    connect(mapStateToProps, { getProfile, addPost }),
+    connect(mapStateToProps, { getProfile }),
     withUserID
 )(ProfileContainer)

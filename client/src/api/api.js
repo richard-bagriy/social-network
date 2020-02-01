@@ -24,6 +24,15 @@ export const profileAPI = {
 
     addPost(message, id) {
         return instance.post('profile/post', { message, id } ).then(response => response.data);
+    },
+
+    deletePost({ userId, postId }) {
+        return instance.delete('profile/post', { 
+            data: {
+                postUserId: userId, 
+                postId
+            }
+        } )
     }
 
 }
