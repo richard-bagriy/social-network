@@ -10,7 +10,7 @@ const maxLength50 = maxLength(50);
 class NewPost extends React.Component {
 
     componentDidMount() {
-        this.props.initialize({ id: this.props.id });
+        this.props.initialize({ userId: this.props.userId });
     }
 
     render() {
@@ -28,11 +28,7 @@ class NewPost extends React.Component {
                         placeholder="Write your activity"
                         validate={[required,maxLength50]} 
                     />
-                    <Field 
-                        component="input"
-                        type="hidden"
-                        name="id"
-                    />
+                    <Field component="input" type="hidden" name="userId" />
                     <button className="btn btn-pink p-12">Add post</button>
                 </form>
             </div>

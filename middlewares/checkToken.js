@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
 
     try {
         const { id } = await jwt.verify(token, process.env.TOKEN_SECRET);
-        req.body.userId = id;
+        req.body.authID = id;
         next();
     } catch(err) {
         console.log(err);

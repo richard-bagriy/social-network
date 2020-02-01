@@ -7,15 +7,15 @@ import { generateImagePath } from '../../../utils/helper';
 
 const Posts = ({ posts, addPost, profileImage, userId, authId }) => {
     
-    const handleSubmit = ({ message, id }) => {
-        addPost(message, id);
+    const handleSubmit = ({ message, userId }) => {
+        addPost(message, userId);
     }
 
     const image = generateImagePath(profileImage);
 
     return (
         <div>
-            <NewPost profileImage={image} onSubmit={handleSubmit} id={userId} />
+            <NewPost profileImage={image} onSubmit={handleSubmit} userId={userId} />
 
             { posts.length 
                 ? <div className="border p-20 bg-white">

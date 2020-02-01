@@ -4,12 +4,12 @@ const Subscriber = require('../models/subsribers');
 module.exports = {
 
     getUsers: async (req, res) => {
-        const { userId } = req.body;
+        const { authID } = req.body;
         const page  = parseInt(req.query.page);
         const limit = parseInt(req.query.limit);
 
         try {
-            const users = await User.find({ '_id': { $ne: userId } }, {
+            const users = await User.find({ '_id': { $ne: authID } }, {
                 password: 0,
                 __v: 0,
                 date: 0,
@@ -22,7 +22,7 @@ module.exports = {
                 const { _id, name, image, gender } = u;
                 const subscribers   = await Subscriber.countDocuments({ 'subscriberId': _id });
                 const subscriptions = await Subscriber.countDocuments({ 'userId': _id });
-                const subscribed    = ( await Subscriber.findOne({ 'subscriberId': _id, 'userId': userId }) ) ? true : false;
+                const subscribed    = ( await Subscriber.findOne({ 'subscriberId': _id, 'userId': authID }) ) ? true : false;
                 
                 return {
                     _id,
@@ -45,10 +45,10 @@ module.exports = {
     },
 
     subscribe: async (req, res) => {
-        const { subscriberId, userId } = req.body;
+        const { subscriberId, authID } = req.body;
         
         const subscriber = new Subscriber({ 
-            userId,
+            userId: authID,
             subscriberId,
         });
 
@@ -61,11 +61,11 @@ module.exports = {
     },
 
     unsubscribe: async (req, res) => {
-        const { subscriberId, userId } = req.body;
+        const { subscriberId, authID } = req.body;
 
         try {
             await Subscriber.deleteOne({
-                userId,
+                userId: authID,
                 subscriberId
             });
             res.json({ message: 'Unsubsribe was successful' });

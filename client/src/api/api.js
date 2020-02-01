@@ -22,17 +22,14 @@ export const profileAPI = {
         return instance.get(`profile/subscriptions/${id}`).then(response => response.data);
     },
 
-    addPost(message, id) {
-        return instance.post('profile/post', { message, id } ).then(response => response.data);
+    addPost(message, userId) {
+        return instance.post('profile/post', { message, userId } ).then(response => response.data);
     },
 
     deletePost({ userId, postId }) {
         return instance.delete('profile/post', { 
-            data: {
-                postUserId: userId, 
-                postId
-            }
-        } )
+            data: { userId, postId }
+        })
     }
 
 }
@@ -51,9 +48,7 @@ export const usersAPI = {
 
     unsubscribe(userId) {
         return instance.delete('users/subscribe', { 
-            data : {
-                subscriberId: userId 
-            } 
+            data : { subscriberId: userId } 
         });
     }
 }

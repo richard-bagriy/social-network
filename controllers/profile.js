@@ -107,17 +107,17 @@ module.exports = {
     },
 
     newPost: async (req, res) => {
-        const { userId, id ,message } = req.body;
-        const post = { userId , message };
+        const { authID, userId ,message } = req.body;
+        const post = { userId: authID , message };
             
         try {
             /* Save the post */
-            const user = await User.findById({ _id: id }, { __v: 0, password: 0, date: 0 });
+            const user = await User.findById({ _id: userId }, { __v: 0, password: 0, date: 0 });
             user.posts.push(post);
             await user.save();
 
             /* Get post with additional user Info */
-            const { name, image } = await User.findById({ _id: userId }, 'name image');
+            const { name, image } = await User.findById({ _id: authID }, 'name image');
             res.json({ 
                 ...user.posts[user.posts.length - 1].toObject(),
                 name, 
@@ -129,15 +129,15 @@ module.exports = {
     },
 
     deletePost: async (req, res) => {
-        const { postUserId, postId } = req.body;
-        console.log(postUserId , postId); 
+        const { userId, postId } = req.body;
+
         try {
-            const user = await User.updateOne({ _id: postUserId }, {
+            await User.updateOne({ _id: userId }, {
                 $pull: { 
                     posts: { _id: postId }
                 }
             })
-            console.log(user);
+
             res.json({ message: 'Post successfully deleted ^^' });
         } catch (err) {
             console.log(err)
