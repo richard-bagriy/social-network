@@ -107,9 +107,9 @@ module.exports = {
     },
 
     newPost: async (req, res) => {
-        const { authID, userId ,message } = req.body;
+        const { authID, userId, message } = req.body;
         const post = { userId: authID , message };
-            
+        
         try {
             /* Save the post */
             const user = await User.findById({ _id: userId }, { __v: 0, password: 0, date: 0 });

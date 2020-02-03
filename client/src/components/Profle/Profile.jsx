@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileDetail from './ProfileDetail';
 import Message from '../common/Message';
-import PostsContinaer from '../../containers/PostsContainer';
+import ProfilePosts from '../../containers/ProfilePostsContainer';
 import Preloader from '../common/Preloader';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -46,7 +46,7 @@ const Profile = ({
                 </TabList>
 
                 <TabPanel>
-                    <PostsContinaer />
+                    <ProfilePosts />
                 </TabPanel>
 
                 <TabPanel>

@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { required, maxLength } from '../../../../utils/Validators';
-import { Input } from '../../../common/Forms/Forms';
+import { required, maxLength } from '../../../../utils/Validators'
+import { Input } from '../../Forms/Forms'
 import classNames from 'classnames'
-import style from './style.module.css';
+import style from './style.module.css'
 
 const maxLength50 = maxLength(50);
 
-class NewPost extends React.Component {
+class NewPost extends Component {
 
     componentDidMount() {
-        this.props.initialize({ userId: this.props.userId });
+        const { postId } = this.props
+        this.props.initialize({ postId });
     }
 
     render() {
@@ -26,9 +27,9 @@ class NewPost extends React.Component {
                         value={text} 
                         name="message" 
                         placeholder="Write your activity"
-                        validate={[required,maxLength50]} 
+                        validate={[required, maxLength50]} 
                     />
-                    <Field component="input" type="hidden" name="userId" />
+                    <Field component="input" type="hidden" name="postId" />
                     <button className="btn btn-pink p-12">Add post</button>
                 </form>
             </div>

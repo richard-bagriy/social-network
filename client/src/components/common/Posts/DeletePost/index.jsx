@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import { deletePost } from '../../../../../store/ProfilePage/effects'
 import style from './style.module.css'
 import classNames from 'classnames'
 
-let DeletePost = class extends Component {
+class DeletePost extends Component {
 
     componentDidMount() {
         this.setDefaultValues()
@@ -34,11 +32,4 @@ let DeletePost = class extends Component {
 
 }
 
-DeletePost = reduxForm({ form: 'delete-user-post' })(DeletePost)
-
-const DeletePostContainer = ({ deletePost , ...props }) => {
-    const onSubmit = ({ userId, postId }) => deletePost({ userId, postId })
-    return <DeletePost onSubmit={onSubmit} {...props} />
-}
-
-export default connect(null, { deletePost } )(DeletePostContainer)
+export default reduxForm({ form: 'delete-post' })(DeletePost)

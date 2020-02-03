@@ -18,9 +18,9 @@ export const getProfile = (id) => (dispatch) => {
 
 }
 
-export const addPost = (message, id) => async dispatch => {
+export const addPost = ({message, postId}) => async dispatch => {
 
-    const post = await profileAPI.addPost(message, id);
+    const post = await profileAPI.addPost(message, postId);
     dispatch(addPostAC(post))
     dispatch(reset('add-post'));
 }
