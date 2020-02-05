@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Header from '../Header/Header';
 import Navbar from '../Navbar/Navbar';
 import ProfileContainer from '../../containers/ProfileContainer';
@@ -10,8 +10,6 @@ import '../../styles/App.css';
 
 export default () => {
     return <>
-        <Redirect to="/" />
-        
         <div className="app-wrapper">
             <Header />
             <Navbar />

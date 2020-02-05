@@ -18,7 +18,7 @@ const Register = ({ authRegistration, regMessage }) => {
                 <div className={style.authInner}>
                     <div className={style.authHeader}>
                     <img src={logo} alt="Logo" className={style.authHeader__img} />
-                    <Link to="/login" className={style.authHeader__link}>Sign in</Link>
+                    <Link to="/" className={style.authHeader__link}>Sign in</Link>
                 </div>
                 <div className={style.authBody}>
                     <h1 className={style.authBody__header}>Sign Up</h1>

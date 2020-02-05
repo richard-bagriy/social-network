@@ -17,10 +17,13 @@ class AppContainer extends Component {
     render() {
         const { init, isAuth } = this.props;
         
-        if (!init) return <Preloader/>
-        if (!isAuth) return <Auth />
-
-        return <App/>
+        if (!init) {
+            return <Preloader/>
+        } else if (!isAuth) {
+            return <Auth />
+        } else {
+            return <App/>
+        }
     }
 
 }

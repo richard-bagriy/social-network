@@ -56,9 +56,11 @@ export default (state = initialState, action) => {
                 subscriptions: state.subscriptions.filter( user => user._id !== action.userId)
             }
         case SET_USERS:
+            const users = (state.users.length <= 8) ? action.users : [...state.users, ...action.users];
+
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users
             }
         case SET_PAGE:
             return {

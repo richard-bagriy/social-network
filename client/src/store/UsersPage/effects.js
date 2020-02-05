@@ -18,8 +18,16 @@ export const getUsers = (limit, page) => async dispatch =>{
     const users =  await usersAPI.getUsers(limit, page);
 
     if (users.length) {
-        dispatch(setPage(page + 1));
+
+        if (users.length <= 8) {
+            dispatch(setPage(page));
+            
+        } else {
+            dispatch(setPage(page + 1));
+        }
+        
         dispatch(setUsers(users));
+
     } else {
         dispatch(setHaveUsers(false))
         dispatch(setPage(page));
