@@ -1,0 +1,31 @@
+.wrapper {
+    column-count: 2;
+    column-gap: 30px;
+}
+
+.wrapper > div {
+    break-inside: avoid;
+    margin-bottom: 30px;
+}
+
+.editBtn{
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+.editBtn:hover{
+    color: #434f74;
+}
+
+.textarea{
+    height: 100px !important;
+    resize: none;
+}
+
+.buttonWrapper{
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

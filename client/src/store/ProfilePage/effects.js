@@ -6,6 +6,7 @@ import {
     addPost as addPostAC,
     deletePost as deletePostAC 
 } from './actions';
+import { updateUserData } from '../Auth/actions'
 
 export const getProfile = (id) => (dispatch) => {
 
@@ -29,5 +30,12 @@ export const deletePost = ({ userId, postId }) => async dispatch => {
     
     await profileAPI.deletePost({ userId, postId })
     dispatch(deletePostAC(postId))
+
+}
+
+export const updateProfile = data => async dispatch => {
+
+    await profileAPI.update(data);
+    dispatch(updateUserData(data))
 
 }

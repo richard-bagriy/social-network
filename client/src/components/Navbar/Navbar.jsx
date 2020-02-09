@@ -24,6 +24,13 @@ const Navbar = () => {
                     Find Users
                 </NavLink>
             </div>
+            <div className={style.divider}></div>
+            <div className={style.item}>
+                <NavLink to="/setting" activeClassName={style.active}>
+                    <i className={ classNames('fas', 'fa-cog', style.navbarIcon) }></i>
+                    Setting
+                </NavLink>
+            </div>
         </nav>
     )
 }

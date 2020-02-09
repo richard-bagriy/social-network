@@ -30,6 +30,10 @@ export const profileAPI = {
         return instance.delete('profile/post', { 
             data: { userId, postId }
         })
+    },
+
+    update(data) {
+        return instance.put('profile/update', { data } ).then(response => response.data);
     }
 
 }
@@ -64,7 +68,7 @@ export const authAPI = {
     },
 
     check() {
-        return instance.get('/auth');
+        return instance.get('/auth').then(response => response.data);
     },
 
 }

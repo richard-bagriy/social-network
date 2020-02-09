@@ -16,7 +16,9 @@ export default ({
 }) => {
 
     const submitAddPost = ({ message, postId }) => addPost({ message, postId })
+
     const submitDeletePost = ({ userId, postId }) =>  deletePost({ userId, postId })
+    
     const image = generateImagePath(profileImage)
 
     return <>

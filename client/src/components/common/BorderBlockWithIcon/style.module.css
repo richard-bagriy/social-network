@@ -1,0 +1,10 @@
+.header{
+    padding-bottom: 20px;
+    font-weight: 400;
+    color: #434f74;
+    text-transform: capitalize;
+}
+
+.icon{
+    margin-right: 8px;
+}

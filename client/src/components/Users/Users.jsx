@@ -17,9 +17,9 @@ export default ({
     return (
         <div className={style.userWrapper}>
 
-        <h2 className={style.usersHeader}>
+        <h2 className="h2">
             Find Users
-            <hr className={style.usersHeaderHr} />
+            <hr className="h2-border" />
         </h2>
 
         <Filter onSubmit={changeUsers}/>

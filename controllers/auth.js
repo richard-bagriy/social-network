@@ -7,10 +7,14 @@ module.exports = {
 
     check: async (req, res) => {
         try {
-            const token    = req.cookies.token;
-            const verified = await jwt.verify(token, process.env.TOKEN_SECRET);
-            const { image, name, email, gender, id } = await User.findById(verified.id);
-            res.json({ image, name, email, gender, id, auth: true });
+            const token  = req.cookies.token;
+            const { id } = await jwt.verify(token, process.env.TOKEN_SECRET);
+            const user   = await User.findById(id).select('-password -__v -posts -date');
+
+            res.json({
+                ...user.toObject(),
+                auth: true
+            });
         } catch (err) {
             res.json({ auth: false });
         }

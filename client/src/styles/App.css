@@ -43,6 +43,10 @@
     padding: 20px;
 }
 
+.p-x-25{
+    padding: 0 25px;
+}
+
 .p-0{
     padding: 0 !important;
 }
@@ -166,4 +170,23 @@
 .react-tabs__tab--selected{
     border-bottom: 2px solid #fa2276;
     color: #434f74;
+}
+
+
+/* Header */
+.h2{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-weight: 700;
+    color: #434f74;
+    font-size: 18px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.h2-border{
+    width: 30px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 20px;
 }

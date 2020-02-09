@@ -26,3 +26,7 @@
 .navbarIcon:hover{
     color: #fa2276;
 }
+.divider{
+    height: 1px;
+    background: #e9ecef;
+}

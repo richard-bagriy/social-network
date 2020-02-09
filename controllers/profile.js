@@ -142,6 +142,17 @@ module.exports = {
         } catch (err) {
             console.log(err)
         }
+    },
+
+    updateProfile: async (req, res) => {
+        const { authID, data } = req.body
+
+        try {
+            await User.findByIdAndUpdate({ _id: authID }, { ...data });
+            res.json({ message: 'Profile successfully updated' })
+        } catch (err) {
+            console.log(err);
+        }
     }
 
 }

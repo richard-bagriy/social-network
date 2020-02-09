@@ -27,11 +27,10 @@ export const authRegistration = (data) => async (dispatch) => {
     },2000)
 }
 
-export const checkAuth = () => (dispatch) => {
+export const checkAuth = () => async dispatch => {
     
-    return authAPI.check().then(data => {
-        dispatch(setAuth(data.data))
-    })
+    const data = await authAPI.check();
+    dispatch(setAuth(data))
 }
 
 export const logout = () => (dispatch) => {

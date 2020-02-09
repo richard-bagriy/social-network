@@ -23,7 +23,7 @@ class NewPost extends Component {
                     <img className="user-small-image" src={ profileImage } alt={ profileImage } />
                     <Field 
                         component={Input} 
-                        className="input border w-100" 
+                        className="input border w-100"
                         value={text} 
                         name="message" 
                         placeholder="Write your activity"
