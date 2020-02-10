@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs')
 const User = require('../models/user');
 const Subscribers = require('../models/subsribers');
 
@@ -151,6 +152,19 @@ module.exports = {
             await User.findByIdAndUpdate({ _id: authID }, { ...data });
             res.json({ message: 'Profile successfully updated' })
         } catch (err) {
+            console.log(err);
+        }
+    },
+
+    changePassword: async (req, res) => {
+        const { authID, password } = req.body
+
+        try {
+            const salt = await bcrypt.genSalt(10);
+            const hashPassword = await bcrypt.hash(password, salt)
+            await User.findByIdAndUpdate({ _id: authID }, { password: hashPassword } )
+            res.json({ message: 'Password successfully updated' })
+        } catch(err) {
             console.log(err);
         }
     }

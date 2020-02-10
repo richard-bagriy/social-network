@@ -9,7 +9,7 @@ export default (Component) => {
 
         render () {
             if (!this.props.isAuth) {
-                return <Redirect to="/login" />
+                return <Redirect to="/" />
             } else {
                 return <Component {...this.props} />
             }

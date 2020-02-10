@@ -1,6 +1,7 @@
 import React from 'react'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Overview from '../../containers/OverviewContainer'
+import ChangePassword from '../../containers/ChangePasswordContainer'
 
 export default () => {
     
@@ -22,7 +23,7 @@ export default () => {
             </TabPanel>
 
             <TabPanel>
-                Change password
+                <ChangePassword />
             </TabPanel>
 
         </Tabs>

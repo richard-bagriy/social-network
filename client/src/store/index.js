@@ -6,6 +6,7 @@ import authReducer from './Auth';
 import profileReducer from './ProfilePage';
 import dialogReducer from './DialogsPage';
 import usersReducer from './UsersPage';
+import settingReducer from './Setting'
 
 const reducers = combineReducers({
     app: appReducer,
@@ -13,6 +14,7 @@ const reducers = combineReducers({
     dialogsPage: dialogReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    setting: settingReducer,
     form: formReducer,
 });
 

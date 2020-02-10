@@ -34,6 +34,10 @@ export const profileAPI = {
 
     update(data) {
         return instance.put('profile/update', { data } ).then(response => response.data);
+    },
+
+    changePassword(password) {
+        return instance.put('profile/changePassword', { password } ).then(res => res.data)
     }
 
 }

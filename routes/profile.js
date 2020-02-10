@@ -6,7 +6,8 @@ const {
     getSubscriptions,
     newPost,
     deletePost,
-    updateProfile
+    updateProfile,
+    changePassword
  } = require('../controllers/profile');
 
 router.get('/:id', checkToken, getProfile)
@@ -15,5 +16,6 @@ router.get('/subscriptions/:id', checkToken, getSubscriptions)
 router.post('/post', checkToken, newPost)
 router.delete('/post', checkToken, deletePost)
 router.put('/update', checkToken, updateProfile)
+router.put('/changePassword', checkToken, changePassword)
 
 module.exports = router;
