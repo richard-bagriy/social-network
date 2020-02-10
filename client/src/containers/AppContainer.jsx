@@ -6,6 +6,7 @@ import { getAuth } from '../store/Auth/selectors';
 import Preloader from '../components/common/Preloader';
 import Auth from '../components/Auth';
 import App from '../components/App';
+import { Redirect } from 'react-router-dom';
 
 
 class AppContainer extends Component {
@@ -16,11 +17,14 @@ class AppContainer extends Component {
 
     render() {
         const { init, isAuth } = this.props;
-        
+
         if (!init) {
             return <Preloader/>
         } else if (!isAuth) {
-            return <Auth />
+            return <>
+                <Redirect to="/" />
+                <Auth />
+            </>
         } else {
             return <App/>
         }
