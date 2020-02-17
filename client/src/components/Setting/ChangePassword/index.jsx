@@ -20,7 +20,7 @@ const ChangePassword = ({
     return (
         <div className={classNames('border', style.wrapper)}>
 
-            <div className={classNames('border border-bottom p-20', style.header)}>Change password</div>
+            <div className="border color-blue border-bottom p-20">Change password</div>
 
             <div className="p-20">
                 <form onSubmit={handleSubmit} method="POST">

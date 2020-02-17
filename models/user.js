@@ -47,9 +47,15 @@ const UserSchema = new Schema({
         default: Date.now
     },
 
-    image: {
-        type: String,
-        default: null
+    images: {
+        photo: {
+            type: String,
+            default: null
+        },
+        cover: {
+            type: String,
+            default: null
+        }
     },
     
     about: {

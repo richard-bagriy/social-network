@@ -19,7 +19,7 @@ module.exports = {
             .skip((page * limit) - limit);
 
             const Users = await Promise.all(users.map(async u => {
-                const { _id, name, image, gender } = u;
+                const { _id, name, images, gender } = u;
                 const subscribers   = await Subscriber.countDocuments({ 'subscriberId': _id });
                 const subscriptions = await Subscriber.countDocuments({ 'userId': _id });
                 const subscribed    = ( await Subscriber.findOne({ 'subscriberId': _id, 'userId': authID }) ) ? true : false;
@@ -27,7 +27,7 @@ module.exports = {
                 return {
                     _id,
                     name,
-                    image,
+                    images,
                     gender,
                     subscribers,
                     subscriptions,

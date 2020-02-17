@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { getProfilePosts } from '../store/ProfilePage/selectors'
-import { getUserImage } from '../store/Auth/selectors'
+import { getUserImages } from '../store/Auth/selectors'
 import { addPost, deletePost } from '../store/ProfilePage/effects'
 import withUserID from '../hoc/withUserID'
 import Posts from '../components/common/Posts'
@@ -13,14 +13,14 @@ const ProfilePostsContainer = ({
     posts,
     addPost,
     deletePost,
-    profileImage,
+    images: { photo }
 }) => {
 
     return <Posts
         posts={posts}
         addPost={addPost}
         deletePost={deletePost}
-        profileImage={profileImage}
+        profileImage={photo}
         postId={userId}
         authId={authId}
     />
@@ -28,7 +28,7 @@ const ProfilePostsContainer = ({
 
 const mapStateToProps = state => ({
     posts: getProfilePosts(state),
-    profileImage: getUserImage(state)
+    images: getUserImages(state)
 })
 
 export default compose(

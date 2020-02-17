@@ -13,7 +13,7 @@ const ProfileSubscriptionsContainer  = lazy( () => import ('../../containers/Pro
 
 const Profile = ({ 
     profile: {
-        image,
+        images,
         name,
         subscriptions,
         subscribers,
@@ -28,7 +28,7 @@ const Profile = ({
         <div className={style.wrapper}>
 
             <ProfileInfo
-                image={image}
+                images={images}
                 name={name}
                 subscriptions={subscriptions}
                 subscribers={subscribers}

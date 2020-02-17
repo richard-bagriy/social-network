@@ -1,3 +1,3 @@
 export const generateImagePath = name => {
-    return require(`../assets/images/${name}`);
+    return `${process.env.PUBLIC_URL}/images/${name}`
 }

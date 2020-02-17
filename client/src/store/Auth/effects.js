@@ -1,6 +1,6 @@
-import { authAPI } from '../../api/api';
+import { authAPI, profileAPI } from '../../api/api';
 import { SubmissionError, reset } from 'redux-form';
-import { setAuth, setRegMessage } from './actions';
+import { setAuth, setRegMessage, updateAuthImages } from './actions';
 
 export const authLogin = (data) =>  async (dispatch) => {
     
@@ -44,4 +44,11 @@ export const logout = () => (dispatch) => {
         gender: null,
         auth: false
     }));
+}
+
+export const updateUserImage = (file, name) => async dispatch => {
+
+    const { images } = await profileAPI.updateImage({ file, name });
+    
+    dispatch(updateAuthImages(images))   
 }

@@ -53,3 +53,23 @@ export const Radio = ({ input, label, ...props }) => {
         </label>
     )
 }
+
+export const FileInput = ({
+    input,
+    meta,
+    ...props
+}) => {
+    
+    return <label className="btn btn-pink">
+        Choose File
+        <input 
+            {...input} 
+            {...props} 
+            type="file"
+            className="hidden" 
+            accept='.jpg, .png, .jpeg'
+            value={undefined}
+        />
+    </label>
+
+}

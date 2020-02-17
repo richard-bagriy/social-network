@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import Profile from '../components/Profle/Profile';
+import Profile from '../components/Profile/Profile';
 import Preloader from '../components/common/Preloader';
 import withUserID from '../hoc/withUserID';
 import { getAuth } from '../store/Auth/selectors';
@@ -41,7 +41,6 @@ const mapStateToProps = (state) => {
         profile: getProfileInfo(state),
         isAuth: getAuth(state),
         isLoadingUser: getProfileLoadingUser(state),
-        
     }
 }
 

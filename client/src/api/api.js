@@ -38,6 +38,14 @@ export const profileAPI = {
 
     changePassword(password) {
         return instance.put('profile/changePassword', { password } ).then(res => res.data)
+    },
+
+    updateImage({ file, name }) {
+        const data = new FormData()
+        data.set('name', name)
+        data.set('file', file, file.name)
+       
+        return instance.put('profile/updateImage', data).then(res => res.data)
     }
 
 }

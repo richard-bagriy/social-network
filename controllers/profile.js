@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const User = require('../models/user');
-const Subscribers = require('../models/subsribers');
+const Subscribers = require('../models/subsribers')
+const fs = require('fs')
 
 const getUserData = userId => {
     
@@ -40,11 +41,11 @@ module.exports = {
 
             const posts = await Promise.all(
                 data.posts.map( async post => {
-                    const { name, image } = await User.findById({ _id: post.userId }, 'name image');
+                    const { name, images } = await User.findById({ _id: post.userId }, 'name images');
                     
                     return {
                         ...post.toObject(),
-                        image,
+                        image: images.photo,
                         name
                     }
 
@@ -118,11 +119,11 @@ module.exports = {
             await user.save();
 
             /* Get post with additional user Info */
-            const { name, image } = await User.findById({ _id: authID }, 'name image');
+            const { name, images } = await User.findById({ _id: authID }, 'name images');
             res.json({ 
                 ...user.posts[user.posts.length - 1].toObject(),
                 name, 
-                image 
+                image: images.photo 
             })
         } catch (err) {
             console.log(err);
@@ -166,6 +167,35 @@ module.exports = {
             res.json({ message: 'Password successfully updated' })
         } catch(err) {
             console.log(err);
+        }
+    },
+
+    updateImage: async (req, res) => {
+        const { authID, name, imageName } = req.body
+        const { destination } = req.file
+        
+        try {
+            const noDelete = [
+                'user-background.png',
+                'user-image-female.png',
+                'user-image-male.png'
+            ]
+
+            const user = await User.findById({ _id: authID }).select('images')
+
+            /* Yep i know, but it's... Will be fixed in future */
+            if (!noDelete.includes(user.images[name])) {
+                await fs.unlink(destination + user.images[name], err => {
+                    if (err) console.log(err)
+                })
+            }
+
+            user.images[name] = imageName
+            user.save()
+
+            res.json({ images: user.images })
+        } catch(err) {
+            console.log(err)
         }
     }
 
