@@ -22,7 +22,7 @@ export default ({
         <div className="p-bot-10 color-blue font-size-14 font-bold">{label}</div>
         <div className={style.wrapper}>
             { image 
-              ? <img src={image} className="max-width-400 m-bot-20" />
+              ? <img src={image} className="max-width-400 m-bot-20" alt={imageName} />
               : <img 
                     src={generateImagePath(imageName)} 
                     alt={imageName}

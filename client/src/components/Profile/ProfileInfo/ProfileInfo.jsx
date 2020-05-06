@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 import UserInfo from '../../common/Users/User/Info';
 import UserExtra from '../../common/Users/User/Extra';
 import style from './style.module.css';
@@ -9,8 +10,10 @@ const ProfileInfo = ({
     name,
     subscriptions,
     subscribers,
-    id
+    id,
+    showButton
 }) => {
+    
     const coverImage = generateImagePath(cover);
     
     const bgImage = { backgroundImage: `url(${coverImage})` };
@@ -32,6 +35,11 @@ const ProfileInfo = ({
                 subscriptions={subscriptions}
                 color="color-white"
             />
+            { showButton && 
+                <div className="text-center">
+                    <NavLink to={`/dialogs/${id}`} className="btn btn-pink"> Message </NavLink>
+                </div>
+            }
         </div>
     )
 }

@@ -25,6 +25,7 @@ module.exports = {
                 if (dialog === null) {
                     const newDialog = await Conversations.create({ members:[authID, userId] })
                     await newDialog.save()
+                    activeUser.messages = []
                 } else {
                     activeUser.messages = dialog.messages
                 }
@@ -80,14 +81,23 @@ module.exports = {
         const { userId } = req.params
 
         try {
-            
+            const activeUser = {}
+
             const { messages } = await Conversations.findOne({
                 members: {
                     $all: [authID, userId]
                 }
             }).select('messages')
+
+            const { images, name } = await User.findById({ _id: userId}).select('name images.photo')
             
-            res.json({ messages, activeId: userId })
+            activeUser.messages = messages
+            activeUser.id = userId
+            activeUser.userName = name
+            activeUser.userImage = images.photo
+            
+            
+            res.json(activeUser)
 
         } catch (err) {
             console.log(err)

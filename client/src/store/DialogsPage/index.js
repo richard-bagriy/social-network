@@ -1,21 +1,12 @@
-import { ADD_NEW_MESSAGE } from './types';
+import { ADD_NEW_MESSAGE, SET_ACTIVE_DIALOG, SET_DIALOGS, TOGGLE_LOADING } from './types';
 
 const initialState = {
     
-    dialogs: [
-        {name: 'Artem', id: 1},
-        {name: 'Viktor', id: 2},
-        {name: 'Andrey', id: 3},
-        {name: 'Sasha', id: 4},
-        {name: 'Valera', id: 5},
-    ],
+    dialogs: [],
 
-    messages: [
-        {id: 1, message: "Hello", friend: 1},
-        {id: 2, message: "Hello", friend: 0},
-        {id: 3, message: "How are you?", friend: 1},
-        {id: 4, message: "I am very good & u ?", friend: 0}
-    ],
+    activeDialog: null,
+
+    loading: false
     
 };
 
@@ -25,11 +16,27 @@ export default (state = initialState, action) => {
     switch(action.type) {
 
         case ADD_NEW_MESSAGE:
-            const message = {id: 4, message: action.message, friend: 0};
-
             return {
                 ...state,
-                messages: [...state.messages, message],
+                activeDialog: {
+                    ...state.activeDialog,
+                    messages: [...state.activeDialog.messages, action.message]
+                }
+            }
+        case SET_DIALOGS: 
+            return {
+                ...state,
+                dialogs: action.payload   
+            }
+        case SET_ACTIVE_DIALOG: 
+            return {
+                ...state,
+                activeDialog: action.payload   
+            }
+        case TOGGLE_LOADING:
+            return {
+                ...state,
+                loading: action.payload
             }
         default: 
             return state;

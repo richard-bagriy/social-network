@@ -84,3 +84,22 @@ export const authAPI = {
     },
 
 }
+
+export const dialogsAPI = {
+
+    getDialogs(id) {
+        if (id) {
+            return instance.get(`/dialogs/${id}`).then(res => res.data)    
+        }
+        return instance.get('/dialogs').then(res => res.data)
+    },
+
+    addMessage(userId, message) {
+        return instance.post(`/dialogs/dialog/${userId}`, { message }).then(res => res.data)
+    },
+
+    getDialog(userId){
+        return instance.get(`/dialogs/dialog/${userId}`).then(res => res.data)
+    }
+
+}

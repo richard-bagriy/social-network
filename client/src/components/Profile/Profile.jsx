@@ -23,6 +23,7 @@ const Profile = ({
         phone = null,
     },
     id,
+    showButton
 }) => {
     return (
         <div className={style.wrapper}>
@@ -32,7 +33,8 @@ const Profile = ({
                 name={name}
                 subscriptions={subscriptions}
                 subscribers={subscribers}
-                id={id} 
+                id={id}
+                showButton={showButton}
             />
 
             <Tabs>
