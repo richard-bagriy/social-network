@@ -1,6 +1,7 @@
 import React from 'react';
 import BorderBlock from '../BorderBlockWithIcon'
 import style from './style.module.css';
+import cn from 'classnames'
 
 const FormControl = ({
     input, 
@@ -55,7 +56,7 @@ export const Radio = ({ input, label, ...props }) => {
 }
 
 export const FileInput = ({
-    input,
+    input: { value, ...inputRest },
     meta,
     ...props
 }) => {
@@ -63,13 +64,24 @@ export const FileInput = ({
     return <label className="btn btn-pink">
         Choose File
         <input 
-            {...input} 
-            {...props} 
+            {...inputRest} 
+            {...props}
             type="file"
             className="hidden" 
             accept='.jpg, .png, .jpeg'
-            value={undefined}
         />
     </label>
 
 }
+
+export const Select = ({ input, values, className, meta: { touched, error } }) => (   
+    <div className={cn('select-wrapper', style.formControl, touched && error ? style.error : '' )}>
+        <select {...input} className={className} onChange={input.onChange}>
+            <option value="0">- Please Choose -</option>
+            { values.map((val, i) => (
+                <option key={i} value={val} >{val}</option>
+            )) }
+        </select>
+            { touched && error && <div className={style.errorMessage}>{ error }</div> }
+    </div>
+)

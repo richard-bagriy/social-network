@@ -1,8 +1,14 @@
 import React from 'react'
 import classNames from 'classnames'
-import style from './style.module.css'
+import style from './style.module.scss'
 
-export default ({
+type Props = {
+    label: string
+    text: string
+    iconClass: string
+}
+
+const BorderBlockWithIcon: React.FC<Props> = ({
     label,
     text,
     iconClass,
@@ -16,3 +22,5 @@ export default ({
         { children ? children : text }
     </div>
 }
+
+export default BorderBlockWithIcon

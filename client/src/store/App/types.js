@@ -1,1 +1,0 @@
-export const SET_INITIAL = "APP/SET_INITIAL";

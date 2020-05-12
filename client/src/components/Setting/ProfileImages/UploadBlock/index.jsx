@@ -14,7 +14,7 @@ export default ({
 
     const changeHandler = (e, file) => {
         setImage(URL.createObjectURL(file[0]))
-        uploadImage(file[0], e.currentTarget.name)
+        uploadImage && uploadImage(file[0], e.currentTarget.name)
     }
 
     return <div className="border p-20 text-center bg-white">

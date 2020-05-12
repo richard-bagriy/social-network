@@ -1,8 +1,12 @@
 import React from 'react';
-import style from './style.module.css';
+import style from './style.module.scss';
 
-export default ({ message, type }) => {
+type Props = {
+    message: string
+    type: string
+}
 
+const Message: React.FC<Props> = ({ message, type }) => {
     let className;
     
     switch(type) {
@@ -21,3 +25,5 @@ export default ({ message, type }) => {
     
     return <div className={ className }>{ message }</div>
 }
+
+export default Message

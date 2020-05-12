@@ -1,16 +1,23 @@
-import { 
-    SUBSCRIBE, 
-    UNSUBSCRIBE, 
-    SET_USERS, 
-    SET_PAGE, 
-    TOGGLE_LOADING_USERS, 
-    TOGGLE_FOLLOWING_ON_USER,
-    SET_HAVE_USERS,
-    SET_SUBSCRIBERS,
-    SET_SUBSCRIPTIONS
-} from './types';
+import { SUBSCRIBE, UNSUBSCRIBE, SET_USERS, SET_PAGE, TOGGLE_LOADING_USERS, TOGGLE_FOLLOWING_ON_USER, SET_HAVE_USERS, 
+    SET_SUBSCRIBERS, SET_SUBSCRIPTIONS } from './types';
+import { ToggleSubscribeType, SetUsersType, SetPageType, ToggleLoadingUsersType, ToggleFollowingOnUser, SetHaveUsersType,
+    SetSubscribersType, SetSubscriptionsType } from './actions'
 
-const initialState = {
+type StateType = {
+    users: []
+    subscribers: [],
+    subscriptions: [],
+    page: number
+    limit: number
+    haveUsers: boolean
+    isLoadingUsers: boolean
+    followingInProgress: []
+}
+
+type ActionType = ToggleSubscribeType & SetUsersType & SetPageType & ToggleLoadingUsersType & ToggleFollowingOnUser 
+    & SetHaveUsersType & SetSubscribersType & SetSubscriptionsType
+
+const initialState: StateType = {
     users: [],
     subscribers: [],
     subscriptions: [],
@@ -21,15 +28,17 @@ const initialState = {
     followingInProgress: []
 };
 
-const toggleSubscribe = (users, userId, action) => {
+const toggleSubscribe = (users: Array<object>, userId: number, action: boolean) => {
     const quantity = action ? 1 : -1;
 
     return users.map(u => {
+        // @ts-ignore
         if (u._id === userId) {
 
             return {
                 ...u, 
-                subscribed: action, 
+                subscribed: action,
+                //@ts-ignore
                 subscribers: u.subscribers + quantity
             }
 
@@ -39,7 +48,15 @@ const toggleSubscribe = (users, userId, action) => {
     })
 }
 
-export default (state = initialState, action) => {
+const toggleFollowingOnProgerss = (array: [], following: boolean, id: number) => {
+    if (following) {
+        return [...array, id]
+    } else {
+        return array.filter((id:number) => id !== id)
+    }
+}
+
+export default (state = initialState, action: ActionType) => {
 
     switch(action.type) {
         case SUBSCRIBE:
@@ -53,6 +70,7 @@ export default (state = initialState, action) => {
                 ...state,
                 users: toggleSubscribe(state.users, action.userId, false),
                 subscribers: toggleSubscribe(state.subscribers, action.userId, false),
+                // @ts-ignore
                 subscriptions: state.subscriptions.filter( user => user._id !== action.userId)
             }
         case SET_USERS:
@@ -75,9 +93,7 @@ export default (state = initialState, action) => {
         case TOGGLE_FOLLOWING_ON_USER:
             return {
                 ...state,
-                followingInProgress: action.inProgress 
-                    ? [...state.followingInProgress, action.id]
-                    : state.followingInProgress.filter(id => id !== action.id)
+                followingInProgress: toggleFollowingOnProgerss(state.followingInProgress, action.inProgress, action.id)
             }
         case SET_HAVE_USERS: {
             return {
