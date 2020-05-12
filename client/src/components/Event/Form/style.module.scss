@@ -1,0 +1,9 @@
+.imagesWrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 35px;
+    margin-bottom: 25px;
+}
+.contactInformation {
+    margin-bottom: 10px;
+}

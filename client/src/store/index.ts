@@ -7,20 +7,24 @@ import profileReducer from './ProfilePage';
 import dialogReducer from './DialogsPage';
 import usersReducer from './UsersPage';
 import settingReducer from './Setting'
+import eventReducer from './Event'
 
 const reducers = combineReducers({
     app: appReducer,
     profilePage: profileReducer,
     dialogsPage: dialogReducer,
+    //@ts-ignore
     usersPage: usersReducer,
     auth: authReducer,
     setting: settingReducer,
+    event: eventReducer,
     form: formReducer,
 });
 
-const composeEnhancers = typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+export type AppStateType = ReturnType<typeof reducers>
+
+// @ts-ignore
+const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
 
 const enhancer = composeEnhancers(
     applyMiddleware(thunkMiddleware),

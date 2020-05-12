@@ -1,7 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import { initializeApp } from '../store/App/effects';
-import { getInitApp } from '../store/App/selectors';
+import { initializeApp, getInitApp } from '../store/App';
 import { getAuth } from '../store/Auth/selectors';
 import Preloader from '../components/common/Preloader';
 import Auth from '../components/Auth';

@@ -1,0 +1,22 @@
+.wrapper{
+    margin-bottom: 10px;
+
+    .inner{
+        margin-bottom: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr) 20px;
+        column-gap: 25px;
+        align-items: center;
+    
+        > i {
+            color: red;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    }
+    
+    .btn{
+        margin-top: 25px;
+    }
+
+}

@@ -103,3 +103,11 @@ export const dialogsAPI = {
     }
 
 }
+
+export const eventAPI = {
+    
+    addEvent(data) {
+        return instance.post('/event', data).then(res => res.data)
+    }
+
+}

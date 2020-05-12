@@ -1,0 +1,26 @@
+.imagesWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.image {
+    margin-right: 8px;
+    position: relative;
+    padding: 5px;
+    max-height: 100px;
+
+    & > img {
+        max-width: 120px;
+        max-height: 120px;
+        height: 100%;
+    }
+
+    & > i {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: red;
+        cursor: pointer;
+    }
+}

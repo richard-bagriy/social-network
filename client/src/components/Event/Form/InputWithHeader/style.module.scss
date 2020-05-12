@@ -1,0 +1,23 @@
+$padding: 20px;
+
+.border {
+    border-radius: 5px;
+    margin-bottom: 25px;
+
+    .header {
+        padding: $padding;
+        border-bottom: 1px solid #e5e5e5;
+        font-size: 14px;
+        color: #434f74;
+        font-weight: 500;
+        text-transform: capitalize;
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .body{
+        padding: $padding;
+    }
+}
