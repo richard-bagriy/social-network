@@ -1,6 +1,6 @@
 import React from 'react';
 import BorderBlock from '../BorderBlockWithIcon'
-import style from './style.module.css';
+import style from './style.module.scss';
 import cn from 'classnames'
 
 const FormControl = ({

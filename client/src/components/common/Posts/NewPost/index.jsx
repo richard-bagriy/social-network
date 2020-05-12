@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import { required, maxLength } from '../../../../utils/Validators'
 import { Input } from '../../Forms/Forms'
 import classNames from 'classnames'
-import style from './style.module.css'
+import style from '../style.module.scss'
 
 const maxLength50 = maxLength(50);
 
@@ -18,8 +18,8 @@ class NewPost extends Component {
         const { handleSubmit, profileImage, text } = this.props;
 
         return (
-            <div className={classNames(style.wrapper, 'bg-white')}>
-                <form onSubmit={handleSubmit} className={style.inner}>
+            <div className={classNames(style.newPost__wrapper, 'bg-white')}>
+                <form onSubmit={handleSubmit} className={style.newPost__inner}>
                     <img className="user-small-image" src={ profileImage } alt={ profileImage } />
                     <Field 
                         component={Input} 

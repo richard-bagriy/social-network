@@ -1,10 +1,9 @@
 import React from 'react'
 import User from './User'
-import style from './style.module.css'
+import style from './style.module.scss'
 
-export default ({ users }) => {
-
-    return <div className={style.wrapper}>
+export default ({ users }) => (
+    <div className={style.usersWrapper}>
         { users.map(
             u => 
                 <User
@@ -21,4 +20,4 @@ export default ({ users }) => {
             )
         }
     </div>
-}
+)

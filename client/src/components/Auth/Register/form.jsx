@@ -1,5 +1,5 @@
 import React from 'react'
-import style from '../Auth.module.css'
+import style from '../Auth.module.scss'
 import { Field, reduxForm } from 'redux-form'
 import {Input} from '../../common/Forms/Forms';
 import Gender from './Gender';

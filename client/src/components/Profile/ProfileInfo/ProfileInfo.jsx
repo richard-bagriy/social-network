@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import UserInfo from '../../common/Users/User/Info';
 import UserExtra from '../../common/Users/User/Extra';
-import style from './style.module.css';
+import style from '../style.module.sass';
 import { generateImagePath } from '../../../utils/helper';
 
 const ProfileInfo = ({ 
@@ -19,13 +19,13 @@ const ProfileInfo = ({
     const bgImage = { backgroundImage: `url(${coverImage})` };
 
     return (
-        <div className={style.wrapper} style={bgImage}>
+        <div className={style.profile__info} style={bgImage}>
             <UserInfo 
                 image={photo}
                 name={name}
                 country="Ukraine"
                 id={id}
-                imageClass={style.userImage}
+                imageClass={style.profile__info__image}
                 nameClass="color-white"
                 countryClass="color-white"
             />

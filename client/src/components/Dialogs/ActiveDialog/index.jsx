@@ -2,7 +2,7 @@ import React from 'react'
 import Message from './Message'
 import NewMessage from './NewMessage'
 import { generateImagePath } from '../../../utils/helper'
-import style from './style.module.css'
+import style from './style.module.scss'
 
 export default ({ 
     messages,
@@ -20,7 +20,7 @@ export default ({
             { userName }
         </div>
 
-        <div className={style.inner}>
+        <div className={style.messages}>
             { messages && messages.map( m => <Message {...m} key={m._id} authID={authID} /> ) }
         </div>
 

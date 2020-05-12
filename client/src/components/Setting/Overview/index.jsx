@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import { EditInput } from '../../common/Forms/Forms'
-import style from './style.module.css'
+import style from '../style.module.sass'
 
 const Overview = ({
     handleSubmit,
@@ -14,7 +14,7 @@ const Overview = ({
     return <>
         <form method="post" onSubmit={handleSubmit}>
 
-            <div className={`${style.buttonWrapper} m-bot-20`}>
+            <div className={`${style.overviewButtons} m-bot-20`}>
                 <button 
                     type="button"
                     onClick={toggleEdit}
@@ -24,7 +24,7 @@ const Overview = ({
                 {edit && <button className="btn btn-pink" >Save</button> }
             </div>
             
-            <div className={style.wrapper}>
+            <div className={style.overviewFields}>
                 <Field 
                     component={EditInput}
                     edit={edit}

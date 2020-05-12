@@ -1,0 +1,41 @@
+.changePassword 
+    margin-top: 30px
+
+    .btn[type="submit"][disabled]
+        opacity: 0.6
+        cursor: not-allowed
+
+
+.overviewFields
+    column-count: 2
+    column-gap: 30px
+
+    > div
+        break-inside: avoid
+        margin-bottom: 30px
+
+    .textarea
+        height: 100px !important
+        resize: none
+
+
+.overviewButtons
+    height: 43px
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    .editBtn
+        padding: 0
+        border: 0
+        background: none
+        cursor: pointer
+
+        &:hover
+            color: #434f74
+
+
+.imagesWrapper
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    column-gap: 20px

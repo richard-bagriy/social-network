@@ -1,0 +1,72 @@
+.wrapper {
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    display: grid;
+    grid-template-rows: 75px 1fr 76px;
+
+    .header{
+        padding: 10px 15px;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        align-items: center;
+
+        > img {
+            margin-right: 10px;
+        }
+    }
+
+    .messages {
+        padding: 20px;
+        max-height: 392px;
+        overflow-y: auto;
+
+        .message{
+            font-size: 13px;
+            margin-bottom: 1.5rem;
+            line-height: 20px;
+            max-width: 200px;
+
+            &__friend {
+                background-color: #fa2276;
+                color: #ffffff;
+                width: auto;
+                padding: 20px 25px;
+                box-shadow: 0px 2px 8px 4px #e6edf5;
+                border-top-right-radius: 50px;
+                border-bottom-right-radius: 50px;
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 0px;
+            }
+
+            &__my {
+                box-shadow: 0px 2px 8px 4px #e6edf5;
+                background-color: #f3f3f3;
+                padding: 18px 26px 17px 25px;
+                border-top-right-radius: 50px;
+                border-bottom-right-radius: 0px;
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 50px;
+                color: #959fbb;
+                margin-left: auto;
+            }
+        }
+        
+            
+    }
+
+    .newMessage {
+
+        &__wrapper {
+            background-color: #ffffff;
+            padding: 15px 20px 15px 20px;
+            border-top: 1px solid #eeeeee;
+        }
+
+        &__form {
+            display: grid;
+            grid-template-columns: 10fr 2fr;
+            grid-gap: 10px;
+        }
+    }
+
+}

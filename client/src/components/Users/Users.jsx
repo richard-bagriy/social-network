@@ -2,7 +2,7 @@ import React from 'react';
 import Preloader from '../common/Preloader';
 import Filter from './Filter/Filter';
 import Users from '../common/Users';
-import style from './style.module.css';
+import style from './style.module.sass';
 
 export default ({ 
     isLoadingUsers,
@@ -15,7 +15,7 @@ export default ({
     }
 
     return (
-        <div className={style.userWrapper}>
+        <div className={style.users}>
 
         <h2 className="h2">
             Find Users

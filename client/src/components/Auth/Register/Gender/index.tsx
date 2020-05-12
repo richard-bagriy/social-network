@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './index.module.css';
+import style from './index.module.scss';
 import { Field } from 'redux-form'
 import { Radio } from '../../../common/Forms/Forms';
 

@@ -4,7 +4,7 @@ import DeletePost from './DeletePost'
 import Post from './Post'
 import Message from '../Message'
 import { generateImagePath } from '../../../utils/helper'
-import style from './style.module.css'
+import style from './style.module.scss'
 
 export default ({
     posts,
@@ -40,7 +40,7 @@ export default ({
 
                         const canDelete = userId === authId;
                         
-                        return <div className={style.wrapper} key={_id}>
+                        return <div className={style.postsWrapper} key={_id}>
                             <Post
                                 date={date}
                                 userName={name}

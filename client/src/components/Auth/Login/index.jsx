@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../Auth.module.css';
+import style from '../Auth.module.scss';
 import Form from './form';
 import logo from '../../../assets/svg/logo.svg';
 import { authLogin, checkAuth } from '../../../store/Auth/effects';

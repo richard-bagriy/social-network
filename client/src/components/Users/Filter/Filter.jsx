@@ -3,15 +3,15 @@ import { Field, reduxForm } from 'redux-form';
 import { maxLength } from '../../../utils/Validators';
 import { Input } from '../../common/Forms/Forms';
 import classNames from 'classnames';
-import style from './style.module.css';
+import style from '../style.module.sass';
 
 const maxLength16 = maxLength(16);
-const className = classNames('btn' ,'btn-pink', style.btnFilter);
+const className = classNames('btn' ,'btn-pink', style.filter__btn);
 
 const Filter = ({ handleSubmit }) => {
 
     return (
-        <form className={style.filterWrapper} onSubmit={handleSubmit}>
+        <form className={style.filter} onSubmit={handleSubmit}>
 
             <Field 
                 type="text" 

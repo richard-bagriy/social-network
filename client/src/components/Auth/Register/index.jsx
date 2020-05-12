@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../Auth.module.css';
+import style from '../Auth.module.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/svg/logo.svg';

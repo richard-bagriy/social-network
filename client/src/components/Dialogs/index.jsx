@@ -1,7 +1,7 @@
 import React from 'react';
 import Conversations from './Conversations';
 import ActiveDialog from './ActiveDialog'
-import style from './style.module.css';
+import style from './style.module.sass';
 
 export default ({ activeDialog, authID, dialogs, getDialog }) => {
     return <div className={style.wrapper}>

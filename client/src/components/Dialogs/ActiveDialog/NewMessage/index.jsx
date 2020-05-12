@@ -5,18 +5,18 @@ import { getActiveDialog } from '../../../../store/DialogsPage/selectors'
 import { Field, reduxForm } from 'redux-form'
 import { required, maxLength } from '../../../../utils/Validators';
 import { Input } from '../../../common/Forms/Forms';
-import style from './style.module.css';
+import style from '../style.module.scss';
 
 const maxLength20 = maxLength(20);
 
 const NewMessageForm = ({ handleSubmit, text, ...props  }) => {
     
-    return <div className={style.block}>
-        <form onSubmit={handleSubmit} className={style.inner}>
+    return <div className={style.newMessage__wrapper}>
+        <form onSubmit={handleSubmit} className={style.newMessage__form}>
             <Field 
                 component={Input} 
                 type="text" 
-                className={style.input} 
+                className="input-border-bottom" 
                 value={text} 
                 name="message"
                 validate={[maxLength20, required]} 

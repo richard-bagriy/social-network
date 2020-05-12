@@ -2,7 +2,7 @@ import React from 'react'
 import Info from './Info'
 import Extra from './Extra'
 import Button from './Button'
-import style from './style.module.css'
+import style from '../style.module.scss'
 
 const User = ({
     id,
@@ -15,7 +15,7 @@ const User = ({
     subscribed,
 }) => {
     return (
-        <div className={style.wrapper}>
+        <div className={style.userWrapper}>
             <Info
                 image={ image }
                 name={ name }

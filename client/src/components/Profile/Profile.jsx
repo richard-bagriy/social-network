@@ -6,7 +6,7 @@ import ProfilePosts from '../../containers/ProfilePostsContainer';
 import Preloader from '../common/Preloader';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import style from './style.module.css';
+import style from './style.module.sass';
 
 const ProfileSubscribersContainer = lazy( () => import('../../containers/ProfileSubsribersContainer') );
 const ProfileSubscriptionsContainer  = lazy( () => import ('../../containers/ProfileSubscriptionsContainer') );

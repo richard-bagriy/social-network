@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './style.module.css';
+import style from '../style.module.scss';
 
 const Message = ({
     message,
@@ -8,7 +8,7 @@ const Message = ({
     sent_time
 }) => {
     
-    const postionClass = user_id === authID ? style.messageMy : style.messageFriend
+    const postionClass = user_id == authID ? style.message__my : style.message__friend
 
     return <div className={`${style.message} ${postionClass}`} > 
         { message }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import style from './style.module.css'
+import style from '../style.module.scss'
 import classNames from 'classnames'
 
 class DeletePost extends Component {

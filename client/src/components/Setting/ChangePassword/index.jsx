@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Input } from '../../common/Forms/Forms'
 import { maxLength, minLength, required } from '../../../utils/Validators'
 import Message from '../../common/Message'
-import style from './style.module.css'
+import style from '../style.module.sass'
 import classNames from 'classnames'
 
 const maxLength16 = maxLength(16)
@@ -18,7 +18,7 @@ const ChangePassword = ({
 }) => {
 
     return (
-        <div className={classNames('border', style.wrapper)}>
+        <div className={classNames('border', style.changePassword)}>
 
             <div className="border color-blue border-bottom p-20">Change password</div>
 

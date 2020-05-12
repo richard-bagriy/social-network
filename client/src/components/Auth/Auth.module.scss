@@ -1,0 +1,106 @@
+.authWrapper{
+    background-image: url('../../assets/images/auth-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(320px, 1110px);
+    align-content: center;
+    justify-content: center;
+
+    .authInner{
+        background: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        .authHeader{
+            display: grid;
+            grid-template-columns: 75px 100px;
+            grid-template-rows: 50px;
+            justify-content: space-between;
+            align-items: center;
+
+            &__link {
+                color: #959fbb;
+                font-weight: 400;
+                font-size: 14px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            
+            &__img {
+                width: 75px;
+            }
+        }
+
+        .authBody{
+            padding: 80px 0px 100px;
+            text-align: center;
+
+            &__header{
+                font-size: 30px;
+                color: #434f74;
+                margin-bottom: 23px;
+                font-weight: 500;
+            }
+            
+            &__text{
+                font-size: 14px;
+                color: #959fbb;
+                font-weight: 400;
+            }
+
+
+            .authForm{
+                display: grid;
+                grid-template-columns: minmax(320px, 360px);
+                justify-content: center;
+                margin-top: 50px;
+            }
+        }
+
+    }
+    
+
+}
+
+.fieldContainer{
+    position: relative;
+    margin-bottom: 30px;
+
+    &__input {
+        border: none;
+        border-bottom: 1px solid #e5e5e5;
+        width: 100%;
+        background: transparent;
+        padding: 15px;
+        border-left: 0px;
+        color: #959fbb;
+        font-weight: 400;
+        font-size: 12px;
+        box-sizing: border-box;
+
+        &:hover{
+            border-bottom: 1px solid #434f74;
+        }
+
+    }
+    
+    
+    &__icon{
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        color: #bdc3d3;
+
+        &:hover{
+            color: #434f74;
+        }
+    }
+    
+    
+}
+

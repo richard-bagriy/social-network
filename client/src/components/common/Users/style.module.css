@@ -1,8 +1,0 @@
-.wrapper{
-    display: grid;
-    grid-template-columns: repeat(4, calc(25% - 30px));
-    justify-content: space-between;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    margin-bottom: 30px;
-}

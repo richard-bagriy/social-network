@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import BorderBlock from '../../common/BorderBlockWithIcon'
-import style from './style.module.css'
+import style from '../style.module.sass'
 
 export default ({
     about,
@@ -12,7 +12,7 @@ export default ({
 }) => {
      
     return (
-        <div className={style.wrapper}>
+        <div className={style.profileDetail}>
             <BorderBlock label="About" text={about} iconClass="fas fa-bars" />
             <BorderBlock label="Email Address" text={email} iconClass="far fa-envelope" />
             { phone && <BorderBlock label="Phone Number" text={phone} iconClass="fas fa-mobile-alt" /> }

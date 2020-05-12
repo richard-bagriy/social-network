@@ -1,0 +1,36 @@
+$pink: #fa2276
+
+.nav
+    grid-area: n
+    background-color: #f3f3f3
+    position: fixed
+    top: 70px
+    width: 225px
+    height: 100%
+
+    &__item
+        padding: 15px 0px 15px 36px
+
+        > a
+            font-size: 14px
+            color: #434f74
+            text-decoration: none
+            line-height: 17px
+        
+        > a.active
+            color: $pink
+
+            & > .icon
+                color: $pink
+        
+        .icon
+            color: #bdc3d3
+            margin-right: 10px
+            font-size: 14px
+
+            &:hover
+                color: $pink
+    
+    &__divider
+        height: 1px
+        background: #e9ecef
