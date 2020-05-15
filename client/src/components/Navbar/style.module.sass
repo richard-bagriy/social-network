@@ -10,17 +10,20 @@ $pink: #fa2276
 
     &__item
         padding: 15px 0px 15px 36px
+        display: block
+        font-size: 14px
+        color: #434f74
+        text-decoration: none
+        line-height: 17px
 
-        > a
-            font-size: 14px
-            color: #434f74
-            text-decoration: none
-            line-height: 17px
+        &:hover
+            background: #e3e3e3
         
-        > a.active
+        &.active
             color: $pink
+            background: #e3e3e3
 
-            & > .icon
+            > .icon
                 color: $pink
         
         .icon

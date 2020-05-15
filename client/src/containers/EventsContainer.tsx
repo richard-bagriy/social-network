@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { AppStateType } from '../store'
-import { getEvents, thunkGetEvents, getEventsLoading, getEventsLimit, getEventsPage } from '../store/Events'
+import { getEvents, thunkGetEvents, getEventsLoading, getEventsLimit, getEventsPage, setEventsPage } from '../store/Events'
 import Events from '../components/Events'
 import { connect, ConnectedProps } from 'react-redux'
 import Preloader from '../components/common/Preloader'
@@ -12,7 +12,7 @@ const mapStateToProps = (state: AppStateType) => ({
     limit: getEventsLimit(state)
 })
 
-const connector = connect(mapStateToProps, {thunkGetEvents})
+const connector = connect(mapStateToProps, {thunkGetEvents, setEventsPage})
 
 type Props = ConnectedProps<typeof connector>
 
@@ -20,6 +20,9 @@ const Container = (props: Props) => {
     
     useEffect(() => {
         loadEvents()
+        return () => {
+            props.setEventsPage(1)
+        }
     }, [])
 
     const loadEvents = () => {
