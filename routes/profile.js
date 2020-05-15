@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const checkToken = require('../middlewares/checkToken');
 const upload = require('../middlewares/uploadImage')
 const { resizeImage } = require('../middlewares/resizeImage')
 const { 
@@ -13,13 +12,13 @@ const {
     updateImage
  } = require('../controllers/profile');
 
-router.get('/:id', checkToken, getProfile)
-router.get('/subscribers/:id', checkToken, getSubscribers)
-router.get('/subscriptions/:id', checkToken, getSubscriptions)
-router.post('/post', checkToken, newPost)
-router.delete('/post', checkToken, deletePost)
-router.put('/update', checkToken, updateProfile)
-router.put('/changePassword', checkToken, changePassword)
-router.put('/updateImage', [upload, checkToken, resizeImage], updateImage)
+router.get('/:id', getProfile)
+router.get('/subscribers/:id', getSubscribers)
+router.get('/subscriptions/:id', getSubscriptions)
+router.post('/post', newPost)
+router.delete('/post', deletePost)
+router.put('/update', updateProfile)
+router.put('/changePassword', changePassword)
+router.put('/updateImage', [upload, resizeImage], updateImage)
 
 module.exports = router;

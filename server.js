@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const checkToken = require('./middlewares/checkToken')
 
 // register config from .env
 require('dotenv').config();
@@ -31,11 +32,13 @@ app.use(cookieParser());
 // middelwares
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.all('/api/*', checkToken)
 
 //routes 
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/users', require('./routes/users'))
 app.use('/api/profile', require('./routes/profile'))
 app.use('/api/dialogs', require('./routes/dialogs'))
+app.use('/api/event',require('./routes/event'))
 
 app.listen(process.env.APP_PORT, () => console.log(`The server started on ${process.env.APP_PORT}`))

@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from 'react-redux'
 import { AppStateType } from '../store'
 import { getEvents, addEvent, removeEvent, thunkAddEvent } from '../store/Event'
 import Form from '../components/Event/Form'
-import { EventFormValuesType } from '../components/Event/Form'
+import { EventHandleSubmitPropsType } from '../components/Event/Form'
 
 const mapStateToProps = (state: AppStateType) => ({
     images: getEvents(state),
@@ -15,9 +15,31 @@ type PropsFromRedux = ConnectedProps<typeof connector>
   
 const Container = (props: PropsFromRedux) => {
 
-    const handleSubmit = (values: EventFormValuesType) => {
+    const handleSubmit = (values: EventHandleSubmitPropsType) => {
         values.gallery = props.images
-        props.thunkAddEvent(values)
+        
+        const files = ['gallery', 'cover', 'logo']
+
+        const data = new FormData()
+        
+        for (let item in values) {
+            
+            if (files.includes(item)) {
+                Array.from(values[item]).forEach((file: any) => {
+                    data.append(item, file, file.name)
+                })
+            } else {
+                if (item === 'social') {
+                    data.append(item, JSON.stringify(values[item]))
+                } else {
+                    data.append(item, values[item])
+                }
+                
+            }
+            
+        }
+
+        props.thunkAddEvent(data)
     }
 
     return <Form onSubmit={handleSubmit} {...props} />

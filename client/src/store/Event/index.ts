@@ -78,12 +78,14 @@ export const getEventCreated = (state: AppStateType) => state.event.created
 
 // thunk
 export const thunkAddEvent = (
-    data:EventFormValuesType
+    data: FormData
 ): ThunkAction<void, AppStateType, unknown, Action<string>> => async (dispatch) => {
 
-    // const { created } = await eventAPI.addEvent(data)
-
-    dispatch(eventCreated(true))
-    dispatch(reset('event-create'))
-
+    try {
+        await eventAPI.addEvent(data)
+        dispatch(eventCreated(true))
+        dispatch(reset('event-create'))
+    } catch (err) {
+        console.log(err)
+    }
 }

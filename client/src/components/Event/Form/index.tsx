@@ -24,6 +24,13 @@ export type EventFormValuesType = {
     email: string
     phone: string
 }
+
+type EventFormKeyType = {
+    [key:string]: string
+}
+
+export type EventHandleSubmitPropsType = EventFormKeyType & EventFormValuesType
+
 // I don't know how to return Array of Jsx Elements
 export type EventFormInjectedProps = {
     images: Array<File> | [] | any
@@ -31,7 +38,7 @@ export type EventFormInjectedProps = {
     removeEvent: typeof removeEvent
 }
 
-const Form: React.FC<InjectedFormProps<EventFormValuesType, EventFormInjectedProps> & EventFormInjectedProps> = ({ 
+const Form: React.FC<InjectedFormProps<EventHandleSubmitPropsType, EventFormInjectedProps> & EventFormInjectedProps> = ({ 
     handleSubmit,
     images,
     addEvent,
@@ -117,6 +124,6 @@ const Form: React.FC<InjectedFormProps<EventFormValuesType, EventFormInjectedPro
 
 }
 
-export default reduxForm<EventFormValuesType, EventFormInjectedProps>({ 
+export default reduxForm<EventHandleSubmitPropsType, EventFormInjectedProps>({ 
     form: 'event-create'
 })(Form)
