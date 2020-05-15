@@ -1,6 +1,10 @@
+$pink: #fa2276;
+$white: #fff;
+$hover-blue: #434f74;
+
 .card {
     border: 1px solid #e5e5e5;
-    background: #fff;
+    background: $white;
 
 
     &__image {
@@ -16,7 +20,7 @@
         position: absolute;
         left: 8px;
         bottom: 10px;
-        color: #fff;
+        color: $white;
 
         &__title {
             margin-bottom: 8px;
@@ -33,6 +37,39 @@
 
     &__user {
         padding: 15px 8px;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &__name {
+            margin-left: 10px;
+            text-transform: capitalize;
+            font-size: 14px;
+            color: $hover-blue;
+            text-decoration: none;
+
+            &:hover {
+                color: $pink;
+            }
+        }
+    }
+
+    &__save {
+        background: $pink;
+        border-radius: 50%;
+        position: absolute;
+        right: 8px;
+        bottom: 10px;
+        top: -20px;
+        color: $white;
+        width: 40px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+
+        &:hover{
+            background: $hover-blue;
+        }
     }
     
     &:hover {
