@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AppStateType } from '../store'
-import { getEvents, thunkGetEvents, getEventsLoading } from '../store/Event'
+import { getEvents, thunkGetEvents, getEventsLoading } from '../store/Events'
 import Events from '../components/Events'
 import { connect, ConnectedProps } from 'react-redux'
 import Preloader from '../components/common/Preloader'

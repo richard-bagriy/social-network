@@ -1,5 +1,5 @@
 import React from 'react'
-import { EventType } from '../../../store/Event'
+import { EventType } from '../../../store/Events'
 import { generateImageEventPath } from '../../../utils/helper'
 import style from './style.module.scss'
 

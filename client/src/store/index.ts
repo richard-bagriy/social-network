@@ -8,6 +8,7 @@ import dialogReducer from './DialogsPage';
 import usersReducer from './UsersPage';
 import settingReducer from './Setting'
 import eventReducer from './Event'
+import eventsReducer from './Events'
 
 const reducers = combineReducers({
     app: appReducer,
@@ -19,6 +20,7 @@ const reducers = combineReducers({
     setting: settingReducer,
     event: eventReducer,
     form: formReducer,
+    events: eventsReducer
 });
 
 export type AppStateType = ReturnType<typeof reducers>
