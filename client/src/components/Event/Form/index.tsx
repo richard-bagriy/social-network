@@ -3,7 +3,7 @@ import Block from './InputWithHeader'
 import { Input, Textarea } from '../../common/Forms/Forms'
 import { required, maxLength, email, phoneNumber } from '../../../utils/Validators'
 import { reduxForm, InjectedFormProps, Field } from 'redux-form'
-import { addEvent, removeEvent } from '../../../store/Event'
+import { addGalleryImg, removeGalleryImg } from '../../../store/Event'
 import UploadImage from './UploadImage'
 import Gallery from './Gallery'
 import SocialNetwork from './SocialNetwork'
@@ -34,15 +34,15 @@ export type EventHandleSubmitPropsType = EventFormKeyType & EventFormValuesType
 // I don't know how to return Array of Jsx Elements
 export type EventFormInjectedProps = {
     images: Array<File> | [] | any
-    addEvent: typeof addEvent
-    removeEvent: typeof removeEvent
+    addGalleryImg: typeof addGalleryImg
+    removeGalleryImg: typeof removeGalleryImg
 }
 
 const Form: React.FC<InjectedFormProps<EventHandleSubmitPropsType, EventFormInjectedProps> & EventFormInjectedProps> = ({ 
     handleSubmit,
     images,
-    addEvent,
-    removeEvent
+    addGalleryImg,
+    removeGalleryImg
 }) => {
 
     return <form onSubmit={handleSubmit}>
@@ -75,7 +75,7 @@ const Form: React.FC<InjectedFormProps<EventHandleSubmitPropsType, EventFormInje
         </Block>
 
         <Block title="Gallery Images" iconClass="far fa-images">
-            <Gallery images={images} addEvent={addEvent} removeEvent={removeEvent} />
+            <Gallery images={images} addGalleryImg={addGalleryImg} removeGalleryImg={removeGalleryImg} />
         </Block>
 
 

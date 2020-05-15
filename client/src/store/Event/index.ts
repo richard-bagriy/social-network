@@ -1,21 +1,27 @@
 import { AppStateType } from '../index'
-import { EventFormValuesType } from '../../components/Event/Form'
 import { eventAPI } from '../../api/api'
 import { ThunkAction } from 'redux-thunk'
 import { Action } from 'redux'
 import { reset } from 'redux-form'
 
-const ADD_EVENT = 'EVENT/ADD_EVENT'
-const REMOVE_EVENT = 'EVENT/REMOVE_EVENT'
+const ADD_GALLERY_IMG = 'EVENT/ADD_GALLERY_IMG'
+const REMOVE_GALLERY_IMG = 'EVENT/REMOVE_GALLERY_IMG'
 const EVENT_CREATED = 'EVENT/EVENT_CREATED'
+const SET_EVENTS = 'EVENT/SET_EVENTS'
+
+type EventType = {
+
+}
 
 export type EventStateProps = {
     images: Array<File>
     created: boolean
+    events: Array<EventType>
 }
 
 const initialState: EventStateProps = {
     images: [],
+    events: [],
     created: false
 }
 
@@ -23,21 +29,22 @@ export default (state = initialState, action: ActionType): EventStateProps => {
 
     switch (action.type) {
 
-        case ADD_EVENT: 
+        case SET_EVENTS: {
+            return {
+                ...state,
+                events: action.payload
+            }
+        }
+
+        case ADD_GALLERY_IMG:
             return {
                 ...state,
                 images: [...state.images, ...action.payload]
             }
-        case REMOVE_EVENT: 
+        case REMOVE_GALLERY_IMG:
             return {
                 ...state,
-                images: state.images.filter((file, i) => {
-                    if (i !== action.payload) {
-                        return file
-                    }
-                    
-                    return file
-                })
+                images: state.images.filter((file, i) => i !== action.payload)
             }
         case EVENT_CREATED : {
             return {
@@ -51,20 +58,20 @@ export default (state = initialState, action: ActionType): EventStateProps => {
 
 }
 
-type ActionType = AddEventType | RemoveEventType | EventCreatedType
+type ActionType = AddGalleryImgType | RemoveGalleryImgType | EventCreatedType | SetEventsType
 
 // actions
-type AddEventType = {
-    type: typeof ADD_EVENT
+type AddGalleryImgType = {
+    type: typeof ADD_GALLERY_IMG
     payload: Array<File>
 }
-export const addEvent = (events: Array<File>) : AddEventType => ({ type: ADD_EVENT, payload: events })
+export const addGalleryImg = (events: Array<File>) : AddGalleryImgType => ({ type: ADD_GALLERY_IMG, payload: events })
 
-type RemoveEventType = {
-    type: typeof REMOVE_EVENT
+type RemoveGalleryImgType = {
+    type: typeof REMOVE_GALLERY_IMG
     payload: number
 }
-export const removeEvent = (id:number): RemoveEventType => ({ type: REMOVE_EVENT, payload: id })
+export const removeGalleryImg = (id:number): RemoveGalleryImgType => ({ type: REMOVE_GALLERY_IMG, payload: id })
 
 type EventCreatedType = {
     type: typeof EVENT_CREATED
@@ -72,9 +79,16 @@ type EventCreatedType = {
 }
 export const eventCreated = (created: boolean): EventCreatedType => ({ type: EVENT_CREATED, payload: created })
 
+type SetEventsType = {
+    type: typeof SET_EVENTS,
+    payload: Array<EventType>
+}
+export const setEvents = (events: []) : SetEventsType => ({ type: SET_EVENTS, payload:events })
+
 // selector
-export const getEvents = (state: AppStateType ) => state.event.images
+export const getGalleryImages = (state: AppStateType ) => state.event.images
 export const getEventCreated = (state: AppStateType) => state.event.created
+export const getEvents = (state: AppStateType) => state.event.events
 
 // thunk
 export const thunkAddEvent = (
@@ -88,4 +102,16 @@ export const thunkAddEvent = (
     } catch (err) {
         console.log(err)
     }
+}
+
+export const thunkGetEvents = (
+    events: []
+): ThunkAction<void, AppStateType, unknown, Action<string>> => async (dispatch) => {
+
+    try {
+
+    } catch {
+        
+    }
+
 }

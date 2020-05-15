@@ -7,12 +7,12 @@ import cl from 'classnames'
 
 const Gallery: React.FC<EventFormInjectedProps> = ({
     images,
-    addEvent,
-    removeEvent
+    addGalleryImg,
+    removeGalleryImg
 }) => {
 
     const handleChange = (e: any, files: Array<File>) => {
-        addEvent(files)
+        addGalleryImg(files)
     }
 
     return <div>
@@ -24,7 +24,7 @@ const Gallery: React.FC<EventFormInjectedProps> = ({
 
                 return <div className={cl(style.image, 'border')} key={i}>
                     <img src={url} alt={image.name} />
-                    <i className="far fa-times-circle" onClick={() => removeEvent(i)}></i>
+                    <i className="far fa-times-circle" onClick={() => removeGalleryImg(i)}></i>
                 </div>
 
             }) }

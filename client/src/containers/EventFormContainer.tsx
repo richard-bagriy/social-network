@@ -1,15 +1,15 @@
 import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { AppStateType } from '../store'
-import { getEvents, addEvent, removeEvent, thunkAddEvent } from '../store/Event'
+import { getGalleryImages, addGalleryImg, removeGalleryImg, thunkAddEvent } from '../store/Event'
 import Form from '../components/Event/Form'
 import { EventHandleSubmitPropsType } from '../components/Event/Form'
 
 const mapStateToProps = (state: AppStateType) => ({
-    images: getEvents(state),
+    images: getGalleryImages(state),
 })
 
-const connector = connect(mapStateToProps, { addEvent, removeEvent, thunkAddEvent })
+const connector = connect(mapStateToProps, { addGalleryImg, removeGalleryImg, thunkAddEvent })
     
 type PropsFromRedux = ConnectedProps<typeof connector>
   
