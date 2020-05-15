@@ -14,8 +14,22 @@ $blue: #434f74;
     "h h"
     "n c";
     grid-template-rows: 70px 1fr;
-    grid-template-columns: 225px 10fr;
+    grid-template-columns: 225px 1fr;
     height: 100%;
+
+    &.hide-menu {
+        grid-template-columns: 100px 1fr;
+        nav {
+            width: 90px;
+
+            span {
+                display: none;
+            }
+        }
+        
+    }
+
+    
 }
 .app-wrapper-content {
     grid-area: c;

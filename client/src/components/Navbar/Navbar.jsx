@@ -8,29 +8,29 @@ const Navbar = () => {
         <nav className={style.nav}>
             <NavLink to="/" exact className={style.nav__item} activeClassName={style.active}>
                 <i className={ classNames('far', 'fa-list-alt', style.icon) }></i>
-                Events
+                <span>Events</span>
             </NavLink>
             <NavLink to="/profile" activeClassName={style.active} className={style.nav__item}>
                 <i className={ classNames('fas', 'fa-user', style.icon) }></i>
-                Profile
+                <span>Profile</span>
             </NavLink>
             <NavLink to="/dialogs" activeClassName={style.active} className={style.nav__item}>
                 <i className={ classNames('far', 'fa-envelope', style.icon) }></i>
-                Messages
+                <span>Messages</span>
             </NavLink>
             <NavLink to="/users" activeClassName={style.active} className={style.nav__item}>
                 <i className={ classNames('fas', 'fa-users', style.icon) }></i>
-                Find Users
+                <span>Find Users</span>
             </NavLink>
             <div className={style.nav__divider}></div>
             <NavLink to="/saved" activeClassName={style.active} className={style.nav__item}>
                 <i className={ classNames('far', 'fa-heart', style.icon) }></i>
-                Saved
+                <span>Saved</span>
             </NavLink>
             <div className={style.nav__divider}></div>
             <NavLink to="/setting" activeClassName={style.active} className={style.nav__item}>
                 <i className={ classNames('fas', 'fa-cog', style.icon) }></i>
-                Setting
+                <span>Setting</span>
             </NavLink>
         </nav>
     )

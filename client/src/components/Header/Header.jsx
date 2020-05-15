@@ -10,10 +10,16 @@ import classNames from 'classnames'
 import logo from '../../assets/svg/logo.svg';
 
 const Header = ({ isAuth }) => {
+
+    const toggleMenu = () => {
+        // Yes i know it's bad bad, i change after refactoring
+        document.querySelector('.app-wrapper').classList.toggle('hide-menu')
+    }
     
     return (
         <header className={style.header}>
             <div className={style.logo}>
+                <i className={classNames("fas fa-bars", style.toggleMenu)} onClick={toggleMenu}></i>
                 <NavLink to="/">
                     <img src={logo} alt={logo}/>
                 </NavLink>
