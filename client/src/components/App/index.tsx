@@ -9,7 +9,7 @@ import Events from '../../containers/EventsContainer'
 import Preloader from '../common/Preloader'
 import '../../styles/App.scss';
 
-const Event = React.lazy(() => import('../../containers/EventContainer'))
+const CreateEvent = React.lazy(() => import('../../containers/CreateEventContainer'))
 const Setting = React.lazy(() => import('../Setting'))
 
 export default () => (
@@ -27,7 +27,7 @@ export default () => (
             </React.Suspense>
 
             <React.Suspense fallback={<Preloader />} >
-                <Route path="/event/create" exact component={Event} />
+                <Route path="/event/create" exact component={CreateEvent} />
             </React.Suspense>
 
         </div>

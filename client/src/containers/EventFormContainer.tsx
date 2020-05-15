@@ -2,8 +2,8 @@ import React from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { AppStateType } from '../store'
 import { getGalleryImages, addGalleryImg, removeGalleryImg, thunkAddEvent } from '../store/Event'
-import Form from '../components/Event/Form'
-import { EventHandleSubmitPropsType } from '../components/Event/Form'
+import Form from '../components/CreateEvent/Form'
+import { EventHandleSubmitPropsType } from '../components/CreateEvent/Form'
 
 const mapStateToProps = (state: AppStateType) => ({
     images: getGalleryImages(state),

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import { FileInput } from '../../../common/Forms/Forms'
-import { EventFormInjectedProps } from '../'
+import { EventFormInjectedProps } from '..'
 import style from './style.module.scss'
 import cl from 'classnames'
 

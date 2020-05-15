@@ -1,10 +1,10 @@
 import React from 'react'
 import Form from '../../containers/EventFormContainer'
-import { EventContainerTypeProps } from '../../containers/EventContainer'
+import { EventContainerTypeProps } from '../../containers/CreateEventContainer'
 import Modal from 'react-modal'
 import style from './style.module.scss'
 
-const Event: React.FC<EventContainerTypeProps> = ({ created, eventCreated }) => (
+const CreateEvent: React.FC<EventContainerTypeProps> = ({ created, eventCreated }) => (
 
     <div>
         <h2 className="h2">
@@ -29,4 +29,4 @@ const Event: React.FC<EventContainerTypeProps> = ({ created, eventCreated }) => 
     </div>
 )
 
-export default Event
+export default CreateEvent
