@@ -1,8 +1,9 @@
 const router = require('express').Router()
-const controller = require('../controllers/event')
+const { addEvent, getAll } = require('../controllers/event')
 const uploadImages = require('../middlewares/uploadImages')
 const authId = require('../middlewares/checkToken')
 
-router.post('/', [uploadImages, authId], controller.addEvent)
+router.get('/', getAll)
+router.post('/', [uploadImages, authId], addEvent)
 
 module.exports = router
