@@ -8,21 +8,32 @@ const ADD_GALLERY_IMG = 'EVENT/ADD_GALLERY_IMG'
 const REMOVE_GALLERY_IMG = 'EVENT/REMOVE_GALLERY_IMG'
 const EVENT_CREATED = 'EVENT/EVENT_CREATED'
 const SET_EVENTS = 'EVENT/SET_EVENTS'
+const TOGGLE_EVENTS_LOADING =  'EVENT/TOGGLE_EVENTS_LOADING'
 
-type EventType = {
-
+export type EventType = {
+    _id: string
+    title: string
+    location: string
+    cover: string
+    userId: {
+        _id: string
+        images: { photo: string }
+        name: string
+    }
 }
 
 export type EventStateProps = {
     images: Array<File>
     created: boolean
     events: Array<EventType>
+    loading: boolean
 }
 
 const initialState: EventStateProps = {
     images: [],
     events: [],
-    created: false
+    created: false,
+    loading: true
 }
 
 export default (state = initialState, action: ActionType): EventStateProps => {
@@ -35,7 +46,6 @@ export default (state = initialState, action: ActionType): EventStateProps => {
                 events: action.payload
             }
         }
-
         case ADD_GALLERY_IMG:
             return {
                 ...state,
@@ -52,13 +62,18 @@ export default (state = initialState, action: ActionType): EventStateProps => {
                 created: action.payload
             }
         }
+        case TOGGLE_EVENTS_LOADING:
+            return {
+                ...state,
+                loading: action.payload
+            }
 
         default: return state
     }
 
 }
 
-type ActionType = AddGalleryImgType | RemoveGalleryImgType | EventCreatedType | SetEventsType
+type ActionType = AddGalleryImgType | RemoveGalleryImgType | EventCreatedType | SetEventsType | ToggleEventsLoadingType
 
 // actions
 type AddGalleryImgType = {
@@ -83,12 +98,19 @@ type SetEventsType = {
     type: typeof SET_EVENTS,
     payload: Array<EventType>
 }
-export const setEvents = (events: []) : SetEventsType => ({ type: SET_EVENTS, payload:events })
+export const setEvents = (events: Array<EventType>) : SetEventsType => ({ type: SET_EVENTS, payload:events })
+
+type ToggleEventsLoadingType = {
+    type: typeof TOGGLE_EVENTS_LOADING
+    payload: boolean
+}
+export const toggleEventLoading = (loading: boolean) : ToggleEventsLoadingType => ({ type: TOGGLE_EVENTS_LOADING, payload: loading })
 
 // selector
 export const getGalleryImages = (state: AppStateType ) => state.event.images
 export const getEventCreated = (state: AppStateType) => state.event.created
 export const getEvents = (state: AppStateType) => state.event.events
+export const getEventsLoading = (state: AppStateType) => state.event.loading
 
 // thunk
 export const thunkAddEvent = (
@@ -104,14 +126,17 @@ export const thunkAddEvent = (
     }
 }
 
-export const thunkGetEvents = (
-    events: []
-): ThunkAction<void, AppStateType, unknown, Action<string>> => async (dispatch) => {
+export const thunkGetEvents = (): ThunkAction<void, AppStateType, unknown, Action<string>> => async (dispatch) => {
 
     try {
+        dispatch(toggleEventLoading(true))
 
-    } catch {
-        
+        const events: Array<EventType> = await eventAPI.getEvents()
+        dispatch(setEvents(events))
+
+        dispatch(toggleEventLoading(false))
+    } catch (err) {
+        console.log(err)
     }
 
 }

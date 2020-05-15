@@ -5,8 +5,8 @@ import Navbar from '../Navbar/Navbar';
 import ProfileContainer from '../../containers/ProfileContainer';
 import DialogsContainer from '../../containers/DialogsContainer';
 import UsersContainer   from '../../containers/UsersContainer';
+import Events from '../../containers/EventsContainer'
 import Preloader from '../common/Preloader'
-import AuthRedirect from '../../hoc/withAuthRedirect';
 import '../../styles/App.scss';
 
 const Event = React.lazy(() => import('../../containers/EventContainer'))
@@ -17,12 +17,13 @@ export default () => (
         <Header />
         <Navbar />
         <div className="app-wrapper-content">
-            <Route path='/profile/:id?' component={AuthRedirect(ProfileContainer)} />
-            <Route path='/dialogs/:id?' component={AuthRedirect(DialogsContainer)} />
-            <Route path='/users' component={AuthRedirect(UsersContainer)} />
+            <Route path='/' exact component={Events} />
+            <Route path='/profile/:id?' component={ProfileContainer} />
+            <Route path='/dialogs/:id?' component={DialogsContainer} />
+            <Route path='/users' component={UsersContainer} />
 
             <React.Suspense fallback={<Preloader />} >
-                <Route path="/setting" exact component={AuthRedirect(Setting)} />
+                <Route path="/setting" exact component={Setting} />
             </React.Suspense>
 
             <React.Suspense fallback={<Preloader />} >

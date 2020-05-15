@@ -1,6 +1,6 @@
 const Event = require('../models/event')
 const User = require('../models/user')
-User
+
 module.exports = {
 
     addEvent: async (req, res) => {
@@ -27,7 +27,10 @@ module.exports = {
     },
 
     getAll: async (req, res) => {
-        const events = await Event.find({}, {__v: 0}).populate('userId', 'name images.photo _id')
+        const events = await Event.find({})
+            .select('title location cover')
+            .populate('userId', 'name images.photo _id')
+            
         res.send(events)
     }
 

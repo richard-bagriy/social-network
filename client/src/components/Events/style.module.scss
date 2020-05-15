@@ -1,0 +1,11 @@
+.header{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.events{
+    display: grid;
+    grid-template-columns: repeat(4, 380px);
+    gap: 25px 25px;
+}

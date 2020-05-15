@@ -108,6 +108,10 @@ export const eventAPI = {
     
     addEvent(data) {
         return instance.post('/event', data).then(res => res.data)
+    },
+
+    getEvents() {
+        return instance.get('/event').then(res => res.data)
     }
 
 }
