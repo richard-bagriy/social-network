@@ -110,8 +110,10 @@ export const eventAPI = {
         return instance.post('/event', data).then(res => res.data)
     },
 
-    getEvents() {
-        return instance.get('/event').then(res => res.data)
+    getEvents(page = 1, limit = 1) {
+        return instance.get('/event', {
+            params: { limit, page }
+        }).then(res => res.data)
     }
 
 }

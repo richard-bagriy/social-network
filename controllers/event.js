@@ -27,7 +27,12 @@ module.exports = {
     },
 
     getAll: async (req, res) => {
+        const limit = parseInt(req.query.limit)
+        const page = parseInt(req.query.page)
+        
         const events = await Event.find({})
+            .limit(limit)
+            .skip((page * limit) - limit)
             .select('title location cover')
             .populate('userId', 'name images.photo _id')
             
