@@ -1,5 +1,5 @@
 import { dialogsAPI } from '../../api/api'
-import { setActiveDialog, setDialogs, setLoading, addNewMessage  } from './actions'
+import { setActiveDialog, setDialogs, setLoading, addNewMessage, setLoadingDialog  } from './actions'
 import { reset } from 'redux-form';
 
 export const getDialogs = id => async dispatch => {
@@ -27,12 +27,12 @@ export const addMessage = (userId, message) => async dispatch => {
 
 export const getDialog = userId => async dispatch => {
 
-    dispatch(setLoading(true))
+    dispatch(setLoadingDialog(true))
 
     const data = await dialogsAPI.getDialog(userId)
 
     dispatch(setActiveDialog(data))
 
-    dispatch(setLoading(false))
+    dispatch(setLoadingDialog(false))
 
 }

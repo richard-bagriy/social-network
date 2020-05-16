@@ -4,19 +4,14 @@ import NewMessage from './NewMessage'
 import { generateImagePath } from '../../../utils/helper'
 import style from './style.module.scss'
 
-export default ({ 
-    messages,
-    userName,
-    userImage,
+const ActiveDialog = ({
+    dialog: { messages, userName, userImage },
     authID
- }) => {
-    
-    const imageLink = generateImagePath(userImage)
-    
-    return <div className={style.wrapper}>
+}) => (
+    <div className={style.wrapper}>
 
         <div className={style.header}>
-            <img src={imageLink} alt={userName} className="user-small-image" />
+            <img src={generateImagePath(userImage)} alt={userName} className="user-small-image" />
             { userName }
         </div>
 
@@ -27,4 +22,6 @@ export default ({
         <NewMessage />
 
     </div>
-}
+)
+
+export default ActiveDialog

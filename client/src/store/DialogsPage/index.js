@@ -1,4 +1,4 @@
-import { ADD_NEW_MESSAGE, SET_ACTIVE_DIALOG, SET_DIALOGS, TOGGLE_LOADING } from './types';
+import { ADD_NEW_MESSAGE, SET_ACTIVE_DIALOG, SET_DIALOGS, TOGGLE_LOADING, SET_LOADING_DIALOG } from './types';
 
 const initialState = {
     
@@ -6,7 +6,9 @@ const initialState = {
 
     activeDialog: null,
 
-    loading: false
+    loading: false,
+
+    dialogLoading: false
     
 };
 
@@ -37,6 +39,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loading: action.payload
+            }
+        case SET_LOADING_DIALOG: 
+            return {
+                ...state,
+                dialogLoading: action.payload
             }
         default: 
             return state;

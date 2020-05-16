@@ -1,11 +1,11 @@
 import React from 'react';
 import Conversations from './Conversations';
-import ActiveDialog from './ActiveDialog'
+import ActiveDialog from '../../containers/Dialogs/ActiveDialog'
 import style from './style.module.sass';
 
-export default ({ activeDialog, authID, dialogs, getDialog }) => {
-    return <div className={style.wrapper}>
+export default ({ activeDialog, dialogs, getDialog }) => (
+    <div className={style.wrapper}>
         <Conversations dialogs={dialogs} activeId={activeDialog.id} getDialog={getDialog} />
-        <ActiveDialog {...activeDialog} authID={authID} />
+        <ActiveDialog />
     </div>
-};
+)
