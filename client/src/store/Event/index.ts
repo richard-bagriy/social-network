@@ -7,6 +7,7 @@ import { reset } from 'redux-form'
 const ADD_GALLERY_IMG = 'EVENT/ADD_GALLERY_IMG'
 const REMOVE_GALLERY_IMG = 'EVENT/REMOVE_GALLERY_IMG'
 const EVENT_CREATED = 'EVENT/EVENT_CREATED'
+const EVENT_SET_GALLERY = 'EVENT/EVENT_SET_GALLERY'
 
 export type EventStateProps = {
     images: Array<File>
@@ -37,13 +38,18 @@ export default (state = initialState, action: ActionType): EventStateProps => {
                 created: action.payload
             }
         }
+        case EVENT_SET_GALLERY:
+            return {
+                ...state,
+                images: []
+            }
 
         default: return state
     }
 
 }
 
-type ActionType = AddGalleryImgType | RemoveGalleryImgType | EventCreatedType
+type ActionType = AddGalleryImgType | RemoveGalleryImgType | EventCreatedType | EventSetGalleryType
 
 // actions
 type AddGalleryImgType = {
@@ -64,7 +70,10 @@ type EventCreatedType = {
 }
 export const eventCreated = (created: boolean): EventCreatedType => ({ type: EVENT_CREATED, payload: created })
 
-
+type EventSetGalleryType = {
+    type: typeof EVENT_SET_GALLERY
+}
+export const setGallery = () : EventSetGalleryType => ({ type: EVENT_SET_GALLERY })
 // selector
 export const getGalleryImages = (state: AppStateType ) => state.event.images
 export const getEventCreated = (state: AppStateType) => state.event.created
@@ -78,6 +87,8 @@ export const thunkAddEvent = (
         await eventAPI.addEvent(data)
         dispatch(eventCreated(true))
         dispatch(reset('event-create'))
+        dispatch(setGallery())
+        document.body.classList.toggle('overflow-hidden')
     } catch (err) {
         console.log(err)
     }

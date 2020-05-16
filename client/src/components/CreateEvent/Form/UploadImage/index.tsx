@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Field } from 'redux-form'
 import { FileInput } from '../../../common/Forms/Forms'
 import { generateImagePath } from '../../../../utils/helper'
@@ -6,15 +6,24 @@ import { generateImagePath } from '../../../../utils/helper'
 type Props = {
     title: string,
     name: string
+    clean: boolean
 }
 
 const UploadImage: React.FC<Props> = ({
     title,
-    name
+    name,
+    clean = false
 }) => {
 
     const [image, setImage] = useState('')
-    
+
+    /// Bad practice but need ( will be changed soon)
+    useEffect(() => {
+        if (clean) {
+            setImage('')
+        }
+    }, [clean])
+
     const changeHandler = (e: any, file: FileList) => {
         setImage(URL.createObjectURL(file.item(0)))
     }

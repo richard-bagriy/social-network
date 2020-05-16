@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../../containers/EventFormContainer'
+import Form from '../../containers/CreateEventFormContainer'
 import { EventContainerTypeProps } from '../../containers/CreateEventContainer'
 import Modal from 'react-modal'
 import style from './style.module.scss'
@@ -18,7 +18,10 @@ const CreateEvent: React.FC<EventContainerTypeProps> = ({ created, eventCreated 
                 <hr className="h2-border" />
             </h2>
             <div className="text-center">
-                <button className="btn btn-pink" onClick={() => eventCreated(false)}>Close</button>
+                <button className="btn btn-pink" onClick={() => {
+                    eventCreated(false)
+                    document.body.classList.toggle('overflow-hidden')
+                }}>Close</button>
             </div>
         </Modal>
 

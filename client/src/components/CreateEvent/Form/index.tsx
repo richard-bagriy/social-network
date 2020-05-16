@@ -3,15 +3,14 @@ import Block from './InputWithHeader'
 import { Input, Textarea } from '../../common/Forms/Forms'
 import { required, maxLength, email, phoneNumber } from '../../../utils/Validators'
 import { reduxForm, InjectedFormProps, Field } from 'redux-form'
-import { addGalleryImg, removeGalleryImg } from '../../../store/Event'
 import UploadImage from './UploadImage'
-import Gallery from './Gallery'
+import Gallery from '../../../containers/CreateEvent/GalleryContainer'
 import SocialNetwork from './SocialNetwork'
 import style from './style.module.scss'
 
 const maxLength20 = maxLength(20)
 
-export type EventFormValuesType = {
+export type EventFormValuesType =  {
     title: string
     description: string
     logo: FileList
@@ -31,18 +30,13 @@ type EventFormKeyType = {
 
 export type EventHandleSubmitPropsType = EventFormKeyType & EventFormValuesType
 
-// I don't know how to return Array of Jsx Elements
 export type EventFormInjectedProps = {
-    images: Array<File> | [] | any
-    addGalleryImg: typeof addGalleryImg
-    removeGalleryImg: typeof removeGalleryImg
+    clearImages: boolean
 }
 
 const Form: React.FC<InjectedFormProps<EventHandleSubmitPropsType, EventFormInjectedProps> & EventFormInjectedProps> = ({ 
     handleSubmit,
-    images,
-    addGalleryImg,
-    removeGalleryImg
+    clearImages
 }) => {
 
     return <form onSubmit={handleSubmit}>
@@ -69,13 +63,13 @@ const Form: React.FC<InjectedFormProps<EventHandleSubmitPropsType, EventFormInje
         
         <Block title="images" iconClass="far fa-image">
             <div className={style.imagesWrapper}>
-                <UploadImage title="Logo" name="logo" />
-                <UploadImage title="Cover Image" name="cover" />
+                <UploadImage title="Logo" name="logo" clean={clearImages} />
+                <UploadImage title="Cover Image" name="cover" clean={clearImages} />
             </div>
         </Block>
 
         <Block title="Gallery Images" iconClass="far fa-images">
-            <Gallery images={images} addGalleryImg={addGalleryImg} removeGalleryImg={removeGalleryImg} />
+            <Gallery />
         </Block>
 
 

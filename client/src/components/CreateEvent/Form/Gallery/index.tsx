@@ -1,11 +1,17 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import { FileInput } from '../../../common/Forms/Forms'
-import { EventFormInjectedProps } from '..'
+import { addGalleryImg, removeGalleryImg } from '../../../../store/Event'
 import style from './style.module.scss'
 import cl from 'classnames'
 
-const Gallery: React.FC<EventFormInjectedProps> = ({
+type Props = {
+    images: Array<File>
+    addGalleryImg: typeof addGalleryImg
+    removeGalleryImg: typeof removeGalleryImg
+}
+
+const Gallery: React.FC<Props> = ({
     images,
     addGalleryImg,
     removeGalleryImg

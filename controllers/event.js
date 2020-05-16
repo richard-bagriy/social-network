@@ -8,7 +8,7 @@ module.exports = {
         const files = req.files
 
         data.gallery = []
-        data.social = JSON.parse(data.social)
+        data.social = (data.social) ? JSON.parse(data.social) : []
         data.userId = authID
 
         files.forEach(({ fieldname, filename }) => {

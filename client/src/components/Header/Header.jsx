@@ -12,7 +12,7 @@ import logo from '../../assets/svg/logo.svg';
 const Header = ({ isAuth }) => {
 
     const toggleMenu = () => {
-        // Yes i know it's bad bad, i change after refactoring
+        // Yes i know it's bad bad, i change after
         document.querySelector('.app-wrapper').classList.toggle('hide-menu')
     }
     
