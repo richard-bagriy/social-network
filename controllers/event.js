@@ -21,7 +21,7 @@ module.exports = {
             
         });
 
-        const result = await new Event(data).save()
+        await new Event(data).save()
         
         res.send({ success: true })
     },
@@ -37,6 +37,36 @@ module.exports = {
             .populate('userId', 'name images.photo _id')
             
         res.send(events)
+    },
+
+    getSaved: async (req, res) => {
+        const { authID } = req.body
+
+        const { savedEvents } = await User.findById({ _id: authID })
+            .select('savedEvents')
+            .populate('savedEvents', 'title location cover')
+
+        res.send(savedEvents)
+    },
+
+    saveEvent: async (req, res) => {
+        const { authID, eventId } = req.body
+        
+        await User.findById({ _id: authID }, {}, (err, doc) => {
+
+            doc.savedEvents.push(eventId)
+            doc.save();
+
+            res.send({ message: 'Event successfully saved' })
+        })
+    },
+
+    deleteEvent: async (req, res) => {
+        const { authID, eventId } = req.body
+
+        await User.findByIdAndUpdate({ _id: authID }, { $pull: { 'savedEvents': eventId } })
+
+        res.send({ message: 'Event successfully removed' })
     }
 
 }

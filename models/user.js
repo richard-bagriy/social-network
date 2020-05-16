@@ -73,7 +73,9 @@ const UserSchema = new Schema({
         default: null,
     },
 
-    posts: [postShema]
+    posts: [postShema],
+
+    savedEvents: [{ type: mongoose.Types.ObjectId, ref: 'event' }]
 
 })
 
