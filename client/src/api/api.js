@@ -110,7 +110,7 @@ export const eventAPI = {
         return instance.post('/event', data).then(res => res.data)
     },
 
-    getEvents(page = 1, limit = 1) {
+    getEvents(limit = 1, page = 1) {
         return instance.get('/event', {
             params: { limit, page }
         }).then(res => res.data)
@@ -122,6 +122,10 @@ export const eventAPI = {
 
     deleteEvent(eventId) {
         return instance.delete('/event/save', { data: {eventId} }).then(res => res.data)
+    },
+
+    getSavedEvents() {
+        return instance.get('/event/saved').then(res => res.data)
     }
 
 }

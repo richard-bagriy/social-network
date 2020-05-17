@@ -8,6 +8,7 @@ const SET_EVENTS_PAGE = 'EVENTS/SET_PAGE'
 const SAVE_EVENT = 'EVENTS/SAVE_EVENT'
 const DELETE_EVENT = 'EVENTS/DELETE_EVENT'
 const TOGGLE_SAVING_IN_PROGRESS = 'EVENTS/TOGGLE_SAVING_IN_PROGRESS'
+const SET_SAVED_EVENTS = 'EVENTS/SET_SAVED_EVENTS'
 
 export type EventType = {
     _id: string
@@ -22,6 +23,7 @@ export type EventType = {
 
 type EventsStateProps = {
     events: Array<EventType>
+    savedEvents: Array<EventType>
     loading: boolean
     page: number
     limit: number
@@ -30,6 +32,7 @@ type EventsStateProps = {
 
 const initialState: EventsStateProps = {
     events: [],
+    savedEvents: [],
     savingInProgress: [],
     loading: true,
     page: 1,
@@ -40,9 +43,14 @@ export default (state = initialState, action: ActionType): EventsStateProps => {
 
     switch (action.type) {
         case SET_EVENTS: 
+        
+            const events = state.events.length <= state.limit 
+                ? action.payload 
+                : [...state.events, ...action.payload]
+
             return {
                 ...state,
-                events: action.payload
+                events
             }
         case TOGGLE_EVENTS_LOADING:
             return {
@@ -62,12 +70,18 @@ export default (state = initialState, action: ActionType): EventsStateProps => {
         case DELETE_EVENT:
             return {
                 ...state,
-                events: changeEventSaved(state.events, false, action.payload)
+                events: changeEventSaved(state.events, false, action.payload),
+                savedEvents: state.savedEvents.filter(event => event._id !== action.payload)
             }
         case TOGGLE_SAVING_IN_PROGRESS:
             return {
                 ...state,
                 savingInProgress: changeSavingInProgress(state.savingInProgress, action.payload.blocked, action.payload.id)
+            }
+        case SET_SAVED_EVENTS: 
+            return {
+                ...state,
+                savedEvents: action.payload
             }
         default: return state
     }
@@ -91,7 +105,7 @@ const changeSavingInProgress = (savingArray: Array<string>, blocked: boolean, id
     }
 }
 
-type ActionType = SetEventsType | ToggleEventsLoadingType | SetEventsPageType | SaveEventType | DeleteEventType | ToggleSavingInProgressType
+type ActionType = SetEventsType | ToggleEventsLoadingType | SetEventsPageType | SaveEventType | DeleteEventType | ToggleSavingInProgressType | SetSavedEventsType
 
 type SetEventsType = {
     type: typeof SET_EVENTS,
@@ -130,11 +144,18 @@ type ToggleSavingInProgressType = {
 export const toggleSavingInProgress = (blocked: boolean, id: string ): ToggleSavingInProgressType => 
     ({ type: TOGGLE_SAVING_IN_PROGRESS, payload: { blocked, id }  })
 
+type SetSavedEventsType = {
+    type: typeof SET_SAVED_EVENTS
+    payload: Array<EventType>
+}
+export const setSavedEvents = (events: Array<EventType>): SetSavedEventsType => ({ type: SET_SAVED_EVENTS, payload: events })
+// Selectors
 export const getEvents = (state: AppStateType) => state.events.events
 export const getEventsLoading = (state: AppStateType) => state.events.loading
 export const getEventsPage = (state: AppStateType) => state.events.page
 export const getEventsLimit = (state: AppStateType) => state.events.limit
 export const getSavingInProgress = (state: AppStateType) => state.events.savingInProgress
+export const getSavedEvents = (state: AppStateType) => state.events.savedEvents
 
 
 export const thunkGetEvents = (
@@ -186,4 +207,15 @@ export const thunkToggleSaveEvent = (
     } else {
         toggleSavingEvent(eventId, dispatch, saveEvent, eventAPI.saveEvent)
     }
+}
+
+export const thunkGetSavedEvents = (): AppThunk => async dispatch => {
+
+    dispatch(toggleEventLoading(true))
+
+    const events = await eventAPI.getSavedEvents()
+    dispatch(setSavedEvents(events))
+    
+    dispatch(toggleEventLoading(false))
+
 }

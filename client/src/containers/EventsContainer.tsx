@@ -18,16 +18,18 @@ const connector = connect(mapStateToProps, { thunkGetEvents, setEventsPage })
 type Props = ConnectedProps<typeof connector>
 
 const Container = (props: Props) => {
+
+    const { page, limit, thunkGetEvents, setEventsPage } = props
     
     useEffect(() => {
         loadEvents()
         return () => {
-            props.setEventsPage(1)
+            setEventsPage(1)
         }
     }, [])
 
     const loadEvents = () => {
-        props.thunkGetEvents(props.page, props.limit)
+        thunkGetEvents(page, limit)
     }
 
     if (props.loading && !props.events.length) {

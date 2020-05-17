@@ -11,6 +11,7 @@ import '../../styles/App.scss';
 
 const CreateEvent = React.lazy(() => import('../../containers/CreateEvent/Container'))
 const Setting = React.lazy(() => import('../Setting'))
+const SavedEvents = React.lazy(() => import('../../containers/SavedEventsContainer'))
 
 export default () => (
     <div className="app-wrapper">
@@ -28,6 +29,10 @@ export default () => (
 
             <React.Suspense fallback={<Preloader />} >
                 <Route path="/event/create" exact component={CreateEvent} />
+            </React.Suspense>
+
+            <React.Suspense fallback={<Preloader />} >
+                <Route path="/saved" exact component={SavedEvents} />
             </React.Suspense>
 
         </div>

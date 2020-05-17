@@ -1,0 +1,5 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(4, 380px);
+    gap: 25px 25px;
+}
