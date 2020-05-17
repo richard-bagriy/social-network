@@ -44,9 +44,9 @@ export default (state = initialState, action: ActionType): EventsStateProps => {
     switch (action.type) {
         case SET_EVENTS: 
         
-            const events = state.events.length < state.limit 
-                ? action.payload 
-                : [...state.events, ...action.payload]
+            const events = state.page > 1
+                ? [...state.events, ...action.payload]
+                : action.payload 
 
             return {
                 ...state,

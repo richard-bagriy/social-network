@@ -46,6 +46,10 @@ export const profileAPI = {
         data.set('file', file, file.name)
        
         return instance.put('profile/updateImage', data).then(res => res.data)
+    },
+
+    getEvents(id) {
+        return instance.get('profile/events/' + id).then(res => res.data)
     }
 
 }

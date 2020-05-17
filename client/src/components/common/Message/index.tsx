@@ -3,10 +3,11 @@ import style from './style.module.scss';
 
 type Props = {
     message: string
-    type: string
+    type?: string
 }
 
 const Message: React.FC<Props> = ({ message, type }) => {
+    
     let className;
     
     switch(type) {

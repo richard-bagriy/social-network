@@ -2,14 +2,16 @@ import {
     ADD_POST, 
     SET_PROFILE_DATA, 
     TOGGLE_LOADING_USER,
-    DELETE_POST
+    DELETE_POST,
+    SET_PROFILE_EVENTS
 } from './types';
 
 const initialState = {
     
     profile: null,
-    isLoadingUser: false,
-    posts: []
+    loading: false,
+    posts: [],
+    events: []
     
 };
 
@@ -30,12 +32,17 @@ export default (state = initialState, action) => {
         case TOGGLE_LOADING_USER:
             return {
                 ...state,
-                isLoadingUser: action.loading
+                loading: action.loading
             }
         case DELETE_POST:
             return {
                 ...state,
                 posts: state.posts.filter(p => p._id !== action.postId)
+            }
+        case SET_PROFILE_EVENTS:
+            return {
+                ...state,
+                events: action.payload
             }
         default:
             return state;

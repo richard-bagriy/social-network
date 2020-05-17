@@ -4,7 +4,8 @@ import {
     toggleLoadingUser,
     setProfileData,
     addPost as addPostAC,
-    deletePost as deletePostAC 
+    deletePost as deletePostAC, 
+    setProfileEvents
 } from './actions';
 import { updateUserData } from '../Auth/actions'
 
@@ -37,5 +38,12 @@ export const updateProfile = data => async dispatch => {
 
     await profileAPI.update(data);
     dispatch(updateUserData(data))
+
+}
+
+export const thunkGetProfileEvents = (userId) => async dispatch => {
+    
+    const events = await profileAPI.getEvents(userId)
+    dispatch(setProfileEvents(events))
 
 }

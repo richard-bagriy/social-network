@@ -202,7 +202,7 @@ module.exports = {
 
     getEvents: async (req, res) => {
         const { userId } = req.params
-        console.log(req.params)
+
         const events = await Event.find({ userId })
             .select('title location logo')
 

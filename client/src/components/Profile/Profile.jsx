@@ -10,6 +10,7 @@ import style from './style.module.sass';
 
 const ProfileSubscribersContainer = lazy( () => import('../../containers/ProfileSubsribersContainer') );
 const ProfileSubscriptionsContainer  = lazy( () => import ('../../containers/ProfileSubscriptionsContainer') );
+const ProfileEvents = lazy(() => import('../../containers/Profile/EventsContainer'))
 
 const Profile = ({ 
     profile: {
@@ -62,7 +63,9 @@ const Profile = ({
                 </TabPanel>
 
                 <TabPanel>
-                    <Message message="You don't have any events" />
+                    <Suspense fallback={<Preloader />}>
+                        <ProfileEvents />
+                    </Suspense>
                 </TabPanel>
 
                 <TabPanel>
