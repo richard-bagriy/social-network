@@ -23,7 +23,7 @@ module.exports = {
 
         await new Event(data).save()
         
-        res.send({ success: true })
+        res.json({ success: true })
     },
 
     getAll: async (req, res) => {
@@ -52,7 +52,7 @@ module.exports = {
             })
         )
             
-        res.send(events)
+        res.json(events)
     },
 
     getSaved: async (req, res) => {
@@ -79,7 +79,7 @@ module.exports = {
             })
         )
 
-        res.send(events)
+        res.json(events)
     },
 
     saveEvent: async (req, res) => {
@@ -90,7 +90,7 @@ module.exports = {
             doc.savedEvents.push(eventId)
             doc.save();
 
-            res.send({ message: 'Event successfully saved' })
+            res.json({ message: 'Event successfully saved' })
         })
     },
 
@@ -99,7 +99,7 @@ module.exports = {
 
         await User.findByIdAndUpdate({ _id: authID }, { $pull: { 'savedEvents': eventId } })
 
-        res.send({ message: 'Event successfully removed' })
+        res.json({ message: 'Event successfully removed' })
     }
 
 }

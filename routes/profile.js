@@ -9,7 +9,8 @@ const {
     deletePost,
     updateProfile,
     changePassword,
-    updateImage
+    updateImage,
+    getEvents
  } = require('../controllers/profile');
 
 router.get('/:id', getProfile)
@@ -20,5 +21,6 @@ router.delete('/post', deletePost)
 router.put('/update', updateProfile)
 router.put('/changePassword', changePassword)
 router.put('/updateImage', [upload, resizeImage], updateImage)
+router.get('/events/:userId', getEvents)
 
 module.exports = router;
