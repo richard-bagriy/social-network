@@ -30,11 +30,27 @@ module.exports = {
         const limit = parseInt(req.query.limit)
         const page = parseInt(req.query.page)
         
-        const events = await Event.find({})
+        const data = await Event.find({})
             .limit(limit)
             .skip((page * limit) - limit)
             .select('title location cover')
-            .populate('userId', 'name images.photo _id')
+            .populate('userId', 'name images.photo _id savedEvents')
+        
+        const events = await Promise.all(
+            data.map(event => {
+                const { _id, title, location, cover, userId} = event
+
+                const saved = userId.savedEvents.includes(_id) ? true : false
+                
+                return {
+                    _id, title, location, cover,
+                    userId: userId._id,
+                    userName: userId.name,
+                    userImage: userId.images.photo,
+                    saved
+                }
+            })
+        )
             
         res.send(events)
     },
@@ -42,11 +58,28 @@ module.exports = {
     getSaved: async (req, res) => {
         const { authID } = req.body
 
-        const { savedEvents } = await User.findById({ _id: authID })
+        const data = await User.findById({ _id: authID })
             .select('savedEvents')
-            .populate('savedEvents', 'title location cover')
+            .populate('savedEvents', 'title location cover userId')
 
-        res.send(savedEvents)
+        const events = await Promise.all(
+            data.savedEvents.map(async event => {
+
+                const { name, images:{ photo }, savedEvents } = await User.findById({ _id: event.userId })
+                    .select('name images.photo savedEvents')
+
+                const saved = savedEvents.includes(event._id) ? true : false
+
+                return {
+                    ...event.toObject(),
+                    userName: name,
+                    userImage: photo,
+                    saved
+                }
+            })
+        )
+
+        res.send(events)
     },
 
     saveEvent: async (req, res) => {

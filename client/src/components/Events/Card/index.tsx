@@ -5,8 +5,12 @@ import style from './style.module.scss'
 import { Link } from 'react-router-dom'
 
 const Card: React.FC<EventType> = ({
-    title, location, cover,
-    userId: { name, images: { photo }, _id },
+    title, 
+    location, 
+    cover,
+    userId,
+    userName,
+    userImage
 }) => (
     <div className={style.card}>
         <div className={style.card__image}>
@@ -25,8 +29,8 @@ const Card: React.FC<EventType> = ({
                 <i className="far fa-heart"></i>
             </button>
 
-            <img src={generateImagePath(photo)} alt={name}  className="user-small-image" />
-            <Link to={`profile/${_id}`} className={style.card__user__name}>{name}</Link>
+            <img src={generateImagePath(userImage)} alt={userName}  className="user-small-image" />
+            <Link to={`profile/${userId}`} className={style.card__user__name}>{userName}</Link>
         </div>
     </div>
 )

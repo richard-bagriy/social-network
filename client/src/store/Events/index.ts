@@ -11,11 +11,9 @@ export type EventType = {
     title: string
     location: string
     cover: string
-    userId: {
-        _id: string
-        images: { photo: string }
-        name: string
-    }
+    userId: string
+    userName: string
+    userImage: string
 }
 
 type EventsStateProps = {
