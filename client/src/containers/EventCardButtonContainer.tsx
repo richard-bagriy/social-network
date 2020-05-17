@@ -21,10 +21,10 @@ const Container = (props: Props) => {
     const {thunkToggleSaveEvent, id, saved, savingInProgress} = props
 
     const handleClick = () => {
-        thunkToggleSaveEvent(props.id, saved)
+        thunkToggleSaveEvent(id, saved)
     }
     
-    const disabled = savingInProgress.some((el: string) => el === props.id)
+    const disabled = savingInProgress.some((el: string) => el === id)
 
     return <Button onClick={handleClick} saved={saved} disabled={disabled} />
 }

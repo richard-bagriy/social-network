@@ -66,13 +66,13 @@ const Profile = ({
                 </TabPanel>
 
                 <TabPanel>
-                    <Suspense fallback={Preloader}>
+                    <Suspense fallback={<Preloader />}>
                         <ProfileSubscribersContainer/>
                     </Suspense>
                 </TabPanel>
 
                 <TabPanel>
-                    <Suspense fallback={Preloader}>
+                    <Suspense fallback={<Preloader />}>
                         <ProfileSubscriptionsContainer />
                     </Suspense>
                 </TabPanel>

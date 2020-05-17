@@ -1,6 +1,6 @@
 import { AppStateType, AppThunk } from '../index'
 import { eventAPI } from '../../api/api'
-import { Dispatch, Action } from 'redux'
+import { Dispatch } from 'redux'
 
 const SET_EVENTS = 'EVENTS/SET_EVENTS'
 const TOGGLE_EVENTS_LOADING =  'EVENTS/TOGGLE_EVENTS_LOADING'
@@ -36,7 +36,7 @@ const initialState: EventsStateProps = {
     savingInProgress: [],
     loading: true,
     page: 1,
-    limit: 1
+    limit: 2
 }
 
 export default (state = initialState, action: ActionType): EventsStateProps => {
@@ -44,7 +44,7 @@ export default (state = initialState, action: ActionType): EventsStateProps => {
     switch (action.type) {
         case SET_EVENTS: 
         
-            const events = state.events.length <= state.limit 
+            const events = state.events.length < state.limit 
                 ? action.payload 
                 : [...state.events, ...action.payload]
 

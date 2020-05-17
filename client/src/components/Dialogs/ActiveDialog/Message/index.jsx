@@ -8,7 +8,7 @@ const Message = ({
     sent_time
 }) => {
     
-    const postionClass = user_id == authID ? style.message__my : style.message__friend
+    const postionClass = user_id === authID ? style.message__my : style.message__friend
 
     return <div className={`${style.message} ${postionClass}`} > 
         { message }
