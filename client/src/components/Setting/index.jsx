@@ -1,4 +1,5 @@
 import React from 'react'
+import H2 from '../common/H2'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Overview from '../../containers/OverviewContainer'
 import ChangePassword from '../../containers/ChangePasswordContainer'
@@ -7,10 +8,8 @@ import ProfileImages from '../../containers/ProfileImagesContainer'
 export default () => {
     
     return <div className="p-x-25">
-        <h2 className="h2">
-            setting
-            <hr className="h2-border" />
-        </h2>
+
+        <H2 text="setting" />
 
         <Tabs>
 

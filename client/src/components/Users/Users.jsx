@@ -3,6 +3,7 @@ import Preloader from '../common/Preloader';
 import Filter from './Filter/Filter';
 import Users from '../common/Users';
 import style from './style.module.sass';
+import H2 from '../common/H2';
 
 export default ({ 
     isLoadingUsers,
@@ -16,11 +17,8 @@ export default ({
 
     return (
         <div className={style.users}>
-
-        <h2 className="h2">
-            Find Users
-            <hr className="h2-border" />
-        </h2>
+        
+        <H2 text="Find Users" />
 
         <Filter onSubmit={changeUsers}/>
 

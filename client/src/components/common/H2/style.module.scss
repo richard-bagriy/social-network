@@ -1,0 +1,17 @@
+.h2 {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-weight: 700;
+    color: #434f74;
+    font-size: 18px;
+    text-align: center;
+    text-transform: capitalize;
+
+    &__line {
+        width: 30px;
+        margin: 0 auto;
+        border-top: 1px solid rgba(0,0,0,.1);
+        border-bottom: 1px solid #e5e5e5;
+        margin-top: 20px;
+    }
+}
