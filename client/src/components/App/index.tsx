@@ -9,7 +9,7 @@ import Events from '../../containers/EventsContainer'
 import Preloader from '../common/Preloader'
 import '../../styles/App.scss';
 
-const CreateEvent = React.lazy(() => import('../../containers/CreateEventContainer'))
+const CreateEvent = React.lazy(() => import('../../containers/CreateEvent/Container'))
 const Setting = React.lazy(() => import('../Setting'))
 
 export default () => (

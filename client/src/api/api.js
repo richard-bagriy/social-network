@@ -114,6 +114,14 @@ export const eventAPI = {
         return instance.get('/event', {
             params: { limit, page }
         }).then(res => res.data)
+    },
+
+    saveEvent(eventId) {
+        return instance.post('/event/save', {eventId}).then(res => res.data)
+    },
+
+    deleteEvent(eventId) {
+        return instance.delete('/event/save', { data: {eventId} }).then(res => res.data)
     }
 
 }

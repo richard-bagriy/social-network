@@ -1,6 +1,6 @@
 import React from 'react'
-import Form from '../../containers/CreateEventFormContainer'
-import { EventContainerTypeProps } from '../../containers/CreateEventContainer'
+import Form from '../../containers/CreateEvent/FormContainer'
+import { EventContainerTypeProps } from '../../containers/CreateEvent/Container'
 import Modal from 'react-modal'
 import style from './style.module.scss'
 

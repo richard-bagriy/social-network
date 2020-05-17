@@ -70,6 +70,14 @@ $hover-blue: #434f74;
         &:hover{
             background: $hover-blue;
         }
+
+        &.active {
+            background: $hover-blue;
+
+            &:hover {
+                background: $pink;
+            }
+        }
     }
     
     &:hover {

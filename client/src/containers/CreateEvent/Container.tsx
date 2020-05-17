@@ -1,8 +1,8 @@
 import React from 'react'
-import { AppStateType } from '../store'
-import { getEventCreated, eventCreated } from '../store/Event'
+import { AppStateType } from '../../store'
+import { getEventCreated, eventCreated } from '../../store/Event'
 import { connect, ConnectedProps } from 'react-redux'
-import CreateEvent from '../components/CreateEvent'
+import CreateEvent from '../../components/CreateEvent'
 
 const mapStateToProps = (state:AppStateType) => ({
     created: getEventCreated(state)

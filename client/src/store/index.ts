@@ -1,6 +1,6 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose, Action } from "redux";
 import { reducer as formReducer } from 'redux-form'
-import thunkMiddleware from 'redux-thunk';
+import thunkMiddleware, { ThunkAction } from 'redux-thunk';
 import appReducer from './App';
 import authReducer from './Auth';
 import profileReducer from './ProfilePage';
@@ -24,6 +24,13 @@ const reducers = combineReducers({
 });
 
 export type AppStateType = ReturnType<typeof reducers>
+
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  AppStateType,
+  unknown,
+  Action<string>
+>
 
 // @ts-ignore
 const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { EventType } from '../../store/Events'
-import Card from './Card'
+import Card  from '../common/EventCard'
 import Preloader from '../common/Preloader'
 import style from './style.module.scss'
 
@@ -19,7 +19,7 @@ const Events:React.FC<EventsProps> = ({ events, loadEvents, loading }) => (
             </button>
         </div>
         <div className={style.events}>
-            { events.map(event => <Card {...event} key={event._id} />) }
+            { events.map(event => <Card key={event._id} {...event} />) }
         </div>
         { loading && <Preloader /> }
     </div>
