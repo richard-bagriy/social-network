@@ -43,7 +43,7 @@ const toggleSubscribe = async (userId, subscribe, dispatch) => {
         dispatch(toggleFollowingOnUser(true, userId));
 
         if (subscribe) {
-            await usersAPI.subsribe(userId);
+            await usersAPI.subscribe(userId);
             dispatch(subscribeAC(userId));
         } else {
             await usersAPI.unsubscribe(userId);

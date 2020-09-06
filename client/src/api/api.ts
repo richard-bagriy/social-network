@@ -1,4 +1,4 @@
-import * as axios from 'axios';
+import axios from 'axios';
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000/api/',
@@ -10,37 +10,40 @@ const instance = axios.create({
 
 export const profileAPI = {
 
-    getProfile(id) {
+    getProfile(id: number) {
         return instance.get(`profile/${id}`).then(response => response.data);
     },
 
-    getSubscribers(id) {
+    getSubscribers(id: number) {
         return instance.get(`profile/subscribers/${id}`).then(response => response.data);
     },
 
-    getSubscriptions(id) {
+    getSubscriptions(id: number) {
         return instance.get(`profile/subscriptions/${id}`).then(response => response.data);
     },
 
-    addPost(message, userId) {
+    addPost(message: string, userId: number) {
         return instance.post('profile/post', { message, userId } ).then(response => response.data);
     },
 
-    deletePost({ userId, postId }) {
-        return instance.delete('profile/post', { 
-            data: { userId, postId }
+    deletePost({ userId, postId } : { userId: number, postId: number } ) {
+        return instance.delete('profile/post', {
+            data: {
+                userId,
+                postId
+            }
         })
     },
-
-    update(data) {
+    // TODO add a type from profile
+    update(data: any) {
         return instance.put('profile/update', { data } ).then(response => response.data);
     },
 
-    changePassword(password) {
+    changePassword(password: string) {
         return instance.put('profile/changePassword', { password } ).then(res => res.data)
     },
 
-    updateImage({ file, name }) {
+    updateImage({ file, name } : { file: File, name: string }) {
         const data = new FormData()
         data.set('name', name)
         data.set('file', file, file.name)
@@ -48,7 +51,7 @@ export const profileAPI = {
         return instance.put('profile/updateImage', data).then(res => res.data)
     },
 
-    getEvents(id) {
+    getEvents(id: number) {
         return instance.get('profile/events/' + id).then(res => res.data)
     }
 
@@ -62,24 +65,25 @@ export const usersAPI = {
         }).then(response => response.data);
     },
 
-    subsribe(userId) {
-        return instance.post('users/subscribe', { subscriberId: userId });
+    subscribe(id: number) {
+        return instance.post('users/subscribe', { subscriberId: id });
     },
 
-    unsubscribe(userId) {
+    unsubscribe(id: number) {
         return instance.delete('users/subscribe', { 
-            data : { subscriberId: userId } 
+            data : { subscriberId: id }
         });
     }
 }
 
 export const authAPI = {
 
-    login(data) {
+    // Todo add a type from login
+    login(data: any) {
         return instance.post('/auth/login', data).then(response => response.data);
     },
-
-    registration(data) {
+    // Todo add a type from registration
+    registration(data: any) {
         return instance.post('/auth/registration', data).then(response => response.data);
     },
 
@@ -91,26 +95,27 @@ export const authAPI = {
 
 export const dialogsAPI = {
 
-    getDialogs(id) {
+    getDialogs(id: number) {
         if (id) {
             return instance.get(`/dialogs/${id}`).then(res => res.data)    
         }
         return instance.get('/dialogs').then(res => res.data)
     },
 
-    addMessage(userId, message) {
-        return instance.post(`/dialogs/dialog/${userId}`, { message }).then(res => res.data)
+    addMessage(id: number, message: string) {
+        return instance.post(`/dialogs/dialog/${id}`, { message }).then(res => res.data)
     },
 
-    getDialog(userId){
-        return instance.get(`/dialogs/dialog/${userId}`).then(res => res.data)
+    getDialog(id: number) {
+        return instance.get(`/dialogs/dialog/${id}`).then(res => res.data)
     }
 
 }
 
 export const eventAPI = {
-    
-    addEvent(data) {
+
+    // TODO add a normval type of data
+    addEvent(data: any) {
         return instance.post('/event', data).then(res => res.data)
     },
 
@@ -120,12 +125,12 @@ export const eventAPI = {
         }).then(res => res.data)
     },
 
-    saveEvent(eventId) {
-        return instance.post('/event/save', {eventId}).then(res => res.data)
+    saveEvent(id: number) {
+        return instance.post('/event/save', { eventId: id }).then(res => res.data)
     },
 
-    deleteEvent(eventId) {
-        return instance.delete('/event/save', { data: {eventId} }).then(res => res.data)
+    deleteEvent(id: number) {
+        return instance.delete('/event/save', { data: { eventId: id } }).then(res => res.data)
     },
 
     getSavedEvents() {
