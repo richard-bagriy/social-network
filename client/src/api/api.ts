@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from 'axios'
+import { LoginFormValuesType } from '../components/Auth/Login/form'
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000/api/',
@@ -78,8 +79,7 @@ export const usersAPI = {
 
 export const authAPI = {
 
-    // Todo add a type from login
-    login(data: any) {
+    login(data: LoginFormValuesType) {
         return instance.post('/auth/login', data).then(response => response.data);
     },
     // Todo add a type from registration

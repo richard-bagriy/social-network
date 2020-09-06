@@ -7,6 +7,7 @@ import UploadImage from './UploadImage'
 import Gallery from '../../../containers/CreateEvent/GalleryContainer'
 import SocialNetwork from './SocialNetwork'
 import style from './style.module.scss'
+import { FormStringKeyType } from "../../../Types";
 
 const maxLength20 = maxLength(20)
 
@@ -24,11 +25,7 @@ export type EventFormValuesType =  {
     phone: string
 }
 
-type EventFormKeyType = {
-    [key:string]: string
-}
-
-export type EventHandleSubmitPropsType = EventFormKeyType & EventFormValuesType
+export type EventHandleSubmitPropsType = FormStringKeyType & EventFormValuesType
 
 export type EventFormInjectedProps = {
     clearImages: boolean
